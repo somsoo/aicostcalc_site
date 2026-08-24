@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배치 API로 AI 비용 50% 절약 | OpenAI·Anthropic 완벽 가이드</title>
+    <meta name="description" content="실시간 응답이 필요 없는 대규모 AI 작업 시 필수인 Batch API. OpenAI GPT와 Anthropic Claude 배치 API 사용법과 요금 절감액을 확인하세요.">
+    <link rel="canonical" href="https://aiapi.enjoy-onepage.com/guides/batch-api.html">
+    <link rel="icon" href="../favicon.ico">
+    <meta property="og:title" content="배치 API로 AI 비용 50% 절약하기">
+    <meta property="og:url" content="https://aiapi.enjoy-onepage.com/guides/batch-api.html">
+    <script type="application/ld+json">
+    [{"@context":"https://schema.org","@type":"Article","headline":"배치 API로 AI 비용 50% 절약하기","url":"https://aiapi.enjoy-onepage.com/guides/batch-api.html","inLanguage":"ko","publisher":{"@type":"Organization","name":"AI API 비용 계산기"}},
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"배치 API란 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"여러 개의 API 요청을 하나의 파일로 묶어서 보내고, 최대 24시간 이내에 결과를 일괄적으로 받아보는 비동기식 API입니다. 정가 대비 무조건 50% 할인됩니다."}},
+    {"@type":"Question","name":"배치 API는 어떤 작업에 적합한가요?","acceptedAnswer":{"@type":"Answer","text":"실시간 응답이 필요 없는 작업(예: 대량의 상품 리뷰 감성 분석, 뉴스 기사 일괄 요약, 데이터 정제 및 번역)에 완벽합니다. 챗봇처럼 즉각적인 대답이 필요한 서비스에는 쓸 수 없습니다."}},
+    {"@type":"Question","name":"결과는 언제 받을 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"API 요청 시 '최대 24시간'을 보장(SLA)하지만, 서버 리소스 상황에 따라 빠르면 몇 분~몇 시간 내에 처리가 완료되는 경우도 많습니다."}}
+    ]}]
+    </script>
+    <style>
+        :root{--primary:#FF9800;--primary-light:#FFF8E1;--bg:#F4F5F9;--text:#1A1A2E;--light:#555577;--border:#E0E0F0;--box:#fff;}
+        *{box-sizing:border-box;}
+        body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);margin:0;padding:0;padding-bottom:70px;}
+        .container{margin:0 auto;max-width:500px;width:100%;min-height:100vh;background:var(--box);padding:20px;box-shadow:0 0 20px rgba(255,152,0,.08);}
+        .nav-row{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
+        .nav-btn{display:inline-block;padding:7px 12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;text-decoration:none;color:var(--text);font-size:0.82rem;font-weight:bold;}
+        .nav-btn:hover{background:var(--primary);color:#fff;}
+        .breadcrumb{font-size:0.75rem;color:var(--light);margin-bottom:14px;}
+        .breadcrumb a{color:var(--primary);text-decoration:none;}
+        h1{font-size:1.35rem;margin:0 0 16px;line-height:1.35;}
+        h2{font-size:1.1rem;margin:26px 0 10px;color:var(--text);}
+        h3{font-size:0.98rem;margin:16px 0 7px;color:var(--primary);}
+        p{font-size:0.92rem;line-height:1.7;margin:0 0 12px;}
+        table{width:100%;border-collapse:collapse;font-size:0.81rem;margin:10px 0 18px;display:block;overflow-x:auto;}
+        th{background:var(--primary);color:#fff;padding:9px 7px;text-align:left;white-space:nowrap;}
+        td{padding:9px 7px;border-bottom:1px solid var(--border);vertical-align:top;}
+        tr:nth-child(even) td{background:#fafafa;}
+        .highlight-box{background:var(--primary-light);border-left:4px solid var(--primary);padding:14px 16px;border-radius:0 10px 10px 0;margin:14px 0;font-size:0.9rem;line-height:1.6;}
+        .ad-box{width:100%;min-height:90px;margin:20px 0;overflow:hidden;background:var(--box);text-align:center;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.05);padding:8px;}
+        .faq-item{background:var(--box);padding:14px;border-radius:8px;margin-bottom:10px;box-shadow:0 2px 5px rgba(0,0,0,.04);border-left:3px solid var(--primary);}
+        .faq-item h3{font-size:0.95rem;margin:0 0 7px;color:var(--primary);}
+        .faq-item p{font-size:0.88rem;color:#555;margin:0;line-height:1.5;}
+        .related-box{background:var(--bg);border-radius:12px;padding:16px;margin-top:20px;}
+        .related-box h3{font-size:0.95rem;margin:0 0 10px;}
+        .related-link{display:block;padding:9px 12px;background:var(--box);border:1px solid var(--border);border-radius:8px;text-decoration:none;color:var(--text);font-size:0.85rem;margin-bottom:7px;}
+        .related-link:hover{border-color:var(--primary);color:var(--primary);}
+        .cta-btn{display:block;padding:15px;background:#6C63FF;color:#fff;border-radius:12px;font-size:1rem;font-weight:bold;text-align:center;text-decoration:none;margin:20px 0 10px;}
+        ul{font-size:0.92rem;line-height:1.8;padding-left:20px;margin:8px 0 14px;}
+        .sticky-ad{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:500px;max-height:60px;overflow:hidden;background:#fff;border-top:1px solid #e0e0e0;z-index:9999;text-align:center;}
+        .tag-half{background:#FFE0B2;color:#E65100;font-weight:bold;padding:2px 6px;border-radius:5px;font-size:0.75rem;}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="nav-row">
+        <a href="index.html" class="nav-btn">← 가이드 목록</a>
+        <a href="../index.html" class="nav-btn">🤖 계산기</a>
+    </div>
+    <div class="breadcrumb"><a href="../index.html">홈</a> &gt; <a href="index.html">가이드</a> &gt; 배치 API 절약법</div>
+
+    <h1>📦 배치 API로 AI 비용 50% 절약 | 완벽 가이드</h1>
+
+    <h2>배치(Batch) API란?</h2>
+    <p>한 번에 하나의 질문을 보내고 실시간으로 답변을 기다리는 일반 API와 다릅니다. <strong>여러 개의 요청을 모아서 파일로 제출하고, 최대 24시간 내에 일괄 처리된 결과를 받는 방식</strong>입니다.</p>
+    <div class="highlight-box">
+        💰 <strong>가장 큰 장점:</strong> 시스템 유휴 자원을 활용하므로, OpenAI와 Anthropic 모두 <strong>정가 대비 50% 파격 할인</strong>을 제공합니다.
+    </div>
+
+    <h2>OpenAI 배치 API 요금 (입력 1M 토큰 기준)</h2>
+    <table>
+        <tr><th>모델</th><th>일반 요금</th><th>배치 요금</th><th>절감률</th></tr>
+        <tr><td>GPT-4o</td><td>$2.50</td><td>$1.25 <span class="tag-half">반값</span></td><td>50%</td></tr>
+        <tr><td>GPT-4o mini</td><td>$0.15</td><td>$0.075 <span class="tag-half">반값</span></td><td>50%</td></tr>
+        <tr><td>text-embedding-3-large</td><td>$0.13</td><td>$0.065 <span class="tag-half">반값</span></td><td>50%</td></tr>
+    </table>
+
+    <!-- 광고 1 -->
+    <div class="ad-box">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="9951815089" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+    </div>
+
+    <h2>Anthropic (Claude) 배치 API 요금</h2>
+    <table>
+        <tr><th>모델</th><th>일반 요금</th><th>배치 요금</th><th>절감률</th></tr>
+        <tr><td>Claude 3.5 Sonnet</td><td>$3.00</td><td>$1.50 <span class="tag-half">반값</span></td><td>50%</td></tr>
+        <tr><td>Claude 3.5 Haiku</td><td>$0.80</td><td>$0.40 <span class="tag-half">반값</span></td><td>50%</td></tr>
+    </table>
+
+    <h2>어떤 작업에 적합한가요?</h2>
+    <p>실시간 응답이 필요 없는 "백오피스" 또는 "대량 데이터 처리" 업무에 완벽합니다.</p>
+    <ul>
+        <li>✅ 수만 건의 고객 리뷰 감성 분석 (긍정/부정)</li>
+        <li>✅ 상품 카탈로그 설명글 일괄 생성</li>
+        <li>✅ 긴 문서나 과거 뉴스 기사 대량 요약</li>
+        <li>✅ 대규모 DB 텍스트 번역 및 정제</li>
+        <li>❌ 사용자 상담 챗봇 (실시간 응답 불가)</li>
+    </ul>
+
+    <h2>실전 절감 사례</h2>
+    <p><strong>시나리오: 이커머스 상품 설명 10,000건 생성</strong><br>(건당 500토큰 입력, GPT-4o mini 기준)</p>
+    <ul>
+        <li>일반 API 사용: $0.75</li>
+        <li>배치 API 사용: $0.375</li>
+    </ul>
+    <p>단가가 저렴한 mini 모델이라도, 한 달에 수백만 건을 처리하는 기업이라면 수십~수백만 원을 아낄 수 있습니다. 고성능 GPT-4o 모델 대량 호출 시에는 절감액이 수백만 원 단위로 뜁니다.</p>
+
+    <!-- 광고 2 -->
+    <div class="ad-box">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="9975865816" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+    </div>
+
+    <h2>💡 자주 묻는 질문</h2>
+    <div class="faq-item">
+        <h3>Q. 결과는 무조건 24시간을 꽉 채워서 기다려야 하나요?</h3>
+        <p>아닙니다. 최대 한도(SLA)를 24시간으로 보장할 뿐, AI 회사의 서버 리소스가 남는 상황이라면 몇 분에서 몇 시간 내에 처리가 완료되는 경우도 흔합니다.</p>
+    </div>
+    <div class="faq-item">
+        <h3>Q. 한 번의 배치로 보낼 수 있는 용량 제한이 있나요?</h3>
+        <p>OpenAI의 경우 파일당 최대 50,000건의 요청, 최대 파일 크기 100MB의 제한이 있습니다. 더 많은 작업을 하려면 파일을 여러 개로 쪼개서 보내면 됩니다.</p>
+    </div>
+
+    <div class="related-box">
+        <h3>📎 관련 가이드</h3>
+        <a href="cost-saving.html" class="related-link">💡 API 비용 90% 줄이는 전체 5가지 전략 →</a>
+        <a href="gpt4o-cost.html" class="related-link">💚 GPT-4o 모델별 요금 상세 확인 →</a>
+    </div>
+
+    <a href="../index.html" class="cta-btn">🧮 직접 요금 계산하러 가기</a>
+</div>
+<div class="sticky-ad">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+    <ins class="adsbygoogle" style="display:block;width:100%;height:60px;" data-ad-client="ca-pub-2228289204702106" data-ad-slot="8662784148" data-ad-format="horizontal" data-full-width-responsive="false"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+</body>
+</html>

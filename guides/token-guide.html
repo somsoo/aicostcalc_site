@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 토큰이란? 한국어 포함 완벽 가이드 | AI API 비용 계산기</title>
+    <meta name="description" content="AI 토큰의 뜻, 한국어·영어별 글자당 토큰 환산 기준, 입력·출력 토큰 차이, 컨텍스트 윈도우 개념까지 완벽 정리합니다.">
+    <link rel="canonical" href="https://aiapi.enjoy-onepage.com/guides/token-guide.html">
+    <link rel="icon" href="../favicon.ico">
+    <meta property="og:title" content="AI 토큰이란? 한국어 포함 완벽 가이드">
+    <meta property="og:description" content="GPT, Claude, Gemini가 텍스트를 처리하는 기본 단위 '토큰'을 완벽하게 이해하세요.">
+    <meta property="og:url" content="https://aiapi.enjoy-onepage.com/guides/token-guide.html">
+    <script type="application/ld+json">
+    [{"@context":"https://schema.org","@type":"Article","headline":"AI 토큰이란? 한국어 포함 완벽 가이드","description":"AI 토큰의 뜻, 한국어·영어별 글자당 토큰 환산 기준, 입력·출력 토큰 차이, 컨텍스트 윈도우 개념까지 완벽 정리","url":"https://aiapi.enjoy-onepage.com/guides/token-guide.html","inLanguage":"ko","publisher":{"@type":"Organization","name":"AI API 비용 계산기"}},
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"AI 토큰 1개는 몇 글자인가요?","acceptedAnswer":{"@type":"Answer","text":"언어마다 다릅니다. 영어는 약 4글자당 1토큰, 한국어는 약 1~2글자당 1토큰입니다. '안녕하세요'는 약 4~5토큰, 'Hello there'는 약 3토큰입니다."}},
+    {"@type":"Question","name":"입력 토큰과 출력 토큰의 차이는 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"입력(Input) 토큰은 내가 AI에 보내는 질문+시스템 프롬프트의 토큰 수이고, 출력(Output) 토큰은 AI가 생성하는 응답의 토큰 수입니다. 출력 토큰이 입력 토큰보다 2~5배 비쌉니다."}},
+    {"@type":"Question","name":"컨텍스트 윈도우란 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"한 번의 API 요청에서 처리할 수 있는 최대 토큰 수입니다. GPT-4o는 128K, Claude 3.5 Sonnet은 200K, Gemini 2.5 Pro는 1M 토큰의 컨텍스트 윈도우를 지원합니다."}}
+    ]}]
+    </script>
+    <style>
+        :root{--primary:#6C63FF;--primary-light:#EEF0FF;--bg:#F4F5F9;--text:#1A1A2E;--light:#555577;--border:#E0E0F0;--box:#fff;}
+        *{box-sizing:border-box;}
+        body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);margin:0;padding:0;padding-bottom:70px;}
+        .container{margin:0 auto;max-width:500px;width:100%;min-height:100vh;background:var(--box);padding:20px;box-shadow:0 0 20px rgba(108,99,255,.08);}
+        .nav-row{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
+        .nav-btn{display:inline-block;padding:7px 12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;text-decoration:none;color:var(--text);font-size:0.82rem;font-weight:bold;}
+        .nav-btn:hover{background:var(--primary);color:#fff;}
+        .breadcrumb{font-size:0.75rem;color:var(--light);margin-bottom:14px;}
+        .breadcrumb a{color:var(--primary);text-decoration:none;}
+        h1{font-size:1.35rem;margin:0 0 16px;line-height:1.35;}
+        h2{font-size:1.1rem;margin:28px 0 10px;padding-top:4px;color:var(--text);}
+        h3{font-size:1rem;margin:18px 0 8px;color:var(--primary);}
+        p{font-size:0.92rem;line-height:1.7;margin:0 0 12px;}
+        table{width:100%;border-collapse:collapse;font-size:0.83rem;margin:12px 0 18px;}
+        th{background:var(--primary);color:#fff;padding:9px 8px;text-align:left;}
+        td{padding:9px 8px;border-bottom:1px solid var(--border);vertical-align:top;}
+        tr:nth-child(even) td{background:#fafafa;}
+        .highlight-box{background:var(--primary-light);border-left:4px solid var(--primary);padding:14px 16px;border-radius:0 10px 10px 0;margin:16px 0;font-size:0.9rem;line-height:1.6;}
+        .ad-box{width:100%;min-height:90px;margin:20px 0;overflow:hidden;background:var(--box);text-align:center;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.05);padding:8px;}
+        .faq-item{background:var(--box);padding:14px;border-radius:8px;margin-bottom:10px;box-shadow:0 2px 5px rgba(0,0,0,.04);border-left:3px solid var(--primary);}
+        .faq-item h3{font-size:0.95rem;margin:0 0 7px;color:var(--primary);}
+        .faq-item p{font-size:0.88rem;color:#555;margin:0;line-height:1.5;}
+        .related-box{background:var(--bg);border-radius:12px;padding:16px;margin-top:20px;}
+        .related-box h3{font-size:0.95rem;margin:0 0 10px;color:var(--text);}
+        .related-link{display:block;padding:9px 12px;background:var(--box);border:1px solid var(--border);border-radius:8px;text-decoration:none;color:var(--text);font-size:0.85rem;margin-bottom:7px;}
+        .related-link:hover{border-color:var(--primary);color:var(--primary);}
+        .cta-btn{display:block;padding:15px;background:var(--primary);color:#fff;border-radius:12px;font-size:1rem;font-weight:bold;text-align:center;text-decoration:none;margin:20px 0 10px;}
+        ul{font-size:0.92rem;line-height:1.8;padding-left:20px;margin:8px 0 14px;}
+        .sticky-ad{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:500px;max-height:60px;overflow:hidden;background:#fff;border-top:1px solid #e0e0e0;z-index:9999;text-align:center;}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="nav-row">
+        <a href="index.html" class="nav-btn">← 가이드 목록</a>
+        <a href="../index.html" class="nav-btn">🤖 계산기</a>
+    </div>
+    <div class="breadcrumb"><a href="../index.html">홈</a> &gt; <a href="index.html">가이드</a> &gt; AI 토큰이란?</div>
+
+    <h1>🔤 AI 토큰(Token)이란? 한국어 포함 완벽 가이드</h1>
+
+    <h2>토큰이란 무엇인가?</h2>
+    <p>토큰(Token)은 GPT, Claude, Gemini 같은 AI 언어 모델이 텍스트를 처리하는 <strong>가장 기본적인 단위</strong>입니다. 단어, 단어의 일부, 구두점 등으로 분리되며 AI API 요금은 바로 이 토큰 수를 기준으로 계산됩니다.</p>
+    <div class="highlight-box">💡 <strong>핵심 공식</strong>: AI API 비용 = (입력 토큰 수 × 입력 단가) + (출력 토큰 수 × 출력 단가)</div>
+
+    <h2>언어별 토큰 환산 기준</h2>
+    <p>같은 의미라도 언어에 따라 토큰 수가 크게 달라집니다. 한국어는 영어보다 토큰을 더 많이 사용합니다.</p>
+    <table>
+        <tr><th>언어</th><th>평균 글자수/토큰</th><th>예시</th><th>토큰수</th></tr>
+        <tr><td>영어</td><td>약 4글자</td><td>"Hello there"</td><td>~3토큰</td></tr>
+        <tr><td>한국어</td><td>약 1.5~2글자</td><td>"안녕하세요"</td><td>~4~5토큰</td></tr>
+        <tr><td>중국어</td><td>약 1.5글자</td><td>"你好世界"</td><td>~4~5토큰</td></tr>
+        <tr><td>숫자/기호</td><td>약 1글자</td><td>"12345"</td><td>~5토큰</td></tr>
+    </table>
+
+    <!-- 광고 1: 컨텐츠 중간 -->
+    <div class="ad-box">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="9951815089" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+    </div>
+
+    <h2>실전 토큰 계산 예시</h2>
+    <table>
+        <tr><th>텍스트</th><th>한국어 글자수</th><th>예상 토큰수</th></tr>
+        <tr><td>"안녕하세요, 오늘 날씨가 좋네요."</td><td>16자</td><td>~12~16토큰</td></tr>
+        <tr><td>일반 블로그 포스트 (600자)</td><td>600자</td><td>~400~500토큰</td></tr>
+        <tr><td>GPT-3.5 기본 대화 1회</td><td>—</td><td>~300~1,000토큰</td></tr>
+        <tr><td>A4 1장 분량 문서</td><td>약 1,000자</td><td>~700~900토큰</td></tr>
+        <tr><td>소설 한 챕터 (약 5,000자)</td><td>5,000자</td><td>~3,500~4,500토큰</td></tr>
+    </table>
+
+    <h2>입력 토큰 vs 출력 토큰</h2>
+    <p>AI API는 <strong>입력(Input)</strong>과 <strong>출력(Output)</strong> 토큰을 각각 다른 단가로 청구합니다. 출력 토큰이 항상 더 비쌉니다.</p>
+    <ul>
+        <li><strong>입력(Input) 토큰</strong>: 내가 AI에 보내는 텍스트 (질문 + 시스템 프롬프트 + 대화 기록)</li>
+        <li><strong>출력(Output) 토큰</strong>: AI가 생성하는 응답 텍스트</li>
+        <li>출력 단가가 입력 단가의 <strong>2~5배</strong> 높음 (GPT-4o 기준 4배)</li>
+        <li>시스템 프롬프트도 <strong>입력 토큰에 포함</strong>됨 — 매 요청마다 소비</li>
+    </ul>
+    <div class="highlight-box">⚠️ <strong>주의</strong>: 대화 히스토리를 전부 전달하면 입력 토큰이 누적됩니다. 긴 대화일수록 비용이 기하급수적으로 증가할 수 있습니다.</div>
+
+    <h2>컨텍스트 윈도우(Context Window)란?</h2>
+    <p>한 번의 API 요청에서 처리할 수 있는 <strong>최대 토큰 수</strong>입니다. 이 범위를 초과하면 앞부분 대화가 잘립니다.</p>
+    <table>
+        <tr><th>모델</th><th>컨텍스트 윈도우</th><th>대략적 분량</th></tr>
+        <tr><td>GPT-4o</td><td>128,000 토큰</td><td>소설 약 200페이지</td></tr>
+        <tr><td>Claude 3.5 Sonnet</td><td>200,000 토큰</td><td>소설 약 300페이지</td></tr>
+        <tr><td>Gemini 2.5 Pro</td><td>1,000,000 토큰</td><td>소설 약 1,500페이지</td></tr>
+        <tr><td>GPT-4o mini</td><td>128,000 토큰</td><td>소설 약 200페이지</td></tr>
+    </table>
+
+    <h2>토큰 수를 줄이는 실전 팁</h2>
+    <ul>
+        <li>시스템 프롬프트를 최대한 간결하게 작성하기</li>
+        <li>불필요한 예의 표현 제거 ("~해 주세요" 대신 명령형)</li>
+        <li>이미 알고 있는 컨텍스트 반복 금지</li>
+        <li>JSON 형식으로 구조화된 응답 요청 → 불필요한 말 줄이기</li>
+        <li><code>max_tokens</code> 파라미터로 출력 길이 제한</li>
+    </ul>
+
+    <!-- 광고 2: FAQ 전 -->
+    <div class="ad-box">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="9975865816" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+    </div>
+
+    <h2>💡 자주 묻는 질문 (FAQ)</h2>
+    <div class="faq-item">
+        <h3>Q. AI 토큰 1개는 몇 글자인가요?</h3>
+        <p>언어마다 다릅니다. 영어는 약 4글자당 1토큰, <strong>한국어는 약 1~2글자당 1토큰</strong>입니다. '안녕하세요'는 약 4~5토큰, 'Hello there'는 약 3토큰입니다. OpenAI의 Tokenizer 도구에서 직접 확인할 수 있습니다.</p>
+    </div>
+    <div class="faq-item">
+        <h3>Q. 입력 토큰과 출력 토큰의 차이는 무엇인가요?</h3>
+        <p>입력(Input) 토큰은 내가 AI에 보내는 질문+시스템 프롬프트의 토큰 수이고, 출력(Output) 토큰은 AI가 생성하는 응답의 토큰 수입니다. <strong>출력 토큰이 입력 토큰보다 2~5배 비쌉니다.</strong> 비용 절감을 위해서는 응답 길이를 제한하는 것이 효과적입니다.</p>
+    </div>
+    <div class="faq-item">
+        <h3>Q. 컨텍스트 윈도우란 무엇인가요?</h3>
+        <p>한 번의 API 요청에서 처리할 수 있는 최대 토큰 수입니다. GPT-4o는 128K, Claude 3.5 Sonnet은 200K, Gemini 2.5 Pro는 무려 <strong>1M(100만) 토큰</strong>의 컨텍스트 윈도우를 지원합니다. 이 한도를 초과하면 오래된 대화 내용이 잘립니다.</p>
+    </div>
+
+    <div class="related-box">
+        <h3>📎 관련 가이드</h3>
+        <a href="gpt4o-cost.html" class="related-link">💚 GPT-4o API 요금 완벽 정리 →</a>
+        <a href="cost-saving.html" class="related-link">💡 AI API 비용 90% 줄이는 5가지 전략 →</a>
+        <a href="batch-api.html" class="related-link">📦 배치 API로 50% 절약하기 →</a>
+    </div>
+
+    <a href="../index.html" class="cta-btn">🤖 지금 바로 AI API 비용 계산하기</a>
+</div>
+<div class="sticky-ad">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+    <ins class="adsbygoogle" style="display:block;width:100%;height:60px;" data-ad-client="ca-pub-2228289204702106" data-ad-slot="8662784148" data-ad-format="horizontal" data-full-width-responsive="false"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+</body>
+</html>

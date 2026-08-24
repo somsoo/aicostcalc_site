@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI API 비용 계산기 | GPT-4o · Claude · Gemini 토큰 요금 계산</title>
+    <meta name="description" content="GPT-4o, Claude 3.5 Sonnet, Gemini Pro 등 주요 AI API의 토큰 비용을 즉시 계산하세요. 입력/출력 토큰 수를 입력하면 월간 예상 비용(USD/KRW)을 바로 확인할 수 있습니다.">
+    <meta name="keywords" content="AI API 비용 계산기, GPT-4o 요금, Claude API 토큰 계산기, Gemini 요금, AI 토큰 가격, ChatGPT API 비용, LLM 비용 비교">
+    <link rel="canonical" href="https://aicostcalc.enjoy-onepage.com/">
+
+    <!-- 파비콘 설정 -->
+    <link rel="icon" href="favicon.ico">
+    <!-- PWA 매니페스트 (인라인) -->
+    <link rel="manifest" href='data:application/manifest+json,{"name":"AI API 비용 계산기","short_name":"AI비용계산","description":"AI API 토큰 비용을 즉시 계산하세요","start_url":"/","display":"standalone","theme_color":"#6C63FF","background_color":"#FFFFFF","lang":"ko","icons":[{"src":"https://aicostcalc.enjoy-onepage.com/icon.png","sizes":"192x192","type":"image/png"}]}'>
+    <meta name="theme-color" content="#6C63FF">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="AI비용계산">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <!-- 오픈그래프(OG) 메타 태그 -->
+    <meta property="og:title" content="AI API 비용 계산기 | GPT-4o · Claude · Gemini 토큰 요금 계산">
+    <meta property="og:description" content="GPT-4o, Claude 3.5 Sonnet, Gemini Pro 등 주요 AI API의 토큰 비용을 즉시 계산하고 모델별 요금을 비교하세요.">
+    <meta property="og:image" content="https://aicostcalc.enjoy-onepage.com/og-image.png">
+    <meta property="og:url" content="https://aicostcalc.enjoy-onepage.com/">
+    <meta property="og:type" content="website">
+
+    <!-- JSON-LD 스키마 마크업 (SEO/GEO/AEO) -->
+    <script type="application/ld+json">
+    [{
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "AI API 비용 계산기",
+      "url": "https://aicostcalc.enjoy-onepage.com/",
+      "description": "GPT-4o, Claude, Gemini 등 주요 AI API의 토큰 비용을 즉시 계산하고 모델별 요금을 비교하는 무료 웹 계산기입니다.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All",
+      "inLanguage": "ko",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "KRW"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "AI API 토큰이란 무엇인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "토큰(Token)은 AI 모델이 텍스트를 처리하는 기본 단위입니다. 영어는 약 4글자당 1토큰, 한국어는 약 1~2글자당 1토큰으로 계산됩니다. AI API 요금은 입력(Input)과 출력(Output) 토큰 수를 합산하여 책정됩니다."
+        }
+      }, {
+        "@type": "Question",
+        "name": "GPT-4o와 Claude 3.5 Sonnet 중 어느 것이 더 저렴한가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "2025년 기준, 입력 토큰 기준 GPT-4o는 $2.50/1M tokens, Claude 3.5 Sonnet은 $3.00/1M tokens입니다. 단순 비용만 보면 GPT-4o가 약간 저렴하지만, 성능과 컨텍스트 길이, 작업 특성에 따라 최적 모델이 달라집니다."
+        }
+      }, {
+        "@type": "Question",
+        "name": "월 AI API 비용을 줄이는 방법은 무엇인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "① 저렴한 경량 모델(GPT-4o mini, Claude Haiku 등) 우선 사용 ② 시스템 프롬프트 최소화 ③ 응답 max_tokens 제한 ④ 캐싱 기능 활용 ⑤ 배치 API 사용 시 50% 할인 적용 등의 방법으로 비용을 크게 줄일 수 있습니다."
+        }
+      }]
+    }]
+    </script>
+
+    <!-- 카카오 앱키 -->
+    <script>const KAKAO_APP_KEY = '42e5831bfc2060c9019af7d2e6dfabe7';</script>
+
+    <style>
+        :root {
+            --primary: #6C63FF;
+            --primary-light: #EEF0FF;
+            --bg-color: #F4F5F9;
+            --text-main: #1A1A2E;
+            --text-light: #555577;
+            --box-bg: #FFFFFF;
+            --border: #E0E0F0;
+            --success: #00C9A7;
+            --warning: #FFA62B;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            padding-bottom: 70px;
+        }
+        .container {
+            margin: 0 auto;
+            max-width: 500px;
+            width: 100%;
+            min-height: 100vh;
+            background-color: var(--box-bg);
+            padding: 20px;
+            padding-bottom: 40px;
+            box-sizing: border-box;
+            box-shadow: 0 0 20px rgba(108, 99, 255, 0.08);
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.45rem;
+            margin-bottom: 6px;
+            color: var(--text-main);
+            line-height: 1.3;
+        }
+        .subtitle {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        /* 모델 선택 */
+        .model-selector {
+            background: var(--bg-color);
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+        }
+        .model-selector label {
+            display: block;
+            font-weight: bold;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+        .model-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .model-btn {
+            padding: 10px 8px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            background: #fff;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+            font-size: 0.8rem;
+            line-height: 1.3;
+        }
+        .model-btn:hover { border-color: var(--primary); }
+        .model-btn.selected {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            color: var(--primary);
+            font-weight: bold;
+        }
+        .model-btn .model-name { font-weight: bold; font-size: 0.85rem; }
+        .model-btn .model-price { font-size: 0.72rem; color: var(--text-light); margin-top: 2px; }
+        .model-btn.selected .model-price { color: var(--primary); }
+
+        /* 입력 그룹 */
+        .input-group {
+            background: var(--bg-color);
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+        }
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+        }
+        .input-group .tooltip {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            display: block;
+            line-height: 1.4;
+        }
+        .token-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .token-input-wrap { display: flex; flex-direction: column; gap: 4px; }
+        .token-input-wrap span { font-size: 0.8rem; color: var(--text-light); }
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.2s;
+        }
+        input[type="number"]:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* 환율 설명 */
+        .rate-note {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            text-align: right;
+            margin-top: 6px;
+        }
+
+        /* 계산 버튼 */
+        .calc-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: background 0.2s, transform 0.1s;
+        }
+        .calc-btn:hover { background: #5a52d5; }
+        .calc-btn:active { transform: scale(0.98); }
+
+        /* 결과 박스 */
+        .result-box {
+            border-radius: 14px;
+            margin-bottom: 20px;
+            display: none;
+            overflow: hidden;
+        }
+        .result-header {
+            background: linear-gradient(135deg, var(--primary), #9b59b6);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .result-header .result-icon { font-size: 2.5rem; margin-bottom: 6px; }
+        .result-header .result-title { font-size: 1rem; opacity: 0.9; margin-bottom: 4px; }
+        .result-header .result-model { font-size: 0.85rem; opacity: 0.75; }
+
+        .result-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            border: 1px solid var(--border);
+            border-top: none;
+            border-radius: 0 0 14px 14px;
+            overflow: hidden;
+        }
+        .result-card {
+            padding: 14px 10px;
+            text-align: center;
+            border-right: 1px solid var(--border);
+        }
+        .result-card:last-child { border-right: none; }
+        .result-card .rc-label { font-size: 0.72rem; color: var(--text-light); margin-bottom: 4px; }
+        .result-card .rc-usd { font-size: 1.05rem; font-weight: bold; color: var(--primary); }
+        .result-card .rc-krw { font-size: 0.78rem; color: var(--text-light); margin-top: 2px; }
+
+        /* 월간 비용 강조 */
+        .monthly-highlight {
+            background: var(--primary-light);
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            display: none;
+            text-align: center;
+        }
+        .monthly-highlight .mh-label { font-size: 0.85rem; color: var(--text-light); margin-bottom: 6px; }
+        .monthly-highlight .mh-usd { font-size: 2rem; font-weight: bold; color: var(--primary); }
+        .monthly-highlight .mh-krw { font-size: 1rem; color: var(--text-light); margin-top: 4px; }
+        .monthly-highlight .mh-note { font-size: 0.78rem; color: var(--text-light); margin-top: 8px; line-height: 1.4; }
+
+        /* 비교표 */
+        .compare-section {
+            margin-bottom: 20px;
+        }
+        .compare-section h2 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+        }
+        .compare-table th {
+            background: var(--primary);
+            color: #fff;
+            padding: 10px 8px;
+            text-align: left;
+            font-weight: bold;
+        }
+        .compare-table th:last-child, .compare-table td:last-child { text-align: right; }
+        .compare-table td {
+            padding: 10px 8px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: middle;
+        }
+        .compare-table tr:last-child td { border-bottom: none; }
+        .compare-table tr.highlight-row td { background: var(--primary-light); font-weight: bold; color: var(--primary); }
+        .compare-table tr:nth-child(even) td { background: #fafafa; }
+        .compare-table tr.highlight-row:nth-child(even) td { background: var(--primary-light); }
+        .model-tag {
+            display: inline-block;
+            padding: 2px 7px;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-left: 4px;
+            vertical-align: middle;
+        }
+        .tag-fast { background: #E8F5E9; color: #388E3C; }
+        .tag-smart { background: #EDE7F6; color: #7B1FA2; }
+        .tag-cheap { background: #FFF3E0; color: #E65100; }
+
+        /* 제휴 배너 */
+        .affiliate-banner {
+            margin-bottom: 20px;
+            border: 1px solid #C5CAE9;
+            border-radius: 12px;
+            background: #E8EAF6;
+            padding: 16px;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 8px;
+        }
+        .affiliate-badge {
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            color: #303F9F;
+            border: 1px solid #303F9F;
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+        .affiliate-content p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #333;
+            line-height: 1.4;
+        }
+        .affiliate-content strong { color: #303F9F; }
+        .affiliate-btn {
+            background: #3949AB;
+            color: white;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            white-space: nowrap;
+            transition: background 0.2s;
+            display: inline-block;
+            margin-top: 4px;
+        }
+        .affiliate-btn:hover { background: #283593; }
+
+        /* PWA 설치 배너 */
+        .install-banner {
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            background: #E8EAF6;
+            border: 1px solid #C5CAE9;
+            border-radius: 10px;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+        }
+        .install-banner.visible { display: flex; }
+        .btn-install {
+            flex-shrink: 0;
+            padding: 8px 14px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        /* 공유 버튼 */
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .btn {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+        }
+        .btn-copy { background: #333; color: #fff; }
+        .btn-kakao { background: #FEE500; color: #000; }
+        .btn-kakao:hover { background: #e6c800; }
+
+        /* FAQ 섹션 */
+        .faq-section { margin-top: 30px; text-align: left; }
+        .faq-item {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+            border-left: 3px solid var(--primary);
+        }
+        .faq-item h3 { font-size: 1rem; margin: 0 0 8px 0; color: var(--primary); }
+        .faq-item p { font-size: 0.9rem; color: #555; margin: 0; line-height: 1.5; }
+
+        /* 하단 고정 광고 */
+        .sticky-ad {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 500px;
+            max-height: 60px;
+            overflow: hidden;
+            background: #fff;
+            border-top: 1px solid #e0e0e0;
+            z-index: 9999;
+            text-align: center;
+        }
+
+        /* 수동 광고 박스 */
+        .manual-ad-box {
+            width: 100%;
+            min-height: 100px;
+            margin-top: 20px;
+            overflow: hidden;
+            background: #fff;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 AI API 비용 계산기</h1>
+        <p class="subtitle">GPT-4o · Claude · Gemini 토큰 요금을 즉시 계산하세요</p>
+
+        <!-- PWA 설치 배너 -->
+        <div class="install-banner" id="installBanner">
+            <span>📲 홈 화면에 추가하면 앱처럼 바로 열 수 있어요!</span>
+            <button class="btn-install" id="installBtn">설치하기</button>
+        </div>
+
+        <!-- STEP 1: 모델 선택 -->
+        <div class="model-selector">
+            <label>① 사용할 AI 모델을 선택하세요</label>
+            <div class="model-grid" id="modelGrid">
+                <button class="model-btn selected" onclick="selectModel(this, 'gpt4o')" data-model="gpt4o">
+                    <div class="model-name">GPT-4o</div>
+                    <div class="model-price">$2.50 / $10.00 per 1M</div>
+                </button>
+                <button class="model-btn" onclick="selectModel(this, 'gpt4o_mini')" data-model="gpt4o_mini">
+                    <div class="model-name">GPT-4o mini</div>
+                    <div class="model-price">$0.15 / $0.60 per 1M</div>
+                </button>
+                <button class="model-btn" onclick="selectModel(this, 'claude_sonnet')" data-model="claude_sonnet">
+                    <div class="model-name">Claude 3.5 Sonnet</div>
+                    <div class="model-price">$3.00 / $15.00 per 1M</div>
+                </button>
+                <button class="model-btn" onclick="selectModel(this, 'claude_haiku')" data-model="claude_haiku">
+                    <div class="model-name">Claude 3.5 Haiku</div>
+                    <div class="model-price">$0.80 / $4.00 per 1M</div>
+                </button>
+                <button class="model-btn" onclick="selectModel(this, 'gemini_pro')" data-model="gemini_pro">
+                    <div class="model-name">Gemini 2.5 Pro</div>
+                    <div class="model-price">$1.25 / $10.00 per 1M</div>
+                </button>
+                <button class="model-btn" onclick="selectModel(this, 'gemini_flash')" data-model="gemini_flash">
+                    <div class="model-name">Gemini 2.5 Flash</div>
+                    <div class="model-price">$0.075 / $0.30 per 1M</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- STEP 2: 토큰 수 입력 -->
+        <div class="input-group">
+            <label>② 요청당 토큰 수를 입력하세요</label>
+            <span class="tooltip">💡 한국어 기준: 약 1~2글자 = 1토큰. 영어 기준: 약 4글자 = 1토큰. ChatGPT 사용 시 'Usage' 탭에서 토큰 수를 확인할 수 있습니다.</span>
+            <div class="token-inputs">
+                <div class="token-input-wrap">
+                    <span>📥 입력(Input) 토큰</span>
+                    <input type="number" id="inputTokens" value="1000" min="0" step="100" oninput="calculateCost()">
+                </div>
+                <div class="token-input-wrap">
+                    <span>📤 출력(Output) 토큰</span>
+                    <input type="number" id="outputTokens" value="500" min="0" step="100" oninput="calculateCost()">
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 3: 월간 호출 수 -->
+        <div class="input-group">
+            <label>③ 하루 평균 호출(요청) 횟수</label>
+            <span class="tooltip">💡 하루에 이 AI를 몇 번 호출하나요? 월간 예상 비용을 자동으로 계산합니다.</span>
+            <div class="token-inputs">
+                <div class="token-input-wrap">
+                    <span>🔄 일 평균 호출 수</span>
+                    <input type="number" id="dailyCalls" value="100" min="1" step="10" oninput="calculateCost()">
+                </div>
+                <div class="token-input-wrap">
+                    <span>💱 적용 환율 (원/USD)</span>
+                    <input type="number" id="exchangeRate" value="1380" min="1000" step="10" oninput="calculateCost()">
+                </div>
+            </div>
+            <p class="rate-note">※ 환율은 직접 수정 가능합니다</p>
+        </div>
+
+        <!-- 계산 결과 -->
+        <div id="resultBox" class="result-box">
+            <div class="result-header">
+                <div class="result-icon">💰</div>
+                <div class="result-title" id="resultModelName">GPT-4o 기준 계산 결과</div>
+                <div class="result-model" id="resultTokenInfo">입력 1,000 + 출력 500 토큰 × 일 100회</div>
+            </div>
+            <div class="result-cards">
+                <div class="result-card">
+                    <div class="rc-label">1회 비용</div>
+                    <div class="rc-usd" id="perCallUsd">$0.000</div>
+                    <div class="rc-krw" id="perCallKrw">₩0</div>
+                </div>
+                <div class="result-card">
+                    <div class="rc-label">일간 비용</div>
+                    <div class="rc-usd" id="dailyUsd">$0.00</div>
+                    <div class="rc-krw" id="dailyKrw">₩0</div>
+                </div>
+                <div class="result-card">
+                    <div class="rc-label">연간 비용</div>
+                    <div class="rc-usd" id="yearlyUsd">$0.00</div>
+                    <div class="rc-krw" id="yearlyKrw">₩0</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 월간 비용 강조 박스 -->
+        <div id="monthlyHighlight" class="monthly-highlight">
+            <div class="mh-label">📅 월간 예상 AI API 비용</div>
+            <div class="mh-usd" id="monthlyUsd">$0.00</div>
+            <div class="mh-krw" id="monthlyKrw">₩0</div>
+            <div class="mh-note" id="monthlyNote">이 비용은 추정치입니다. 캐싱, 배치 API, 경량 모델 교체를 통해 비용을 줄일 수 있습니다.</div>
+        </div>
+
+        <!-- 메인 수동 배너 광고 1 (결과 바로 아래 — 최고 명당) -->
+        <div class="manual-ad-box">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+            <!-- AICostCalc 결과 바로 아래 -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2228289204702106"
+                 data-ad-slot="9951815089"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <!-- 모델별 요금 비교표 -->
+        <div class="compare-section">
+            <h2>📊 주요 AI 모델 요금 비교표 (2025년 기준)</h2>
+            <table class="compare-table" id="compareTable">
+                <thead>
+                    <tr>
+                        <th>모델</th>
+                        <th>입력 (1M 토큰)</th>
+                        <th>출력 (1M 토큰)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-model="gpt4o">
+                        <td>GPT-4o <span class="model-tag tag-smart">스마트</span></td>
+                        <td>$2.50</td>
+                        <td>$10.00</td>
+                    </tr>
+                    <tr data-model="gpt4o_mini">
+                        <td>GPT-4o mini <span class="model-tag tag-cheap">가성비</span></td>
+                        <td>$0.15</td>
+                        <td>$0.60</td>
+                    </tr>
+                    <tr data-model="claude_sonnet">
+                        <td>Claude 3.5 Sonnet <span class="model-tag tag-smart">스마트</span></td>
+                        <td>$3.00</td>
+                        <td>$15.00</td>
+                    </tr>
+                    <tr data-model="claude_haiku">
+                        <td>Claude 3.5 Haiku <span class="model-tag tag-cheap">가성비</span></td>
+                        <td>$0.80</td>
+                        <td>$4.00</td>
+                    </tr>
+                    <tr data-model="gemini_pro">
+                        <td>Gemini 2.5 Pro <span class="model-tag tag-smart">스마트</span></td>
+                        <td>$1.25</td>
+                        <td>$10.00</td>
+                    </tr>
+                    <tr data-model="gemini_flash">
+                        <td>Gemini 2.5 Flash <span class="model-tag tag-fast">빠름</span></td>
+                        <td>$0.075</td>
+                        <td>$0.30</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 0.75rem; color: var(--text-light); margin-top: 8px; line-height: 1.5;">
+                ※ 위 가격은 공식 API 요금 기준이며, 배치 API 사용 시 최대 50% 할인됩니다. 실제 요금은 공급사 공식 사이트에서 확인하세요.
+            </p>
+        </div>
+
+        <!-- 제휴 배너 (개발자 도서 쿠팡 파트너스) -->
+        <a id="affiliateBanner" class="affiliate-banner" style="display:none; text-decoration:none; color:inherit;" href="https://link.coupang.com/a/gbCYWAG81A" target="_blank">
+            <div style="font-size: 2rem;">📚</div>
+            <div class="affiliate-content">
+                <span class="affiliate-badge">개발자 추천 도서</span>
+                <p><strong>[쿠팡] AI 개발자를 위한 베스트셀러 도서 특가!</strong><br>LLM 활용, API 개발 실무서 모음 보러가기 ✨</p>
+                <div style="font-size: 0.7rem; color: #999; margin-top: 5px;">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</div>
+            </div>
+            <span class="affiliate-btn">쿠팡에서 보기 →</span>
+        </a>
+
+        <!-- 메인 수동 배너 광고 2 (페이지 맨 하단) -->
+        <div class="manual-ad-box">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+            <!-- AICostCalc 페이지 맨 하단 -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2228289204702106"
+                 data-ad-slot="9975865816"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <!-- FAQ 섹션 (SEO/GEO 텍스트) -->
+        <section class="faq-section">
+            <h2 style="font-size: 1.2rem; color: #333; margin-bottom: 15px;">💡 AI API 비용 자주 묻는 질문</h2>
+
+            <div class="faq-item">
+                <h3>Q. AI API 토큰이란 무엇인가요?</h3>
+                <p>토큰(Token)은 AI 모델이 텍스트를 처리하는 기본 단위입니다. 영어는 약 4글자당 1토큰, <strong>한국어는 약 1~2글자당 1토큰</strong>으로 계산됩니다. 예를 들어 "안녕하세요"는 약 4~5토큰입니다. AI API 요금은 입력(Input)과 출력(Output) 토큰 수를 합산하여 책정됩니다.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Q. GPT-4o와 Claude 3.5 Sonnet 중 어느 것이 더 저렴한가요?</h3>
+                <p>2025년 기준, 입력 토큰은 GPT-4o($2.50/1M)가 Claude 3.5 Sonnet($3.00/1M)보다 약간 저렴합니다. 단, <strong>출력 토큰은 GPT-4o($10.00/1M) ≈ Claude Sonnet($15.00/1M)</strong>으로 Claude가 더 비쌉니다. 단순 비용만 볼 때 GPT-4o가 유리하지만, 작업 특성(코딩, 분석 등)에 따라 최적 모델이 달라집니다.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Q. AI API 비용을 줄이는 실전 방법은?</h3>
+                <p>① <strong>경량 모델 우선 사용</strong>: GPT-4o mini, Claude Haiku, Gemini Flash는 고성능 모델 대비 10~20배 저렴합니다. ② <strong>배치 API 활용</strong>: 실시간 응답이 필요 없다면 배치 API를 사용하면 50% 할인됩니다. ③ <strong>캐싱 기능 적용</strong>: 동일한 시스템 프롬프트는 캐시를 적용하면 최대 90% 절감 가능합니다. ④ <strong>max_tokens 제한</strong>: 응답 길이를 제한해 출력 토큰을 줄이세요.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Q. 무료로 사용 가능한 AI API가 있나요?</h3>
+                <p>Gemini 2.5 Flash는 Google AI Studio를 통해 <strong>분당 15회 요청까지 무료</strong>로 제공됩니다. OpenAI와 Anthropic은 공식 무료 티어는 없지만, 각각 $5~$18의 무료 크레딧으로 시작할 수 있습니다. 소규모 프로젝트라면 무료 티어 또는 저렴한 경량 모델을 조합하는 것이 효과적입니다.</p>
+            </div>
+        </section>
+
+        <!-- 공유 버튼 -->
+        <div class="btn-group">
+            <button class="btn btn-copy" onclick="copyResult()">결과 복사하기</button>
+            <button class="btn btn-kakao" onclick="shareKakao()">카톡 공유하기</button>
+        </div>
+    </div>
+
+    <!-- 하단 고정 배너 광고 (수평 배너 강제, 최대 60px — 사각형 방지) -->
+    <div class="sticky-ad">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+        <!-- AICostCalc 하단 고정 배너 -->
+        <ins class="adsbygoogle"
+             style="display:block; width:100%; height:60px;"
+             data-ad-client="ca-pub-2228289204702106"
+             data-ad-slot="8662784148"
+             data-ad-format="horizontal"
+             data-full-width-responsive="false"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <script>
+        // ── AI 모델 요금 데이터 (per 1M tokens, USD) ──
+        const models = {
+            gpt4o:          { name: 'GPT-4o',           inputPer1M: 2.50,  outputPer1M: 10.00 },
+            gpt4o_mini:     { name: 'GPT-4o mini',      inputPer1M: 0.15,  outputPer1M: 0.60 },
+            claude_sonnet:  { name: 'Claude 3.5 Sonnet', inputPer1M: 3.00, outputPer1M: 15.00 },
+            claude_haiku:   { name: 'Claude 3.5 Haiku', inputPer1M: 0.80,  outputPer1M: 4.00 },
+            gemini_pro:     { name: 'Gemini 2.5 Pro',   inputPer1M: 1.25,  outputPer1M: 10.00 },
+            gemini_flash:   { name: 'Gemini 2.5 Flash', inputPer1M: 0.075, outputPer1M: 0.30 }
+        };
+
+        let currentModel = 'gpt4o';
+
+        // ── 모델 선택 ──
+        function selectModel(btn, modelKey) {
+            document.querySelectorAll('.model-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            currentModel = modelKey;
+
+            // 비교표 하이라이트
+            document.querySelectorAll('.compare-table tbody tr').forEach(tr => {
+                tr.classList.remove('highlight-row');
+                if (tr.dataset.model === modelKey) tr.classList.add('highlight-row');
+            });
+
+            calculateCost();
+        }
+
+        // ── 비용 계산 메인 함수 ──
+        function calculateCost() {
+            const inputTokens  = parseInt(document.getElementById('inputTokens').value)  || 0;
+            const outputTokens = parseInt(document.getElementById('outputTokens').value) || 0;
+            const dailyCalls   = parseInt(document.getElementById('dailyCalls').value)   || 1;
+            const exchangeRate = parseInt(document.getElementById('exchangeRate').value) || 1380;
+
+            const model = models[currentModel];
+
+            // 1회 호출 비용 (USD)
+            const perCallUsd = (inputTokens / 1_000_000) * model.inputPer1M
+                             + (outputTokens / 1_000_000) * model.outputPer1M;
+            const dailyUsd   = perCallUsd * dailyCalls;
+            const monthlyUsd = dailyUsd * 30;
+            const yearlyUsd  = dailyUsd * 365;
+
+            const fmt = (n) => n < 0.001 ? n.toFixed(6) : n < 0.1 ? n.toFixed(4) : n.toFixed(2);
+            const krw = (usd) => Math.round(usd * exchangeRate).toLocaleString('ko-KR');
+
+            // 결과 표시
+            const resultBox = document.getElementById('resultBox');
+            const monthlyHL = document.getElementById('monthlyHighlight');
+            const affiliateBanner = document.getElementById('affiliateBanner');
+
+            resultBox.style.display = 'block';
+            monthlyHL.style.display = 'block';
+            affiliateBanner.style.display = 'flex';
+
+            document.getElementById('resultModelName').textContent = `${model.name} 기준 계산 결과`;
+            document.getElementById('resultTokenInfo').textContent =
+                `입력 ${inputTokens.toLocaleString()} + 출력 ${outputTokens.toLocaleString()} 토큰 × 일 ${dailyCalls.toLocaleString()}회`;
+
+            document.getElementById('perCallUsd').textContent  = `$${fmt(perCallUsd)}`;
+            document.getElementById('perCallKrw').textContent  = `₩${krw(perCallUsd)}`;
+            document.getElementById('dailyUsd').textContent    = `$${fmt(dailyUsd)}`;
+            document.getElementById('dailyKrw').textContent    = `₩${krw(dailyUsd)}`;
+            document.getElementById('yearlyUsd').textContent   = `$${fmt(yearlyUsd)}`;
+            document.getElementById('yearlyKrw').textContent   = `₩${krw(yearlyUsd)}`;
+
+            document.getElementById('monthlyUsd').textContent = `$${fmt(monthlyUsd)}`;
+            document.getElementById('monthlyKrw').textContent = `₩${krw(monthlyUsd)}`;
+
+            // 비용 구간별 코멘트
+            let note = '';
+            if (monthlyUsd < 1) {
+                note = '💚 매우 저렴한 수준입니다. 소규모 프로젝트에 적합합니다.';
+            } else if (monthlyUsd < 10) {
+                note = '🔵 부담 없는 수준입니다. 개인 개발자나 소규모 팀에 적합합니다.';
+            } else if (monthlyUsd < 100) {
+                note = '🟡 중간 수준의 비용입니다. 경량 모델(mini/Haiku/Flash)로 교체 시 최대 90% 절감 가능합니다.';
+            } else if (monthlyUsd < 1000) {
+                note = '🟠 상당한 비용입니다. 배치 API와 캐싱 적용을 강력히 권장합니다. 예산 설정도 꼭 하세요.';
+            } else {
+                note = '🔴 매우 높은 비용입니다. 아키텍처 최적화와 모델 교체 전략을 검토해야 합니다.';
+            }
+            document.getElementById('monthlyNote').textContent = note;
+
+            // localStorage 저장
+            localStorage.setItem('aiCalcModel', currentModel);
+            localStorage.setItem('aiCalcInput', inputTokens);
+            localStorage.setItem('aiCalcOutput', outputTokens);
+            localStorage.setItem('aiCalcCalls', dailyCalls);
+            localStorage.setItem('aiCalcRate', exchangeRate);
+        }
+
+        // ── 초기 로드 시 저장값 복원 ──
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedModel = localStorage.getItem('aiCalcModel');
+            if (savedModel && models[savedModel]) {
+                const btn = document.querySelector(`[data-model="${savedModel}"]`);
+                if (btn) selectModel(btn, savedModel);
+            }
+            const savedInput  = localStorage.getItem('aiCalcInput');
+            const savedOutput = localStorage.getItem('aiCalcOutput');
+            const savedCalls  = localStorage.getItem('aiCalcCalls');
+            const savedRate   = localStorage.getItem('aiCalcRate');
+            if (savedInput)  document.getElementById('inputTokens').value  = savedInput;
+            if (savedOutput) document.getElementById('outputTokens').value = savedOutput;
+            if (savedCalls)  document.getElementById('dailyCalls').value   = savedCalls;
+            if (savedRate)   document.getElementById('exchangeRate').value = savedRate;
+            calculateCost();
+
+            // 비교표 초기 하이라이트
+            const initModel = savedModel || 'gpt4o';
+            document.querySelectorAll('.compare-table tbody tr').forEach(tr => {
+                if (tr.dataset.model === initModel) tr.classList.add('highlight-row');
+            });
+        });
+
+        // ── PWA 설치 프롬프트 ──
+        let deferredPrompt = null;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            const banner = document.getElementById('installBanner');
+            if (banner) banner.classList.add('visible');
+        });
+        document.getElementById('installBtn')?.addEventListener('click', async () => {
+            if (!deferredPrompt) return;
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            deferredPrompt = null;
+            if (outcome === 'accepted') {
+                document.getElementById('installBanner').classList.remove('visible');
+            }
+        });
+
+        // ── 카카오 SDK 동적 로드 ──
+        let kakaoLoaded = false;
+        function loadKakaoSDK() {
+            return new Promise((resolve, reject) => {
+                if (kakaoLoaded || window.Kakao) { kakaoLoaded = true; return resolve(); }
+                const s = document.createElement('script');
+                s.src = 'https://developers.kakao.com/sdk/js/kakao.js';
+                s.onload = () => { kakaoLoaded = true; resolve(); };
+                s.onerror = reject;
+                document.head.appendChild(s);
+            });
+        }
+
+        // ── 결과 복사 ──
+        function copyResult() {
+            const model = models[currentModel];
+            const monthlyUsd = document.getElementById('monthlyUsd').textContent;
+            const monthlyKrw = document.getElementById('monthlyKrw').textContent;
+            const url = 'https://aicostcalc.enjoy-onepage.com';
+            const text = `🤖 AI API 비용 계산 결과\n\n모델: ${model.name}\n월간 예상 비용: ${monthlyUsd} (${monthlyKrw})\n\nAI API 비용 계산기에서 직접 확인하기:\n${url}`;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('결과가 복사되었습니다! 팀원이나 동료에게 공유해보세요.');
+            }).catch(() => {
+                alert('복사에 실패했습니다. 브라우저 설정을 확인해주세요.');
+            });
+        }
+
+        // ── 카카오 공유 ──
+        async function shareKakao() {
+            const model = models[currentModel];
+            const monthlyUsd = document.getElementById('monthlyUsd').textContent;
+            const siteUrl = 'https://aicostcalc.enjoy-onepage.com';
+            const imageUrl = 'https://aicostcalc.enjoy-onepage.com/og-image.png';
+            try {
+                await loadKakaoSDK();
+                if (!window.Kakao) throw new Error('Kakao SDK 로드 실패');
+                if (!Kakao.isInitialized()) Kakao.init(KAKAO_APP_KEY);
+                Kakao.Share.sendDefault({
+                    objectType: 'feed',
+                    content: {
+                        title: `🤖 ${model.name} 월간 비용: ${monthlyUsd}`,
+                        description: 'AI API 비용 계산기로 GPT-4o, Claude, Gemini 요금을 즉시 비교하세요!',
+                        imageUrl: imageUrl,
+                        link: { mobileWebUrl: siteUrl, webUrl: siteUrl },
+                    },
+                    buttons: [{
+                        title: 'AI 비용 직접 계산하기',
+                        link: { mobileWebUrl: siteUrl, webUrl: siteUrl },
+                    }],
+                });
+            } catch (e) {
+                console.error('카카오 공유 오류:', e);
+                alert('카카오 공유에 실패했습니다. 링크 복사 버튼을 이용해 주세요.');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI API 요금 계산기 | GPT·Claude 비교</title>
+    <link>https://aiapi.enjoy-onepage.com/</link>
+    <description>GPT-4o, Claude, Gemini API 토큰 비용을 계산하고 월간 예상 요금을 즉시 비교해 보세요.</description>
+    <language>ko-KR</language>
+    <lastBuildDate>Sat, 12 Sep 2026 03:00:00 +0900</lastBuildDate>
+    <atom:link href="https://aiapi.enjoy-onepage.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI API 요금 계산기 | GPT·Claude 비교</title>
+      <link>https://aiapi.enjoy-onepage.com/</link>
+      <guid isPermaLink="true">https://aiapi.enjoy-onepage.com/</guid>
+      <description>GPT-4o, Claude, Gemini API 토큰 비용을 계산하고 월간 예상 요금을 즉시 비교해 보세요.</description>
+      <pubDate>Sat, 12 Sep 2026 00:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>서비스 소개 및 산출 공식 | AI API 토큰 비용 계산기</title>
+      <link>https://aiapi.enjoy-onepage.com/about.html</link>
+      <guid isPermaLink="true">https://aiapi.enjoy-onepage.com/about.html</guid>
+      <description>AI API 요금 계산기 | GPT·Claude 비교의 서비스 소개, 공식 법령 산출 수식 및 데이터 처리 원칙 안내입니다.</description>
+      <pubDate>Sat, 12 Sep 2026 01:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>개인정보처리방침 | AI API 비용 계산기</title>
+      <link>https://aiapi.enjoy-onepage.com/privacy.html</link>
+      <guid isPermaLink="true">https://aiapi.enjoy-onepage.com/privacy.html</guid>
+      <description>AI API 요금 계산기 | GPT·Claude 비교의 개인정보 보호 정책, 쿠키 사용 및 브라우저 로컬 데이터 보안 원칙입니다.</description>
+      <pubDate>Sat, 12 Sep 2026 01:10:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>배치 API AI 비용 50% 절약 가이드</title>
+      <link>https://aiapi.enjoy-onepage.com/guides/batch-api.html</link>
+      <guid isPermaLink="true">https://aiapi.enjoy-onepage.com/guides/batch-api.html</guid>
+      <description>실시간 응답이 필요 없는 대규모 작업 시 필수인 OpenAI 및 Anthropic 배치 API 사용법과 절감액 안내.</description>
+      <pubDate>Sat, 12 Sep 2026 02:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>Claude API 프롬프트 캐싱 비용 90퍼센트 절감</title>
+      <link>https://aiapi.enjoy-onepage.com/guides/claude-cost.html</link>
+      <guid isPermaLink="true">https://aiapi.enjoy-onepage.com/guides/claude-cost.html</guid>
+      <description>대용량 문서와 챗봇 기록 비용을 90% 할인받는 Anthropic Prompt Caching 완벽 활용법.</description>
+      <pubDate>Sat, 12 Sep 2026 02:15:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>ChatGPT API 가격 비교 OpenAI Claude Gemini</title>
+      <link>https://aiapi.enjoy-onepage.com/guides/cost-saving.html</link>
+      <guid isPermaLink="true">https://aiapi.enjoy-onepage.com/guides/cost-saving.html</guid>
+      <description>GPT-4o, Claude 3.5 Sonnet, Gemini 1.5 Flash 1M 토큰당 단가 비교와 비용 절감 전략.</description>
+      <pubDate>Sat, 12 Sep 2026 02:30:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>Gemini API 요금 및 무료 한도 비교</title>
+      <link>https://aiapi.enjoy-onepage.com/guides/gemini-cost.html</link>
+      <guid isPermaLink="true">https://aiapi.enjoy-onepage.com/guides/gemini-cost.html</guid>
+      <description>Google Gemini 1.5 Flash 무료 티어 활용법과 Pro 모델의 1M 토큰당 가격 완벽 정리.</description>
+      <pubDate>Sat, 12 Sep 2026 02:45:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>GPT-4o API 요금 입력 출력 가격</title>
+      <link>https://aiapi.enjoy-onepage.com/guides/gpt4o-cost.html</link>
+      <guid isPermaLink="true">https://aiapi.enjoy-onepage.com/guides/gpt4o-cost.html</guid>
+      <description>최신 GPT-4o 및 GPT-4o mini 토큰 가격과 프롬프트 캐싱 할인 적용 실제 비용 예시.</description>
+      <pubDate>Sat, 12 Sep 2026 03:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>챗지피티유료 완벽 해결 실무 가이드 및 핵심 요령 | AI API 토큰 비용 계산기</title>
+      <link>https://aiapi.enjoy-onepage.com/guides/guide1.html</link>
+      <guid isPermaLink="true">https://aiapi.enjoy-onepage.com/guides/guide1.html</guid>
+      <description>챗지피티유료에 관한 법령 및 공식 산정 기준은 공공기관 훈령과 최신 개정 규정에 따르며, 개별 상황에 따라 적용 요율과 한도가 달라질 ...</description>
+      <pubDate>Sat, 12 Sep 2026 03:15:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>챗지피티유료 기준 주의사항 및 2026년 최신 개정 기준 | AI API 토큰 비용 계산기</title>
+      <link>https://aiapi.enjoy-onepage.com/guides/guide2.html</link>
+      <guid isPermaLink="true">https://aiapi.enjoy-onepage.com/guides/guide2.html</guid>
+      <description>챗지피티유료 기준 관련 분쟁 예방을 위해서는 서면 합의서 및 공식 명세서를 보관하고, 모의 계산기를 통해 예상 결과를 교차 검증하는 절...</description>
+      <pubDate>Sat, 12 Sep 2026 03:30:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>AI API 비용 가이드 목록 | GPT-4o·Claude·Gemini 요금 완벽 정리</title>
+      <link>https://aiapi.enjoy-onepage.com/guides/index.html</link>
+      <guid isPermaLink="true">https://aiapi.enjoy-onepage.com/guides/index.html</guid>
+      <description>GPT-4o, Claude, Gemini API 요금부터 토큰 개념, 배치 API로 50% 절약하는 방법까지. AI API 비용에 관한 모든 가이드를 한 곳에서 확인하세요.</description>
+      <pubDate>Sat, 12 Sep 2026 03:45:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>OpenAI 토큰 계산기 비용 한글 토크나이저 원리</title>
+      <link>https://aiapi.enjoy-onepage.com/guides/token-guide.html</link>
+      <guid isPermaLink="true">https://aiapi.enjoy-onepage.com/guides/token-guide.html</guid>
+      <description>영문 1단어=1토큰, 한글 1글자=2~3토큰? 한글 토큰 낭비를 막는 바이트 페어 인코딩 팁.</description>
+      <pubDate>Sat, 12 Sep 2026 04:00:00 +0900</pubDate>
+    </item>
+  </channel>
+</rss>

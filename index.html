@@ -7,12 +7,12 @@
     <title>AI API 요금 계산기 | GPT·Claude 비교</title>
     <meta name="description" content="GPT-4o, Claude, Gemini API 토큰 비용을 계산하고 월간 예상 요금을 즉시 비교해 보세요.">
     <meta name="keywords" content="AI API 비용 계산기, GPT-4o 요금, Claude API 토큰 계산기, Gemini 요금, AI 토큰 가격, ChatGPT API 비용, LLM 비용 비교">
-    <link rel="canonical" href="https://aicostcalc.enjoy-onepage.com/">
+    <link rel="canonical" href="https://aiapi.enjoy-onepage.com/">
 
     <!-- 파비콘 설정 -->
     <link rel="icon" href="favicon.ico">
     <!-- PWA 매니페스트 (인라인) -->
-    <link rel="manifest" href='data:application/manifest+json,{"name":"AI API 비용 계산기","short_name":"AI비용계산","description":"AI API 토큰 비용을 즉시 계산하세요","start_url":"/","display":"standalone","theme_color":"#6C63FF","background_color":"#FFFFFF","lang":"ko","icons":[{"src":"https://aicostcalc.enjoy-onepage.com/icon.png","sizes":"192x192","type":"image/png"}]}'>
+    <link rel="manifest" href='data:application/manifest+json,{"name":"AI API 비용 계산기","short_name":"AI비용계산","description":"AI API 토큰 비용을 즉시 계산하세요","start_url":"/","display":"standalone","theme_color":"#6C63FF","background_color":"#FFFFFF","lang":"ko","icons":[{"src":"https://aiapi.enjoy-onepage.com/icon.png","sizes":"192x192","type":"image/png"}]}'>
     <meta name="theme-color" content="#6C63FF">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="AI비용계산">
@@ -21,8 +21,8 @@
     <!-- 오픈그래프(OG) 메타 태그 -->
     <meta property="og:title" content="AI API 요금 계산기 | GPT·Claude 비교">
     <meta property="og:description" content="GPT-4o, Claude, Gemini API 토큰 비용을 계산하고 월간 예상 요금을 즉시 비교해 보세요.">
-    <meta property="og:image" content="https://aicostcalc.enjoy-onepage.com/og-image.png">
-    <meta property="og:url" content="https://aicostcalc.enjoy-onepage.com/">
+    <meta property="og:image" content="https://aiapi.enjoy-onepage.com/og-image.png">
+    <meta property="og:url" content="https://aiapi.enjoy-onepage.com/">
     <meta property="og:type" content="website">
 
     <!-- JSON-LD 스키마 마크업 (SEO/GEO/AEO) -->
@@ -31,7 +31,7 @@
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "AI API 비용 계산기",
-      "url": "https://aicostcalc.enjoy-onepage.com/",
+      "url": "https://aiapi.enjoy-onepage.com/",
       "description": "GPT-4o, Claude, Gemini 등 주요 AI API의 토큰 비용을 즉시 계산하고 모델별 요금을 비교하는 무료 웹 계산기입니다.",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "All",
@@ -93,7 +93,7 @@
         }
         .container {
             margin: 0 auto;
-            max-width: 500px;
+            max-width: 960px;
             width: 100%;
             min-height: 100vh;
             background-color: var(--box-bg);
@@ -101,6 +101,31 @@
             padding-bottom: 40px;
             box-sizing: border-box;
             box-shadow: 0 0 20px rgba(108, 99, 255, 0.08);
+        }
+        .ai-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        @media (min-width: 768px) {
+            .ai-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+                align-items: start;
+            }
+            .ai-left {
+                background: #FAFAFC;
+                padding: 20px;
+                border-radius: 16px;
+                border: 1px solid var(--border);
+            }
+            .ai-right {
+                min-width: 0;
+            }
+            .result-card {
+                margin-top: 0 !important;
+            }
         }
         h1 {
             text-align: center;
@@ -454,111 +479,118 @@
             <button class="btn-install" id="installBtn">설치하기</button>
         </div>
 
-        <!-- STEP 1: 모델 선택 -->
-        <div class="model-selector">
-            <label>① 사용할 AI 모델을 선택하세요</label>
-            <div class="model-grid" id="modelGrid">
-                <button class="model-btn selected" onclick="selectModel(this, 'gpt4o')" data-model="gpt4o">
-                    <div class="model-name">GPT-4o</div>
-                    <div class="model-price">$2.50 / $10.00 per 1M</div>
-                </button>
-                <button class="model-btn" onclick="selectModel(this, 'gpt4o_mini')" data-model="gpt4o_mini">
-                    <div class="model-name">GPT-4o mini</div>
-                    <div class="model-price">$0.15 / $0.60 per 1M</div>
-                </button>
-                <button class="model-btn" onclick="selectModel(this, 'claude_sonnet')" data-model="claude_sonnet">
-                    <div class="model-name">Claude 3.5 Sonnet</div>
-                    <div class="model-price">$3.00 / $15.00 per 1M</div>
-                </button>
-                <button class="model-btn" onclick="selectModel(this, 'claude_haiku')" data-model="claude_haiku">
-                    <div class="model-name">Claude 3.5 Haiku</div>
-                    <div class="model-price">$0.80 / $4.00 per 1M</div>
-                </button>
-                <button class="model-btn" onclick="selectModel(this, 'gemini_pro')" data-model="gemini_pro">
-                    <div class="model-name">Gemini 2.5 Pro</div>
-                    <div class="model-price">$1.25 / $10.00 per 1M</div>
-                </button>
-                <button class="model-btn" onclick="selectModel(this, 'gemini_flash')" data-model="gemini_flash">
-                    <div class="model-name">Gemini 2.5 Flash</div>
-                    <div class="model-price">$0.075 / $0.30 per 1M</div>
-                </button>
-            </div>
-        </div>
+        <div class="ai-grid">
+            <!-- Left Column: Model Selection & Token Inputs -->
+            <div class="ai-left">
+                <!-- STEP 1: 모델 선택 -->
+                <div class="model-selector">
+                    <label>① 사용할 AI 모델을 선택하세요</label>
+                    <div class="model-grid" id="modelGrid">
+                        <button class="model-btn selected" onclick="selectModel(this, 'gpt4o')" data-model="gpt4o">
+                            <div class="model-name">GPT-4o</div>
+                            <div class="model-price">$2.50 / $10.00 per 1M</div>
+                        </button>
+                        <button class="model-btn" onclick="selectModel(this, 'gpt4o_mini')" data-model="gpt4o_mini">
+                            <div class="model-name">GPT-4o mini</div>
+                            <div class="model-price">$0.15 / $0.60 per 1M</div>
+                        </button>
+                        <button class="model-btn" onclick="selectModel(this, 'claude_sonnet')" data-model="claude_sonnet">
+                            <div class="model-name">Claude 3.5 Sonnet</div>
+                            <div class="model-price">$3.00 / $15.00 per 1M</div>
+                        </button>
+                        <button class="model-btn" onclick="selectModel(this, 'claude_haiku')" data-model="claude_haiku">
+                            <div class="model-name">Claude 3.5 Haiku</div>
+                            <div class="model-price">$0.80 / $4.00 per 1M</div>
+                        </button>
+                        <button class="model-btn" onclick="selectModel(this, 'gemini_pro')" data-model="gemini_pro">
+                            <div class="model-name">Gemini 2.5 Pro</div>
+                            <div class="model-price">$1.25 / $10.00 per 1M</div>
+                        </button>
+                        <button class="model-btn" onclick="selectModel(this, 'gemini_flash')" data-model="gemini_flash">
+                            <div class="model-name">Gemini 2.5 Flash</div>
+                            <div class="model-price">$0.075 / $0.30 per 1M</div>
+                        </button>
+                    </div>
+                </div>
 
-        <!-- STEP 2: 토큰 수 입력 -->
-        <div class="input-group">
-            <label>② 요청당 토큰 수를 입력하세요</label>
-            <span class="tooltip">💡 한국어 기준: 약 1~2글자 = 1토큰. 영어 기준: 약 4글자 = 1토큰. ChatGPT 사용 시 'Usage' 탭에서 토큰 수를 확인할 수 있습니다.</span>
-            <div class="token-inputs">
-                <div class="token-input-wrap">
-                    <span>📥 입력(Input) 토큰</span>
-                    <input type="number" id="inputTokens" value="1000" min="0" step="100" oninput="calculateCost()">
+                <!-- STEP 2: 토큰 수 입력 -->
+                <div class="input-group">
+                    <label>② 요청당 토큰 수를 입력하세요</label>
+                    <span class="tooltip">💡 한국어: 약 1~2글자 = 1토큰, 영어: 약 4글자 = 1토큰</span>
+                    <div class="token-inputs">
+                        <div class="token-input-wrap">
+                            <span>📥 입력(Input) 토큰</span>
+                            <input type="number" id="inputTokens" value="1000" min="0" step="100" oninput="calculateCost()">
+                        </div>
+                        <div class="token-input-wrap">
+                            <span>📤 출력(Output) 토큰</span>
+                            <input type="number" id="outputTokens" value="500" min="0" step="100" oninput="calculateCost()">
+                        </div>
+                    </div>
                 </div>
-                <div class="token-input-wrap">
-                    <span>📤 출력(Output) 토큰</span>
-                    <input type="number" id="outputTokens" value="500" min="0" step="100" oninput="calculateCost()">
-                </div>
-            </div>
-        </div>
 
-        <!-- STEP 3: 월간 호출 수 -->
-        <div class="input-group">
-            <label>③ 하루 평균 호출(요청) 횟수</label>
-            <span class="tooltip">💡 하루에 이 AI를 몇 번 호출하나요? 월간 예상 비용을 자동으로 계산합니다.</span>
-            <div class="token-inputs">
-                <div class="token-input-wrap">
-                    <span>🔄 일 평균 호출 수</span>
-                    <input type="number" id="dailyCalls" value="100" min="1" step="10" oninput="calculateCost()">
-                </div>
-                <div class="token-input-wrap">
-                    <span>💱 적용 환율 (원/USD)</span>
-                    <input type="number" id="exchangeRate" value="1380" min="1000" step="10" oninput="calculateCost()">
+                <!-- STEP 3: 월간 호출 수 -->
+                <div class="input-group">
+                    <label>③ 하루 평균 호출(요청) 횟수</label>
+                    <div class="token-inputs">
+                        <div class="token-input-wrap">
+                            <span>🔄 일 평균 호출 수</span>
+                            <input type="number" id="dailyCalls" value="100" min="1" step="10" oninput="calculateCost()">
+                        </div>
+                        <div class="token-input-wrap">
+                            <span>💱 적용 환율 (원/USD)</span>
+                            <input type="number" id="exchangeRate" value="1380" min="1000" step="10" oninput="calculateCost()">
+                        </div>
+                    </div>
+                    <p class="rate-note">※ 환율은 직접 수정 가능합니다</p>
                 </div>
             </div>
-            <p class="rate-note">※ 환율은 직접 수정 가능합니다</p>
-        </div>
 
-        <!-- 계산 결과 -->
-        <div id="resultBox" class="result-box">
-            <div class="result-header">
-                <div class="result-icon">💰</div>
-                <div class="result-title" id="resultModelName">GPT-4o 기준 계산 결과</div>
-                <div class="result-model" id="resultTokenInfo">입력 1,000 + 출력 500 토큰 × 일 100회</div>
-            </div>
-            <div class="result-cards">
-                <div class="result-card">
-                    <div class="rc-label">1회 비용</div>
-                    <div class="rc-usd" id="perCallUsd">$0.000</div>
-                    <div class="rc-krw" id="perCallKrw">₩0</div>
+            <!-- Right Column: Live Results & Monthly Highlight -->
+            <div class="ai-right">
+                <!-- 계산 결과 -->
+                <div id="resultBox" class="result-box" style="display:block;">
+                    <div class="result-header">
+                        <div class="result-icon">💰</div>
+                        <div class="result-title" id="resultModelName">GPT-4o 기준 계산 결과</div>
+                        <div class="result-model" id="resultTokenInfo">입력 1,000 + 출력 500 토큰 × 일 100회</div>
+                    </div>
+                    <div class="result-cards">
+                        <div class="result-card">
+                            <div class="rc-label">1회 비용</div>
+                            <div class="rc-usd" id="perCallUsd">$0.000</div>
+                            <div class="rc-krw" id="perCallKrw">₩0</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="rc-label">일간 비용</div>
+                            <div class="rc-usd" id="dailyUsd">$0.00</div>
+                            <div class="rc-krw" id="dailyKrw">₩0</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="rc-label">연간 비용</div>
+                            <div class="rc-usd" id="yearlyUsd">$0.00</div>
+                            <div class="rc-krw" id="yearlyKrw">₩0</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="result-card">
-                    <div class="rc-label">일간 비용</div>
-                    <div class="rc-usd" id="dailyUsd">$0.00</div>
-                    <div class="rc-krw" id="dailyKrw">₩0</div>
-                </div>
-                <div class="result-card">
-                    <div class="rc-label">연간 비용</div>
-                    <div class="rc-usd" id="yearlyUsd">$0.00</div>
-                    <div class="rc-krw" id="yearlyKrw">₩0</div>
-                </div>
-            </div>
-        </div>
 
-        <!-- 월간 비용 강조 박스 -->
-        <div id="monthlyHighlight" class="monthly-highlight">
-            <div class="mh-label">📅 월간 예상 AI API 비용</div>
-            <div class="mh-usd" id="monthlyUsd">$0.00</div>
-            <div class="mh-krw" id="monthlyKrw">₩0</div>
-            <div class="mh-note" id="monthlyNote">이 비용은 추정치입니다. 캐싱, 배치 API, 경량 모델 교체를 통해 비용을 줄일 수 있습니다.</div>
+                <!-- 월간 비용 강조 박스 -->
+                <div id="monthlyHighlight" class="monthly-highlight" style="display:block;">
+                    <div class="mh-label">📅 월간 예상 AI API 비용</div>
+                    <div class="mh-usd" id="monthlyUsd">$0.00</div>
+                    <div class="mh-krw" id="monthlyKrw">₩0</div>
+                    <div class="mh-note" id="monthlyNote">이 비용은 추정치입니다. 캐싱, 배치 API, 경량 모델 교체를 통해 비용을 절감할 수 있습니다.</div>
+                </div>
+            </div>
         </div>
 
         <!-- 메인 수동 배너 광고 1 (결과 바로 아래 — 최고 명당) -->
-        <div class="manual-ad-box" style="width: 100%; margin: 20px 0; overflow: hidden; text-align: center;">
+        <div class="manual-ad-box" style="width: 100%; margin: 30px 0; overflow: hidden; text-align: center;">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
     <ins class="adsbygoogle"
          style="display:block"
          data-ad-client="ca-pub-2228289204702106"
-         data-ad-slot="3416334507"
+         data-ad-slot="3824727725"
          data-ad-format="auto"
          data-full-width-responsive="true"></ins>
     <script>

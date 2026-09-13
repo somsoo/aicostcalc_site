@@ -809,11 +809,9 @@
             // 결과 표시
             const resultBox = document.getElementById('resultBox');
             const monthlyHL = document.getElementById('monthlyHighlight');
-            const affiliateBanner = document.getElementById('affiliateBanner');
 
-            resultBox.style.display = 'block';
-            monthlyHL.style.display = 'block';
-            affiliateBanner.style.display = 'flex';
+            if (resultBox) resultBox.style.display = 'block';
+            if (monthlyHL) monthlyHL.style.display = 'block';
 
             document.getElementById('resultModelName').textContent = `${model.name} 기준 계산 결과`;
             document.getElementById('resultTokenInfo').textContent =

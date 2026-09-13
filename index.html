@@ -1,32 +1,29 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="index, follow">
-    <title>AI API 요금 계산기 | GPT·Claude 비교</title>
-    <meta name="description" content="GPT-4o, Claude, Gemini API 토큰 비용을 계산하고 월간 예상 요금을 즉시 비교해 보세요.">
-    <meta name="keywords" content="AI API 비용 계산기, GPT-4o 요금, Claude API 토큰 계산기, Gemini 요금, AI 토큰 가격, ChatGPT API 비용, LLM 비용 비교">
-    <link rel="canonical" href="https://aiapi.enjoy-onepage.com/">
-
-    <!-- 파비콘 설정 -->
-    <link rel="icon" href="favicon.ico">
-    <!-- PWA 매니페스트 (인라인) -->
-    <link rel="manifest" href='data:application/manifest+json,{"name":"AI API 비용 계산기","short_name":"AI비용계산","description":"AI API 토큰 비용을 즉시 계산하세요","start_url":"/","display":"standalone","theme_color":"#6C63FF","background_color":"#FFFFFF","lang":"ko","icons":[{"src":"https://aiapi.enjoy-onepage.com/icon.png","sizes":"192x192","type":"image/png"}]}'>
-    <meta name="theme-color" content="#6C63FF">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="AI비용계산">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-
-    <!-- 오픈그래프(OG) 메타 태그 -->
-    <meta property="og:title" content="AI API 요금 계산기 | GPT·Claude 비교">
-    <meta property="og:description" content="GPT-4o, Claude, Gemini API 토큰 비용을 계산하고 월간 예상 요금을 즉시 비교해 보세요.">
-    <meta property="og:image" content="https://aiapi.enjoy-onepage.com/og-image.png">
-    <meta property="og:url" content="https://aiapi.enjoy-onepage.com/">
-    <meta property="og:type" content="website">
-
-    <!-- JSON-LD 스키마 마크업 (SEO/GEO/AEO) -->
-    <script type="application/ld+json">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<title>AI API 요금 계산기 | GPT·Claude 비교</title>
+<meta content="GPT-4o, Claude, Gemini API 토큰 비용을 계산하고 월간 예상 요금을 즉시 비교해 보세요." name="description"/>
+<meta content="AI API 비용 계산기, GPT-4o 요금, Claude API 토큰 계산기, Gemini 요금, AI 토큰 가격, ChatGPT API 비용, LLM 비용 비교" name="keywords"/>
+<link href="https://aiapi.enjoy-onepage.com/" rel="canonical"/>
+<!-- 파비콘 설정 -->
+<link href="favicon.ico" rel="icon"/>
+<!-- PWA 매니페스트 (인라인) -->
+<link href='data:application/manifest+json,{"name":"AI API 비용 계산기","short_name":"AI비용계산","description":"AI API 토큰 비용을 즉시 계산하세요","start_url":"/","display":"standalone","theme_color":"#6C63FF","background_color":"#FFFFFF","lang":"ko","icons":[{"src":"https://aiapi.enjoy-onepage.com/icon.png","sizes":"192x192","type":"image/png"}]}' rel="manifest"/>
+<meta content="#6C63FF" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="AI비용계산" name="apple-mobile-web-app-title"/>
+<meta content="default" name="apple-mobile-web-app-status-bar-style"/>
+<!-- 오픈그래프(OG) 메타 태그 -->
+<meta content="AI API 요금 계산기 | GPT·Claude 비교" property="og:title"/>
+<meta content="GPT-4o, Claude, Gemini API 토큰 비용을 계산하고 월간 예상 요금을 즉시 비교해 보세요." property="og:description"/>
+<meta content="https://aiapi.enjoy-onepage.com/og-image.png" property="og:image"/>
+<meta content="https://aiapi.enjoy-onepage.com/" property="og:url"/>
+<meta content="website" property="og:type"/>
+<!-- JSON-LD 스키마 마크업 (SEO/GEO/AEO) -->
+<script type="application/ld+json">
     [{
       "@context": "https://schema.org",
       "@type": "WebApplication",
@@ -69,8 +66,7 @@
       }]
     }]
     </script>
-
-    <style>
+<style>
         :root {
             --primary: #6C63FF;
             --primary-light: #EEF0FF;
@@ -466,299 +462,280 @@
             padding: 10px;
         }
     </style>
-
-  <link rel="alternate" type="application/rss+xml" title="AI API 요금 계산기 | GPT·Claude 비교 RSS Feed" href="https://aiapi.enjoy-onepage.com/rss.xml" />
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://aiapi.enjoy-onepage.com/sitemap.xml" />
-</head>
+<link href="https://aiapi.enjoy-onepage.com/rss.xml" rel="alternate" title="AI API 요금 계산기 | GPT·Claude 비교 RSS Feed" type="application/rss+xml">
+<link href="https://aiapi.enjoy-onepage.com/sitemap.xml" rel="sitemap" title="Sitemap" type="application/xml">
+</link></link></head>
 <body>
 
-    <!-- 상단 슬림 띠배너 (헤더 직하단: 50~60px 슬림형) -->
-    <div class="manual-ad-box ad-top-banner" style="width: 100%; max-width: 960px; margin: 8px auto 16px; overflow: hidden; text-align: center; min-height: 50px; max-height: 60px;">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:100%;height:60px;"
-             data-ad-client="ca-pub-2228289204702106"
-             data-ad-slot="3824727725"
-             data-ad-format="horizontal"
-             data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-    
+<!-- 상단 슬림 띠배너 (헤더 직하단: 50~60px 슬림형) -->
+<div class="manual-ad-box ad-top-banner" style="width: 100%; max-width: 960px; margin: 8px auto 16px; overflow: hidden; text-align: center; min-height: 50px; max-height: 60px;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:100%;height:60px;"
+         data-ad-client="ca-pub-2228289204702106"
+         data-ad-slot="3824727725"
+         data-ad-format="horizontal"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<!-- 상단 슬림 띠배너 (헤더 직하단: 50~60px 슬림형) -->
 
-    <div class="container">
-        <h1>🤖 AI API 비용 계산기</h1>
-        <p class="subtitle">GPT-4o · Claude · Gemini 토큰 요금을 즉시 계산하세요</p>
-
-        <!-- PWA 설치 배너 -->
-        <div class="install-banner" id="installBanner">
-            <span>📲 홈 화면에 추가하면 앱처럼 바로 열 수 있어요!</span>
-            <button class="btn-install" id="installBtn">설치하기</button>
-        </div>
-
-        <div class="ai-grid">
-            <!-- Left Column: Model Selection & Token Inputs -->
-            <div class="ai-left">
-                <!-- STEP 1: 모델 선택 -->
-                <div class="model-selector">
-                    <label>① 사용할 AI 모델을 선택하세요</label>
-                    <div class="model-grid" id="modelGrid">
-                        <button class="model-btn selected" onclick="selectModel(this, 'gpt4o')" data-model="gpt4o">
-                            <div class="model-name">GPT-4o</div>
-                            <div class="model-price">$2.50 / $10.00 per 1M</div>
-                        </button>
-                        <button class="model-btn" onclick="selectModel(this, 'gpt4o_mini')" data-model="gpt4o_mini">
-                            <div class="model-name">GPT-4o mini</div>
-                            <div class="model-price">$0.15 / $0.60 per 1M</div>
-                        </button>
-                        <button class="model-btn" onclick="selectModel(this, 'claude_sonnet')" data-model="claude_sonnet">
-                            <div class="model-name">Claude 3.5 Sonnet</div>
-                            <div class="model-price">$3.00 / $15.00 per 1M</div>
-                        </button>
-                        <button class="model-btn" onclick="selectModel(this, 'claude_haiku')" data-model="claude_haiku">
-                            <div class="model-name">Claude 3.5 Haiku</div>
-                            <div class="model-price">$0.80 / $4.00 per 1M</div>
-                        </button>
-                        <button class="model-btn" onclick="selectModel(this, 'gemini_pro')" data-model="gemini_pro">
-                            <div class="model-name">Gemini 2.5 Pro</div>
-                            <div class="model-price">$1.25 / $10.00 per 1M</div>
-                        </button>
-                        <button class="model-btn" onclick="selectModel(this, 'gemini_flash')" data-model="gemini_flash">
-                            <div class="model-name">Gemini 2.5 Flash</div>
-                            <div class="model-price">$0.075 / $0.30 per 1M</div>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- STEP 2: 토큰 수 입력 -->
-                <div class="input-group">
-                    <label>② 요청당 토큰 수를 입력하세요</label>
-                    <span class="tooltip">💡 한국어: 약 1~2글자 = 1토큰, 영어: 약 4글자 = 1토큰</span>
-                    <div class="token-inputs">
-                        <div class="token-input-wrap">
-                            <span>📥 입력(Input) 토큰</span>
-                            <input type="number" id="inputTokens" value="1000" min="0" step="100" oninput="calculateCost()">
-                        </div>
-                        <div class="token-input-wrap">
-                            <span>📤 출력(Output) 토큰</span>
-                            <input type="number" id="outputTokens" value="500" min="0" step="100" oninput="calculateCost()">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- STEP 3: 월간 호출 수 -->
-                <div class="input-group">
-                    <label>③ 하루 평균 호출(요청) 횟수</label>
-                    <div class="token-inputs">
-                        <div class="token-input-wrap">
-                            <span>🔄 일 평균 호출 수</span>
-                            <input type="number" id="dailyCalls" value="100" min="1" step="10" oninput="calculateCost()">
-                        </div>
-                        <div class="token-input-wrap">
-                            <span>💱 적용 환율 (원/USD)</span>
-                            <input type="number" id="exchangeRate" value="1380" min="1000" step="10" oninput="calculateCost()">
-                        </div>
-                    </div>
-                    <p class="rate-note">※ 환율은 직접 수정 가능합니다</p>
-                </div>
-            </div>
-
-            <!-- Right Column: Live Results & Monthly Highlight -->
-            <div class="ai-right">
-                <!-- 계산 결과 -->
-                <div id="resultBox" class="result-box" style="display:block;">
-                    <div class="result-header">
-                        <div class="result-icon">💰</div>
-                        <div class="result-title" id="resultModelName">GPT-4o 기준 계산 결과</div>
-                        <div class="result-model" id="resultTokenInfo">입력 1,000 + 출력 500 토큰 × 일 100회</div>
-                    </div>
-                    <div class="result-cards">
-                        <div class="result-card">
-                            <div class="rc-label">1회 비용</div>
-                            <div class="rc-usd" id="perCallUsd">$0.000</div>
-                            <div class="rc-krw" id="perCallKrw">₩0</div>
-                        </div>
-                        <div class="result-card">
-                            <div class="rc-label">일간 비용</div>
-                            <div class="rc-usd" id="dailyUsd">$0.00</div>
-                            <div class="rc-krw" id="dailyKrw">₩0</div>
-                        </div>
-                        <div class="result-card">
-                            <div class="rc-label">연간 비용</div>
-                            <div class="rc-usd" id="yearlyUsd">$0.00</div>
-                            <div class="rc-krw" id="yearlyKrw">₩0</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 월간 비용 강조 박스 -->
-                <div id="monthlyHighlight" class="monthly-highlight" style="display:block;">
-                    <div class="mh-label">📅 월간 예상 AI API 비용</div>
-                    <div class="mh-usd" id="monthlyUsd">$0.00</div>
-                    <div class="mh-krw" id="monthlyKrw">₩0</div>
-                    <div class="mh-note" id="monthlyNote">이 비용은 추정치입니다. 캐싱, 배치 API, 경량 모델 교체를 통해 비용을 절감할 수 있습니다.</div>
-                </div>
-            </div>
-        </div>
-
-        
-
-        <!-- 모델별 요금 비교표 -->
-        <div class="compare-section">
-            <h2>📊 주요 AI 모델 요금 비교표 (최신 기준)</h2>
-            <table class="compare-table" id="compareTable">
-                <thead>
-                    <tr>
-                        <th>모델</th>
-                        <th>입력 (1M 토큰)</th>
-                        <th>출력 (1M 토큰)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr data-model="gpt4o">
-                        <td>GPT-4o <span class="model-tag tag-smart">스마트</span></td>
-                        <td>$2.50</td>
-                        <td>$10.00</td>
-                    </tr>
-                    <tr data-model="gpt4o_mini">
-                        <td>GPT-4o mini <span class="model-tag tag-cheap">가성비</span></td>
-                        <td>$0.15</td>
-                        <td>$0.60</td>
-                    </tr>
-                    <tr data-model="claude_sonnet">
-                        <td>Claude 3.5 Sonnet <span class="model-tag tag-smart">스마트</span></td>
-                        <td>$3.00</td>
-                        <td>$15.00</td>
-                    </tr>
-                    <tr data-model="claude_haiku">
-                        <td>Claude 3.5 Haiku <span class="model-tag tag-cheap">가성비</span></td>
-                        <td>$0.80</td>
-                        <td>$4.00</td>
-                    </tr>
-                    <tr data-model="gemini_pro">
-                        <td>Gemini 2.5 Pro <span class="model-tag tag-smart">스마트</span></td>
-                        <td>$1.25</td>
-                        <td>$10.00</td>
-                    </tr>
-                    <tr data-model="gemini_flash">
-                        <td>Gemini 2.5 Flash <span class="model-tag tag-fast">빠름</span></td>
-                        <td>$0.075</td>
-                        <td>$0.30</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p style="font-size: 0.75rem; color: var(--text-light); margin-top: 8px; line-height: 1.5;">
+<div class="container">
+<h1>🤖 AI API 비용 계산기</h1>
+<p class="subtitle">GPT-4o · Claude · Gemini 토큰 요금을 즉시 계산하세요</p>
+<!-- PWA 설치 배너 -->
+<div class="install-banner" id="installBanner">
+<span>📲 홈 화면에 추가하면 앱처럼 바로 열 수 있어요!</span>
+<button class="btn-install" id="installBtn">설치하기</button>
+</div>
+<div class="ai-grid">
+<!-- Left Column: Model Selection & Token Inputs -->
+<div class="ai-left">
+<!-- STEP 1: 모델 선택 -->
+<div class="model-selector">
+<label>① 사용할 AI 모델을 선택하세요</label>
+<div class="model-grid" id="modelGrid">
+<button class="model-btn selected" data-model="gpt4o" onclick="selectModel(this, 'gpt4o')">
+<div class="model-name">GPT-4o</div>
+<div class="model-price">$2.50 / $10.00 per 1M</div>
+</button>
+<button class="model-btn" data-model="gpt4o_mini" onclick="selectModel(this, 'gpt4o_mini')">
+<div class="model-name">GPT-4o mini</div>
+<div class="model-price">$0.15 / $0.60 per 1M</div>
+</button>
+<button class="model-btn" data-model="claude_sonnet" onclick="selectModel(this, 'claude_sonnet')">
+<div class="model-name">Claude 3.5 Sonnet</div>
+<div class="model-price">$3.00 / $15.00 per 1M</div>
+</button>
+<button class="model-btn" data-model="claude_haiku" onclick="selectModel(this, 'claude_haiku')">
+<div class="model-name">Claude 3.5 Haiku</div>
+<div class="model-price">$0.80 / $4.00 per 1M</div>
+</button>
+<button class="model-btn" data-model="gemini_pro" onclick="selectModel(this, 'gemini_pro')">
+<div class="model-name">Gemini 2.5 Pro</div>
+<div class="model-price">$1.25 / $10.00 per 1M</div>
+</button>
+<button class="model-btn" data-model="gemini_flash" onclick="selectModel(this, 'gemini_flash')">
+<div class="model-name">Gemini 2.5 Flash</div>
+<div class="model-price">$0.075 / $0.30 per 1M</div>
+</button>
+</div>
+</div>
+<!-- STEP 2: 토큰 수 입력 -->
+<div class="input-group">
+<label>② 요청당 토큰 수를 입력하세요</label>
+<span class="tooltip">💡 한국어: 약 1~2글자 = 1토큰, 영어: 약 4글자 = 1토큰</span>
+<div class="token-inputs">
+<div class="token-input-wrap">
+<span>📥 입력(Input) 토큰</span>
+<input id="inputTokens" min="0" oninput="calculateCost()" step="100" type="number" value="1000"/>
+</div>
+<div class="token-input-wrap">
+<span>📤 출력(Output) 토큰</span>
+<input id="outputTokens" min="0" oninput="calculateCost()" step="100" type="number" value="500"/>
+</div>
+</div>
+</div>
+<!-- STEP 3: 월간 호출 수 -->
+<div class="input-group">
+<label>③ 하루 평균 호출(요청) 횟수</label>
+<div class="token-inputs">
+<div class="token-input-wrap">
+<span>🔄 일 평균 호출 수</span>
+<input id="dailyCalls" min="1" oninput="calculateCost()" step="10" type="number" value="100"/>
+</div>
+<div class="token-input-wrap">
+<span>💱 적용 환율 (원/USD)</span>
+<input id="exchangeRate" min="1000" oninput="calculateCost()" step="10" type="number" value="1380"/>
+</div>
+</div>
+<p class="rate-note">※ 환율은 직접 수정 가능합니다</p>
+</div>
+</div>
+<!-- Right Column: Live Results & Monthly Highlight -->
+<div class="ai-right">
+<!-- 계산 결과 -->
+<div class="result-box" id="resultBox" style="display:block;">
+<div class="result-header">
+<div class="result-icon">💰</div>
+<div class="result-title" id="resultModelName">GPT-4o 기준 계산 결과</div>
+<div class="result-model" id="resultTokenInfo">입력 1,000 + 출력 500 토큰 × 일 100회</div>
+</div>
+<div class="result-cards">
+<div class="result-card">
+<div class="rc-label">1회 비용</div>
+<div class="rc-usd" id="perCallUsd">$0.000</div>
+<div class="rc-krw" id="perCallKrw">₩0</div>
+</div>
+<div class="result-card">
+<div class="rc-label">일간 비용</div>
+<div class="rc-usd" id="dailyUsd">$0.00</div>
+<div class="rc-krw" id="dailyKrw">₩0</div>
+</div>
+<div class="result-card">
+<div class="rc-label">연간 비용</div>
+<div class="rc-usd" id="yearlyUsd">$0.00</div>
+<div class="rc-krw" id="yearlyKrw">₩0</div>
+</div>
+</div>
+</div>
+<!-- 월간 비용 강조 박스 -->
+<div class="monthly-highlight" id="monthlyHighlight" style="display:block;">
+<div class="mh-label">📅 월간 예상 AI API 비용</div>
+<div class="mh-usd" id="monthlyUsd">$0.00</div>
+<div class="mh-krw" id="monthlyKrw">₩0</div>
+<div class="mh-note" id="monthlyNote">이 비용은 추정치입니다. 캐싱, 배치 API, 경량 모델 교체를 통해 비용을 절감할 수 있습니다.</div>
+</div>
+</div>
+</div>
+<!-- 모델별 요금 비교표 -->
+<div class="compare-section">
+<h2>📊 주요 AI 모델 요금 비교표 (최신 기준)</h2>
+<table class="compare-table" id="compareTable">
+<thead>
+<tr>
+<th>모델</th>
+<th>입력 (1M 토큰)</th>
+<th>출력 (1M 토큰)</th>
+</tr>
+</thead>
+<tbody>
+<tr data-model="gpt4o">
+<td>GPT-4o <span class="model-tag tag-smart">스마트</span></td>
+<td>$2.50</td>
+<td>$10.00</td>
+</tr>
+<tr data-model="gpt4o_mini">
+<td>GPT-4o mini <span class="model-tag tag-cheap">가성비</span></td>
+<td>$0.15</td>
+<td>$0.60</td>
+</tr>
+<tr data-model="claude_sonnet">
+<td>Claude 3.5 Sonnet <span class="model-tag tag-smart">스마트</span></td>
+<td>$3.00</td>
+<td>$15.00</td>
+</tr>
+<tr data-model="claude_haiku">
+<td>Claude 3.5 Haiku <span class="model-tag tag-cheap">가성비</span></td>
+<td>$0.80</td>
+<td>$4.00</td>
+</tr>
+<tr data-model="gemini_pro">
+<td>Gemini 2.5 Pro <span class="model-tag tag-smart">스마트</span></td>
+<td>$1.25</td>
+<td>$10.00</td>
+</tr>
+<tr data-model="gemini_flash">
+<td>Gemini 2.5 Flash <span class="model-tag tag-fast">빠름</span></td>
+<td>$0.075</td>
+<td>$0.30</td>
+</tr>
+</tbody>
+</table>
+<p style="font-size: 0.75rem; color: var(--text-light); margin-top: 8px; line-height: 1.5;">
                 ※ 위 가격은 공식 API 요금 기준이며, 배치 API 사용 시 최대 50% 할인됩니다. 실제 요금은 공급사 공식 사이트에서 확인하세요.
             </p>
-        </div>
+</div>
+<!-- AI API 가이드 섹션 (SEO 내부링크 강화 + 추가 콘텐츠 유입) -->
+<section id="guidesSection" style="margin-top:10px; margin-bottom:20px; display:none;">
+<h2 style="font-size:1.1rem; margin-bottom:12px; padding-top:16px; border-top:1px solid #E0E0F0;">📚 AI API 비용 완벽 가이드</h2>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+<a href="guides/token-guide.html" style="display:block; background:#F4F5F9; border:1px solid #E0E0F0; border-radius:10px; padding:12px; text-decoration:none; color:#1A1A2E;">
+<div style="font-size:1.4rem; margin-bottom:4px;">🔤</div>
+<div style="font-size:0.82rem; font-weight:bold; margin-bottom:3px;">AI 토큰이란?</div>
+<div style="font-size:0.73rem; color:#555577; line-height:1.3;">한국어 포함 토큰 환산 완벽 정리</div>
+</a>
+<a href="guides/gpt4o-cost.html" style="display:block; background:#F4F5F9; border:1px solid #E0E0F0; border-radius:10px; padding:12px; text-decoration:none; color:#1A1A2E;">
+<div style="font-size:1.4rem; margin-bottom:4px;">💚</div>
+<div style="font-size:0.82rem; font-weight:bold; margin-bottom:3px;">GPT-4o 요금 정리</div>
+<div style="font-size:0.73rem; color:#555577; line-height:1.3;">최신 가격표 및 예시</div>
+</a>
+<a href="guides/claude-cost.html" style="display:block; background:#F4F5F9; border:1px solid #E0E0F0; border-radius:10px; padding:12px; text-decoration:none; color:#1A1A2E;">
+<div style="font-size:1.4rem; margin-bottom:4px;">🟣</div>
+<div style="font-size:0.82rem; font-weight:bold; margin-bottom:3px;">Claude 요금 정리</div>
+<div style="font-size:0.73rem; color:#555577; line-height:1.3;">Sonnet·Haiku·Opus 비교</div>
+</a>
+<a href="guides/gemini-cost.html" style="display:block; background:#F4F5F9; border:1px solid #E0E0F0; border-radius:10px; padding:12px; text-decoration:none; color:#1A1A2E;">
+<div style="font-size:1.4rem; margin-bottom:4px;">🔵</div>
+<div style="font-size:0.82rem; font-weight:bold; margin-bottom:3px;">Gemini 요금 정리</div>
+<div style="font-size:0.73rem; color:#555577; line-height:1.3;">무료 한도·Flash·Pro 가격</div>
+</a>
+<a href="guides/cost-saving.html" style="display:block; background:#FFF8E1; border:1px solid #FFE082; border-radius:10px; padding:12px; text-decoration:none; color:#1A1A2E;">
+<div style="font-size:1.4rem; margin-bottom:4px;">💡</div>
+<div style="font-size:0.82rem; font-weight:bold; margin-bottom:3px;">비용 90% 줄이는 법</div>
+<div style="font-size:0.73rem; color:#555577; line-height:1.3;">경량모델·캐싱·배치 실전 전략</div>
+</a>
+<a href="guides/batch-api.html" style="display:block; background:#FFF8E1; border:1px solid #FFE082; border-radius:10px; padding:12px; text-decoration:none; color:#1A1A2E;">
+<div style="font-size:1.4rem; margin-bottom:4px;">📦</div>
+<div style="font-size:0.82rem; font-weight:bold; margin-bottom:3px;">배치 API 50% 절약</div>
+<div style="font-size:0.73rem; color:#555577; line-height:1.3;">OpenAI·Anthropic 활용 가이드</div>
+</a>
+</div>
+<a href="guides/index.html" style="display:block; margin-top:12px; text-align:center; background:#6C63FF; color:#fff; padding:13px; border-radius:10px; text-decoration:none; font-weight:bold; font-size:0.95rem;">📖 전체 가이드 목록 보기</a>
+</section>
+<!-- FAQ 섹션 (SEO/GEO 텍스트) -->
+<section class="faq-section">
+<h2 style="font-size: 1.2rem; color: #333; margin-bottom: 15px;">💡 AI API 비용 자주 묻는 질문</h2>
+<div class="faq-item">
+<h3>Q. AI API 토큰이란 무엇인가요?</h3>
+<p>토큰(Token)은 AI 모델이 텍스트를 처리하는 기본 단위입니다. 영어는 약 4글자당 1토큰, <strong>한국어는 약 1~2글자당 1토큰</strong>으로 계산됩니다. 예를 들어 "안녕하세요"는 약 4~5토큰입니다. AI API 요금은 입력(Input)과 출력(Output) 토큰 수를 합산하여 책정됩니다.</p>
+</div>
+<div class="faq-item">
+<h3>Q. GPT-4o와 Claude 3.5 Sonnet 중 어느 것이 더 저렴한가요?</h3>
+<p>최신 기준, 입력 토큰은 GPT-4o($2.50/1M)가 Claude 3.5 Sonnet($3.00/1M)보다 약간 저렴합니다. 단, <strong>출력 토큰은 GPT-4o($10.00/1M) ≈ Claude Sonnet($15.00/1M)</strong>으로 Claude가 더 비쌉니다. 단순 비용만 볼 때 GPT-4o가 유리하지만, 작업 특성(코딩, 분석 등)에 따라 최적 모델이 달라집니다.</p>
+</div>
+<div class="faq-item">
+<h3>Q. AI API 비용을 줄이는 실전 방법은?</h3>
+<p>① <strong>경량 모델 우선 사용</strong>: GPT-4o mini, Claude Haiku, Gemini Flash는 고성능 모델 대비 10~20배 저렴합니다. ② <strong>배치 API 활용</strong>: 실시간 응답이 필요 없다면 배치 API를 사용하면 50% 할인됩니다. ③ <strong>캐싱 기능 적용</strong>: 동일한 시스템 프롬프트는 캐시를 적용하면 최대 90% 절감 가능합니다. ④ <strong>max_tokens 제한</strong>: 응답 길이를 제한해 출력 토큰을 줄이세요.</p>
+</div>
+<div class="faq-item">
+<h3>Q. 무료로 사용 가능한 AI API가 있나요?</h3>
+<p>Gemini 2.5 Flash는 Google AI Studio를 통해 <strong>분당 15회 요청까지 무료</strong>로 제공됩니다. OpenAI와 Anthropic은 공식 무료 티어는 없지만, 각각 $5~$18의 무료 크레딧으로 시작할 수 있습니다. 소규모 프로젝트라면 무료 티어 또는 저렴한 경량 모델을 조합하는 것이 효과적입니다.</p>
+</div>
+</section>
+<!-- 공유 버튼 -->
+<div class="btn-group">
+<button class="btn btn-copy" onclick="copyResult()">링크 복사하기</button>
+<button class="btn btn-share" onclick="shareResult()">결과 공유하기</button>
+</div>
+<!-- 본문 중간 반응형 배너 -->
 
-        <!-- AI API 가이드 섹션 (SEO 내부링크 강화 + 추가 콘텐츠 유입) -->
-        <section id="guidesSection" style="margin-top:10px; margin-bottom:20px; display:none;">
-            <h2 style="font-size:1.1rem; margin-bottom:12px; padding-top:16px; border-top:1px solid #E0E0F0;">📚 AI API 비용 완벽 가이드</h2>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-                <a href="guides/token-guide.html" style="display:block; background:#F4F5F9; border:1px solid #E0E0F0; border-radius:10px; padding:12px; text-decoration:none; color:#1A1A2E;">
-                    <div style="font-size:1.4rem; margin-bottom:4px;">🔤</div>
-                    <div style="font-size:0.82rem; font-weight:bold; margin-bottom:3px;">AI 토큰이란?</div>
-                    <div style="font-size:0.73rem; color:#555577; line-height:1.3;">한국어 포함 토큰 환산 완벽 정리</div>
-                </a>
-                <a href="guides/gpt4o-cost.html" style="display:block; background:#F4F5F9; border:1px solid #E0E0F0; border-radius:10px; padding:12px; text-decoration:none; color:#1A1A2E;">
-                    <div style="font-size:1.4rem; margin-bottom:4px;">💚</div>
-                    <div style="font-size:0.82rem; font-weight:bold; margin-bottom:3px;">GPT-4o 요금 정리</div>
-                    <div style="font-size:0.73rem; color:#555577; line-height:1.3;">최신 가격표 및 예시</div>
-                </a>
-                <a href="guides/claude-cost.html" style="display:block; background:#F4F5F9; border:1px solid #E0E0F0; border-radius:10px; padding:12px; text-decoration:none; color:#1A1A2E;">
-                    <div style="font-size:1.4rem; margin-bottom:4px;">🟣</div>
-                    <div style="font-size:0.82rem; font-weight:bold; margin-bottom:3px;">Claude 요금 정리</div>
-                    <div style="font-size:0.73rem; color:#555577; line-height:1.3;">Sonnet·Haiku·Opus 비교</div>
-                </a>
-                <a href="guides/gemini-cost.html" style="display:block; background:#F4F5F9; border:1px solid #E0E0F0; border-radius:10px; padding:12px; text-decoration:none; color:#1A1A2E;">
-                    <div style="font-size:1.4rem; margin-bottom:4px;">🔵</div>
-                    <div style="font-size:0.82rem; font-weight:bold; margin-bottom:3px;">Gemini 요금 정리</div>
-                    <div style="font-size:0.73rem; color:#555577; line-height:1.3;">무료 한도·Flash·Pro 가격</div>
-                </a>
-                <a href="guides/cost-saving.html" style="display:block; background:#FFF8E1; border:1px solid #FFE082; border-radius:10px; padding:12px; text-decoration:none; color:#1A1A2E;">
-                    <div style="font-size:1.4rem; margin-bottom:4px;">💡</div>
-                    <div style="font-size:0.82rem; font-weight:bold; margin-bottom:3px;">비용 90% 줄이는 법</div>
-                    <div style="font-size:0.73rem; color:#555577; line-height:1.3;">경량모델·캐싱·배치 실전 전략</div>
-                </a>
-                <a href="guides/batch-api.html" style="display:block; background:#FFF8E1; border:1px solid #FFE082; border-radius:10px; padding:12px; text-decoration:none; color:#1A1A2E;">
-                    <div style="font-size:1.4rem; margin-bottom:4px;">📦</div>
-                    <div style="font-size:0.82rem; font-weight:bold; margin-bottom:3px;">배치 API 50% 절약</div>
-                    <div style="font-size:0.73rem; color:#555577; line-height:1.3;">OpenAI·Anthropic 활용 가이드</div>
-                </a>
-            </div>
-            <a href="guides/index.html" style="display:block; margin-top:12px; text-align:center; background:#6C63FF; color:#fff; padding:13px; border-radius:10px; text-decoration:none; font-weight:bold; font-size:0.95rem;">📖 전체 가이드 목록 보기</a>
-        </section>
-
-        
-
-        <!-- FAQ 섹션 (SEO/GEO 텍스트) -->
-        <section class="faq-section">
-            <h2 style="font-size: 1.2rem; color: #333; margin-bottom: 15px;">💡 AI API 비용 자주 묻는 질문</h2>
-
-            <div class="faq-item">
-                <h3>Q. AI API 토큰이란 무엇인가요?</h3>
-                <p>토큰(Token)은 AI 모델이 텍스트를 처리하는 기본 단위입니다. 영어는 약 4글자당 1토큰, <strong>한국어는 약 1~2글자당 1토큰</strong>으로 계산됩니다. 예를 들어 "안녕하세요"는 약 4~5토큰입니다. AI API 요금은 입력(Input)과 출력(Output) 토큰 수를 합산하여 책정됩니다.</p>
-            </div>
-
-            <div class="faq-item">
-                <h3>Q. GPT-4o와 Claude 3.5 Sonnet 중 어느 것이 더 저렴한가요?</h3>
-                <p>최신 기준, 입력 토큰은 GPT-4o($2.50/1M)가 Claude 3.5 Sonnet($3.00/1M)보다 약간 저렴합니다. 단, <strong>출력 토큰은 GPT-4o($10.00/1M) ≈ Claude Sonnet($15.00/1M)</strong>으로 Claude가 더 비쌉니다. 단순 비용만 볼 때 GPT-4o가 유리하지만, 작업 특성(코딩, 분석 등)에 따라 최적 모델이 달라집니다.</p>
-            </div>
-
-            <div class="faq-item">
-                <h3>Q. AI API 비용을 줄이는 실전 방법은?</h3>
-                <p>① <strong>경량 모델 우선 사용</strong>: GPT-4o mini, Claude Haiku, Gemini Flash는 고성능 모델 대비 10~20배 저렴합니다. ② <strong>배치 API 활용</strong>: 실시간 응답이 필요 없다면 배치 API를 사용하면 50% 할인됩니다. ③ <strong>캐싱 기능 적용</strong>: 동일한 시스템 프롬프트는 캐시를 적용하면 최대 90% 절감 가능합니다. ④ <strong>max_tokens 제한</strong>: 응답 길이를 제한해 출력 토큰을 줄이세요.</p>
-            </div>
-
-            <div class="faq-item">
-                <h3>Q. 무료로 사용 가능한 AI API가 있나요?</h3>
-                <p>Gemini 2.5 Flash는 Google AI Studio를 통해 <strong>분당 15회 요청까지 무료</strong>로 제공됩니다. OpenAI와 Anthropic은 공식 무료 티어는 없지만, 각각 $5~$18의 무료 크레딧으로 시작할 수 있습니다. 소규모 프로젝트라면 무료 티어 또는 저렴한 경량 모델을 조합하는 것이 효과적입니다.</p>
-            </div>
-        </section>
-
-        <!-- 공유 버튼 -->
-        <div class="btn-group">
-            <button class="btn btn-copy" onclick="copyResult()">링크 복사하기</button>
-            <button class="btn btn-share" onclick="shareResult()">결과 공유하기</button>
-        </div>
-
-            <!-- 본문 중간 반응형 배너 -->
-    <div class="manual-ad-box ad-mid-banner" style="width: 100%; max-width: 960px; margin: 20px auto; overflow: hidden; text-align: center;">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-2228289204702106"
-             data-ad-slot="1186914926"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
+<!-- 본문 중간 반응형 배너 -->
+<div class="manual-ad-box ad-mid-banner" style="width: 100%; max-width: 960px; margin: 20px auto; overflow: hidden; text-align: center;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-2228289204702106"
+         data-ad-slot="1186914926"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
 
 <footer style="margin-top: 40px; padding: 25px 0; border-top: 1px solid #E0E0E0; text-align: center; font-size: 0.82rem; color: #888; line-height: 1.6;">
-            <p style="margin: 0 0 6px;">AI API 비용 계산기는 개발자와 기업의 효율적인 AI 서비스 구축을 지원합니다.</p>
-            <p style="margin: 0;">
-                <a href="privacy.html" style="color: #666; text-decoration: underline; font-weight: bold;">개인정보처리방침</a> &nbsp;|&nbsp; 
+<p style="margin: 0 0 6px;">AI API 비용 계산기는 개발자와 기업의 효율적인 AI 서비스 구축을 지원합니다.</p>
+<p style="margin: 0;">
+<a href="privacy.html" style="color: #666; text-decoration: underline; font-weight: bold;">개인정보처리방침</a>  |  
                 <a href="guides/index.html" style="color: #666; text-decoration: underline;">AI API 가이드 전체보기</a>
-            </p>
-        </footer>
+</p>
+</footer>
 
-    <!-- 하단 대형 배너 (푸터 직전) -->
-    <div class="manual-ad-box ad-bottom-banner" style="width: 100%; max-width: 960px; margin: 24px auto 16px; overflow: hidden; text-align: center;">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-2228289204702106"
-             data-ad-slot="3416334507"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-    </div>
+<!-- 하단 대형 배너 (푸터 직전) -->
+<div class="manual-ad-box ad-bottom-banner" style="width: 100%; max-width: 960px; margin: 24px auto 16px; overflow: hidden; text-align: center;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-2228289204702106"
+         data-ad-slot="3416334507"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<!-- 하단 대형 배너 (푸터 직전) -->
 
-    <!-- 하단 고정 배너 광고 (수평 배너 강제, 최대 60px — 사각형 방지) -->
-    
-
-    <script>
+</div>
+<!-- 하단 고정 배너 광고 (수평 배너 강제, 최대 60px — 사각형 방지) -->
+<script>
         // ── AI 모델 요금 데이터 (per 1M tokens, USD) ──
         const models = {
             gpt4o:          { name: 'GPT-4o',           inputPer1M: 2.50,  outputPer1M: 10.00 },
@@ -937,12 +914,8 @@
             }
         }
     </script>
-
-    
-
-
-  <!-- Preemptive UX Helper: Auto comma formatting & Result sharing -->
-  <script>
+<!-- Preemptive UX Helper: Auto comma formatting & Result sharing -->
+<script>
     document.addEventListener('DOMContentLoaded', function() {
       // Auto comma on number/text inputs with currency hints
       const moneyInputs = document.querySelectorAll('input[type="text"], input[type="number"], input[inputmode="numeric"]');
@@ -994,9 +967,8 @@
       }
     });
   </script>
-
-  <!-- Global UX Helper: Universal Result Copy & Toast -->
-  <script>
+<!-- Global UX Helper: Universal Result Copy & Toast -->
+<script>
     window.showToastNotification = function(msg) {
       let toast = document.getElementById('global-ux-toast');
       if (!toast) {
@@ -1047,7 +1019,5 @@
       document.body.removeChild(ta);
     }
   </script>
-
 </body>
 </html>
-

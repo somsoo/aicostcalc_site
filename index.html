@@ -2,6 +2,11 @@
 
 <html lang="ko">
 <head>
+    <!-- Performance Optimization: Resource Preconnect -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
 <link href="apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="index, follow" name="robots"/>
@@ -481,6 +486,17 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             padding: 10px;
         }
+    
+        /* U3 Accessibility: Global Keyboard Focus Ring Standard */
+        :focus-visible {
+            outline: 2px solid #3b82f6 !important;
+            outline-offset: 2px !important;
+        }
+        input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible {
+            outline: 2px solid #2563eb !important;
+            outline-offset: 1px !important;
+        }
+    
     </style>
 <link href="https://aiapi.enjoy-onepage.com/rss.xml" rel="alternate" title="AI API 요금 계산기 | GPT·Claude 비교 RSS Feed" type="application/rss+xml"/>
 <link href="https://aiapi.enjoy-onepage.com/sitemap.xml" rel="sitemap" title="Sitemap" type="application/xml"/>
@@ -558,11 +574,11 @@
 <div class="token-inputs">
 <div class="token-input-wrap">
 <span>📥 입력(Input) 토큰</span>
-<input id="inputTokens" min="0" oninput="calculateCost()" step="100" type="number" value="1000"/>
+<input id="inputTokens" min="0" oninput="calculateCost()" step="100" type="number" value="1000" aria-label="Inputtokens" />
 </div>
 <div class="token-input-wrap">
 <span>📤 출력(Output) 토큰</span>
-<input id="outputTokens" min="0" oninput="calculateCost()" step="100" type="number" value="500"/>
+<input id="outputTokens" min="0" oninput="calculateCost()" step="100" type="number" value="500" aria-label="Outputtokens" />
 </div>
 </div>
 </div>
@@ -572,11 +588,11 @@
 <div class="token-inputs">
 <div class="token-input-wrap">
 <span>🔄 일 평균 호출 수</span>
-<input id="dailyCalls" min="1" oninput="calculateCost()" step="10" type="number" value="100"/>
+<input id="dailyCalls" min="1" oninput="calculateCost()" step="10" type="number" value="100" aria-label="Dailycalls" />
 </div>
 <div class="token-input-wrap">
 <span>💱 적용 환율 (원/USD)</span>
-<input id="exchangeRate" min="1000" oninput="calculateCost()" step="10" type="number" value="1380"/>
+<input id="exchangeRate" min="1000" oninput="calculateCost()" step="10" type="number" value="1380" aria-label="Exchangerate" />
 </div>
 </div>
 <p class="rate-note">※ 환율은 직접 수정 가능합니다</p>

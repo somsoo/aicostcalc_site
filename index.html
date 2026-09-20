@@ -551,36 +551,36 @@
 <!-- PWA 설치 배너 -->
 <div class="install-banner" id="installBanner">
 <span>📲 홈 화면에 추가하면 앱처럼 바로 열 수 있어요!</span>
-<button class="btn-install whitespace-nowrap" id="installBtn">설치하기</button>
+<button class="btn-install whitespace-nowrap py-3 min-h-[44px]" id="installBtn">설치하기</button>
 </div>
-<div class="ai-grid">
+<div class="ai-grid grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 <!-- Left Column: Model Selection & Token Inputs -->
-<div class="ai-left">
+<div class="ai-left lg:col-span-6 w-full">
 <!-- STEP 1: 모델 선택 -->
 <div class="model-selector">
 <label>① 사용할 AI 모델을 선택하세요</label>
 <div class="model-grid" id="modelGrid">
-<button class="model-btn selected whitespace-nowrap" data-model="gpt4o" onclick="selectModel(this, 'gpt4o')">
+<button class="model-btn selected whitespace-nowrap py-3 min-h-[44px]" data-model="gpt4o" onclick="selectModel(this, 'gpt4o')">
 <div class="model-name">GPT-4o</div>
 <div class="model-price">$2.50 / $10.00 per 1M</div>
 </button>
-<button class="model-btn whitespace-nowrap" data-model="gpt4o_mini" onclick="selectModel(this, 'gpt4o_mini')">
+<button class="model-btn whitespace-nowrap py-3 min-h-[44px]" data-model="gpt4o_mini" onclick="selectModel(this, 'gpt4o_mini')">
 <div class="model-name">GPT-4o mini</div>
 <div class="model-price">$0.15 / $0.60 per 1M</div>
 </button>
-<button class="model-btn whitespace-nowrap" data-model="claude_sonnet" onclick="selectModel(this, 'claude_sonnet')">
+<button class="model-btn whitespace-nowrap py-3 min-h-[44px]" data-model="claude_sonnet" onclick="selectModel(this, 'claude_sonnet')">
 <div class="model-name">Claude 3.5 Sonnet</div>
 <div class="model-price">$3.00 / $15.00 per 1M</div>
 </button>
-<button class="model-btn whitespace-nowrap" data-model="claude_haiku" onclick="selectModel(this, 'claude_haiku')">
+<button class="model-btn whitespace-nowrap py-3 min-h-[44px]" data-model="claude_haiku" onclick="selectModel(this, 'claude_haiku')">
 <div class="model-name">Claude 3.5 Haiku</div>
 <div class="model-price">$0.80 / $4.00 per 1M</div>
 </button>
-<button class="model-btn whitespace-nowrap" data-model="gemini_pro" onclick="selectModel(this, 'gemini_pro')">
+<button class="model-btn whitespace-nowrap py-3 min-h-[44px]" data-model="gemini_pro" onclick="selectModel(this, 'gemini_pro')">
 <div class="model-name">Gemini 2.5 Pro</div>
 <div class="model-price">$1.25 / $10.00 per 1M</div>
 </button>
-<button class="model-btn whitespace-nowrap" data-model="gemini_flash" onclick="selectModel(this, 'gemini_flash')">
+<button class="model-btn whitespace-nowrap py-3 min-h-[44px]" data-model="gemini_flash" onclick="selectModel(this, 'gemini_flash')">
 <div class="model-name">Gemini 2.5 Flash</div>
 <div class="model-price">$0.075 / $0.30 per 1M</div>
 </button>
@@ -618,7 +618,7 @@
 </div>
 </div>
 <!-- Right Column: Live Results & Monthly Highlight -->
-<div class="ai-right">
+<div class="ai-right lg:col-span-6 lg:sticky lg:top-8 w-full">
 <!-- 계산 결과 -->
 <div class="result-box" id="resultBox" style="display:block;">
 <div class="result-header">
@@ -759,9 +759,9 @@
 </div>
 </section>
 <!-- 공유 버튼 -->
-<div class="btn-group">
-<button class="btn btn-copy whitespace-nowrap" onclick="copyResult()">링크 복사하기</button>
-<button class="btn btn-share whitespace-nowrap" onclick="shareResult()">결과 공유하기</button>
+<div class="btn-group py-3 min-h-[44px]">
+<button class="btn btn-copy whitespace-nowrap py-3 min-h-[44px]" onclick="copyResult()">링크 복사하기</button>
+<button class="btn btn-share whitespace-nowrap py-3 min-h-[44px]" onclick="shareResult()">결과 공유하기</button>
 </div>
 
 <!-- 📖 E-E-A-T 전문성 강화: 공식 산출 근거 & 실전 가이드 (Q1~Q7 헌법 준수) -->

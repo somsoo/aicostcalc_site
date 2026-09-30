@@ -1,35 +1,28 @@
 <!DOCTYPE html>
-
 <html lang="ko">
 <head>
-    <!-- Performance Optimization: Resource Preconnect -->
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-
-<link href="apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/><meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="index, follow" name="robots"/>
-<title>AI API 요금 계산기 | GPT·Claude 비교</title>
-<meta content="GPT-4o, Claude, Gemini API 토큰 비용을 계산하고 월간 예상 요금을 즉시 비교해 보세요." name="description"/>
-<meta content="AI API 비용 계산기, GPT-4o 요금, Claude API 토큰 계산기, Gemini 요금, AI 토큰 가격, ChatGPT API 비용, LLM 비용 비교" name="keywords"/>
-<link href="https://aiapi.enjoy-onepage.com/" rel="canonical"/>
-<!-- 파비콘 설정 -->
-<link href="favicon.ico" rel="icon"/>
-<!-- PWA 매니페스트 (인라인) -->
-<link href='data:application/manifest+json,{"name":"AI API 비용 계산기","short_name":"AI비용계산","description":"AI API 토큰 비용을 즉시 계산하세요","start_url":"/","display":"standalone","theme_color":"#6C63FF","background_color":"#FFFFFF","lang":"ko","icons":[{"src":"https://aiapi.enjoy-onepage.com/icon.png","sizes":"192x192","type":"image/png"}]}' rel="manifest"/>
-<meta content="#6C63FF" name="theme-color"/>
-<meta content="yes" name="apple-mobile-web-app-capable"/>
-<meta content="AI비용계산" name="apple-mobile-web-app-title"/>
-<meta content="default" name="apple-mobile-web-app-status-bar-style"/>
-<!-- 오픈그래프(OG) 메타 태그 -->
-<meta content="AI API 요금 계산기 | GPT·Claude 비교" property="og:title"/>
-<meta content="GPT-4o, Claude, Gemini API 토큰 비용을 계산하고 월간 예상 요금을 즉시 비교해 보세요." property="og:description"/>
-<meta content="https://aiapi.enjoy-onepage.com/og-image.png" property="og:image"/>
-  <meta property="og:locale" content="ko_KR">
-<meta content="https://aiapi.enjoy-onepage.com/" property="og:url"/>
-<meta content="website" property="og:type"/>
-<!-- JSON-LD 스키마 마크업 (SEO/GEO/AEO) -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI API 요금 계산기 | 모델별 토큰 비용·월 요금 비교</title>
+<meta name="description" content="AI API 사용 요금을 요청 1회·하루·한 달·1년 단위로 계산합니다. 13개 모델의 공식 가격(2026년 9월 30일 확인), 배치 할인, 긴 프롬프트 가격, 원화 환산을 지원합니다.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://aiapi.enjoy-onepage.com/">
+<meta name="theme-color" content="#1d4ed8">
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AI API 요금 계산기">
+<meta property="og:title" content="AI API 요금 계산기 | 모델별 토큰 비용·월 요금 비교">
+<meta property="og:description" content="AI API 사용 요금을 요청 1회·하루·한 달·1년 단위로 계산합니다. 13개 모델의 공식 가격(2026년 9월 30일 확인), 배치 할인, 긴 프롬프트 가격, 원화 환산을 지원합니다.">
+<meta property="og:url" content="https://aiapi.enjoy-onepage.com/">
+<meta property="og:image" content="https://aiapi.enjoy-onepage.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI API 요금 계산기 | 모델별 토큰 비용·월 요금 비교">
+<meta name="twitter:description" content="AI API 사용 요금을 요청 1회·하루·한 달·1년 단위로 계산합니다. 13개 모델의 공식 가격(2026년 9월 30일 확인), 배치 할인, 긴 프롬프트 가격, 원화 환산을 지원합니다.">
+<meta name="twitter:image" content="https://aiapi.enjoy-onepage.com/og-image.png">
+<link rel="alternate" type="application/rss+xml" title="AI API 요금 계산기 RSS" href="https://aiapi.enjoy-onepage.com/rss.xml">
+<link rel="sitemap" type="application/xml" href="https://aiapi.enjoy-onepage.com/sitemap.xml">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -37,1168 +30,466 @@
     {
       "@type": "WebApplication",
       "@id": "https://aiapi.enjoy-onepage.com/#webapp",
-      "name": "🤖 AI API 비용 계산기",
+      "name": "AI API 요금 계산기",
       "url": "https://aiapi.enjoy-onepage.com/",
-      "applicationCategory": "UtilityApplication",
+      "applicationCategory": "BusinessApplication",
       "operatingSystem": "All",
-      "browserRequirements": "Requires JavaScript. Requires HTML5.",
-      "description": "GPT-4o, Claude, Gemini API 토큰 비용을 계산하고 월간 예상 요금을 즉시 비교해 보세요.",
+      "inLanguage": "ko",
+      "description": "AI API 토큰 요금을 계산하는 무료 계산기입니다. 요청당 입력·출력 토큰과 하루 요청 수를 넣으면 요청 1회·하루·한 달·1년 요금을 보여 주고, 각 공급사 공식 가격 페이지에서 확인한 가격으로 13개 모델을 비교합니다. 환율을 넣으면 원화 금액도 함께 보여 줍니다.",
       "image": "https://aiapi.enjoy-onepage.com/og-image.png",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "KRW"
-      }
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
     },
     {
       "@type": "FAQPage",
       "@id": "https://aiapi.enjoy-onepage.com/#faq",
       "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "AI API 토큰이란 무엇인가요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "토큰(Token)은 AI 모델이 텍스트를 처리하는 기본 단위입니다. 영어는 약 4글자당 1토큰, 한국어는 약 1~2글자당 1토큰으로 계산됩니다. 예를 들어 \"안녕하세요\"는 약 4~5토큰입니다. AI API 요금은 입력(Input)과 출력(Output) 토큰 수를 합산하여 책정됩니다."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "GPT-4o와 Claude 3.5 Sonnet 중 어느 것이 더 저렴한가요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "최신 기준, 입력 토큰은 GPT-4o($2.50/1M)가 Claude 3.5 Sonnet($3.00/1M)보다 약간 저렴합니다. 단, 출력 토큰은 GPT-4o($10.00/1M) ≈ Claude Sonnet($15.00/1M)으로 Claude가 더 비쌉니다. 단순 비용만 볼 때 GPT-4o가 유리하지만, 작업 특성(코딩, 분석 등)에 따라 최적 모델이 달라집니다."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "AI API 비용을 줄이는 실전 방법은?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "① 경량 모델 우선 사용: GPT-4o mini, Claude Haiku, Gemini Flash는 고성능 모델 대비 10~20배 저렴합니다. ② 배치 API 활용: 실시간 응답이 필요 없다면 배치 API를 사용하면 50% 할인됩니다. ③ 캐싱 기능 적용: 동일한 시스템 프롬프트는 캐시를 적용하면 최대 90% 절감 가능합니다. ④ max_tokens 제한: 응답 길이를 제한해 출력 토큰을 줄이세요."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "무료로 사용 가능한 AI API가 있나요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Gemini 2.5 Flash는 Google AI Studio를 통해 분당 15회 요청까지 무료로 제공됩니다. OpenAI와 Anthropic은 공식 무료 티어는 없지만, 각각 $5~$18의 무료 크레딧으로 시작할 수 있습니다. 소규모 프로젝트라면 무료 티어 또는 저렴한 경량 모델을 조합하는 것이 효과적입니다."
-          }
-        }
+        { "@type": "Question", "name": "요금은 어떻게 계산하나요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "요청 1회 요금은 입력 토큰 ÷ 1,000,000 × 입력 가격에 출력 토큰 ÷ 1,000,000 × 출력 가격을 더한 값입니다. 하루 요금은 여기에 하루 요청 수를, 한 달 요금은 하루 요금에 한 달 사용일을 곱하고, 1년은 12개월로 계산합니다. 배치 API를 고르면 입력과 출력 가격이 모두 절반이 됩니다." } },
+        { "@type": "Question", "name": "가격은 언제 기준인가요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "기본 가격은 2026년 9월 30일에 각 공급사의 공식 가격 페이지에서 확인한 표준 종량제 달러 가격입니다. 가격은 자주 바뀌므로 예산을 정하기 전에 다시 확인하거나, 모델 목록의 직접 입력한 가격으로 계산하세요." } },
+        { "@type": "Question", "name": "원화로는 얼마인가요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "환율 칸에 원/달러 환율을 넣으면 달러 금액에 그 환율을 곱해 원화 금액도 함께 보여 줍니다. 이 페이지는 환율을 자동으로 가져오지 않습니다. 실제로 청구되는 원화는 결제 카드사의 환율과 해외 결제 수수료에 따라 달라집니다." } },
+        { "@type": "Question", "name": "한국어 글은 몇 토큰인가요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "영어는 대략 4글자 또는 0.75단어가 1토큰이라는 어림 규칙이 있지만(Anthropic 안내), 한국어는 모델의 토크나이저마다 차이가 커서 이 계산기는 한국어 글자 수로 토큰을 어림하지 않습니다. 공급사가 제공하는 토큰 세기 기능으로 잰 값을 넣어 주세요. Anthropic은 Claude 4.7 이후 모델이 같은 글에서 약 30% 더 많은 토큰을 만든다고 안내합니다." } },
+        { "@type": "Question", "name": "포함되지 않는 비용은 무엇인가요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "세금, 프롬프트 캐싱 할인, 웹 검색 같은 도구 요금, 이미지·오디오 토큰, 지역·데이터 보관 위치에 따른 추가 요금, 별도 계약 할인은 포함하지 않습니다. 일부 공급사는 생각(thinking) 토큰을 출력으로 청구하므로 출력 토큰에 함께 넣어 계산하세요." } }
       ]
     }
   ]
 }
-  </script>
+</script>
+<!-- ADSENSE START: loader -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+<!-- ADSENSE END: loader -->
 <style>
-        :root {
-            --primary: #6C63FF;
-            --primary-light: #EEF0FF;
-            --bg-color: #F4F5F9;
-            --text-main: #1A1A2E;
-            --text-light: #555577;
-            --box-bg: #FFFFFF;
-            --border: #E0E0F0;
-            --success: #00C9A7;
-            --warning: #FFA62B;
-        }
-        * { box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            margin: 0;
-            padding: 0;
-            padding-bottom: 70px;
-        }
-        .container {
-            margin: 0 auto;
-            max-width: 960px;
-            width: 100%;
-            min-height: 100vh;
-            background-color: var(--box-bg);
-            padding: 20px;
-            padding-bottom: 40px;
-            box-sizing: border-box;
-            box-shadow: 0 0 20px rgba(108, 99, 255, 0.08);
-        }
-        .ai-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        @media (min-width: 768px) {
-            .ai-grid {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 30px;
-                align-items: start;
-            }
-            .ai-left {
-                background: #FAFAFC;
-                padding: 20px;
-                border-radius: 16px;
-                border: 1px solid var(--border);
-            }
-            .ai-right {
-                min-width: 0;
-            }
-            .result-card {
-                margin-top: 0 !important;
-            }
-        }
-        h1 {
-            text-align: center;
-            font-size: 1.45rem;
-            margin-bottom: 6px;
-            color: var(--text-main);
-            line-height: 1.3;
-        }
-        .subtitle {
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--text-light);
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-
-        /* 모델 선택 */
-        .model-selector {
-            background: var(--bg-color);
-            padding: 16px;
-            border-radius: 12px;
-            margin-bottom: 16px;
-        }
-        .model-selector label {
-            display: block;
-            font-weight: bold;
-            font-size: 0.95rem;
-            margin-bottom: 10px;
-        }
-        .model-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-        }
-        .model-btn {
-            padding: 10px 8px;
-            border: 2px solid var(--border);
-            border-radius: 10px;
-            background: #fff;
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.2s;
-            font-size: 0.8rem;
-            line-height: 1.3;
-        }
-        .model-btn:hover { border-color: var(--primary); }
-        .model-btn.selected {
-            border-color: var(--primary);
-            background: var(--primary-light);
-            color: var(--primary);
-            font-weight: bold;
-        }
-        .model-btn .model-name { font-weight: bold; font-size: 0.85rem; }
-        .model-btn .model-price { font-size: 0.72rem; color: var(--text-light); margin-top: 2px; }
-        .model-btn.selected .model-price { color: var(--primary); }
-
-        /* 입력 그룹 */
-        .input-group {
-            background: var(--bg-color);
-            padding: 16px;
-            border-radius: 12px;
-            margin-bottom: 16px;
-        }
-        .input-group label {
-            display: block;
-            font-weight: bold;
-            font-size: 0.95rem;
-            margin-bottom: 6px;
-        }
-        .input-group .tooltip {
-            font-size: 0.8rem;
-            color: var(--text-light);
-            margin-bottom: 10px;
-            display: block;
-            line-height: 1.4;
-        }
-        .token-inputs {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-        .token-input-wrap { display: flex; flex-direction: column; gap: 4px; }
-        .token-input-wrap span { font-size: 0.8rem; color: var(--text-light); }
-        input[type="number"] {
-            width: 100%;
-            padding: 12px;
-            border: 1.5px solid var(--border);
-            border-radius: 8px;
-            font-size: 16px;
-            box-sizing: border-box;
-            transition: border-color 0.2s;
-        }
-        input[type="number"]:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        /* 환율 설명 */
-        .rate-note {
-            font-size: 0.75rem;
-            color: var(--text-light);
-            text-align: right;
-            margin-top: 6px;
-        }
-
-        /* 계산 버튼 */
-        .calc-btn {
-            width: 100%;
-            padding: 16px;
-            background: var(--primary);
-            color: #fff;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.05rem;
-            font-weight: bold;
-            cursor: pointer;
-            margin-bottom: 20px;
-            transition: background 0.2s, transform 0.1s;
-        }
-        .calc-btn:hover { background: #5a52d5; }
-        .calc-btn:active { transform: scale(0.98); }
-
-        /* 결과 박스 */
-        .result-box {
-            border-radius: 14px;
-            margin-bottom: 20px;
-            display: none;
-            overflow: hidden;
-        }
-        .result-header {
-            background: linear-gradient(135deg, var(--primary), #9b59b6);
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-        .result-header .result-icon { font-size: 2.5rem; margin-bottom: 6px; }
-        .result-header .result-title { font-size: 1rem; opacity: 0.9; margin-bottom: 4px; }
-        .result-header .result-model { font-size: 0.85rem; opacity: 0.75; }
-
-        .result-cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            border: 1px solid var(--border);
-            border-top: none;
-            border-radius: 0 0 14px 14px;
-            overflow: hidden;
-        }
-        .result-card {
-            padding: 14px 10px;
-            text-align: center;
-            border-right: 1px solid var(--border);
-        }
-        .result-card:last-child { border-right: none; }
-        .result-card .rc-label { font-size: 0.72rem; color: var(--text-light); margin-bottom: 4px; }
-        .result-card .rc-usd { font-size: 1.05rem; font-weight: bold; color: var(--primary); }
-        .result-card .rc-krw { font-size: 0.78rem; color: var(--text-light); margin-top: 2px; }
-
-        /* 월간 비용 강조 */
-        .monthly-highlight {
-            background: var(--primary-light);
-            border: 2px solid var(--primary);
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 20px;
-            display: none;
-            text-align: center;
-        }
-        .monthly-highlight .mh-label { font-size: 0.85rem; color: var(--text-light); margin-bottom: 6px; }
-        .monthly-highlight .mh-usd { font-size: 2rem; font-weight: bold; color: var(--primary); }
-        .monthly-highlight .mh-krw { font-size: 1rem; color: var(--text-light); margin-top: 4px; }
-        .monthly-highlight .mh-note { font-size: 0.78rem; color: var(--text-light); margin-top: 8px; line-height: 1.4; }
-
-        /* 비교표 */
-        .compare-section {
-            margin-bottom: 20px;
-        }
-        .compare-section h2 {
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
-        }
-        .compare-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.82rem;
-        }
-        .compare-table th {
-            background: var(--primary);
-            color: #fff;
-            padding: 10px 8px;
-            text-align: left;
-            font-weight: bold;
-        }
-        .compare-table th:last-child, .compare-table td:last-child { text-align: right; }
-        .compare-table td {
-            padding: 10px 8px;
-            border-bottom: 1px solid var(--border);
-            vertical-align: middle;
-        }
-        .compare-table tr:last-child td { border-bottom: none; }
-        .compare-table tr.highlight-row td { background: var(--primary-light); font-weight: bold; color: var(--primary); }
-        .compare-table tr:nth-child(even) td { background: #fafafa; }
-        .compare-table tr.highlight-row:nth-child(even) td { background: var(--primary-light); }
-        .model-tag {
-            display: inline-block;
-            padding: 2px 7px;
-            border-radius: 8px;
-            font-size: 0.7rem;
-            font-weight: bold;
-            margin-left: 4px;
-            vertical-align: middle;
-        }
-        .tag-fast { background: #E8F5E9; color: #388E3C; }
-        .tag-smart { background: #EDE7F6; color: #7B1FA2; }
-        .tag-cheap { background: #FFF3E0; color: #E65100; }
-
-        /* 제휴 배너 */
-        .affiliate-banner {
-            margin-bottom: 20px;
-            border: 1px solid #C5CAE9;
-            border-radius: 12px;
-            background: #E8EAF6;
-            padding: 16px;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 8px;
-        }
-        .affiliate-badge {
-            font-size: 0.65rem;
-            letter-spacing: 0.1em;
-            color: #303F9F;
-            border: 1px solid #303F9F;
-            border-radius: 4px;
-            padding: 2px 6px;
-            font-weight: 700;
-            display: inline-block;
-            margin-bottom: 6px;
-        }
-        .affiliate-content p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: #333;
-            line-height: 1.4;
-        }
-        .affiliate-content strong { color: #303F9F; }
-        .affiliate-btn {
-            background: #3949AB;
-            color: white;
-            text-decoration: none;
-            padding: 10px 16px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            white-space: nowrap;
-            transition: background 0.2s;
-            display: inline-block;
-            margin-top: 4px;
-        }
-        .affiliate-btn:hover { background: #283593; }
-
-        /* PWA 설치 배너 */
-        .install-banner {
-            display: none;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            background: #E8EAF6;
-            border: 1px solid #C5CAE9;
-            border-radius: 10px;
-            padding: 12px 16px;
-            margin-bottom: 16px;
-            font-size: 0.9rem;
-        }
-        .install-banner.visible { display: flex; }
-        .btn-install {
-            flex-shrink: 0;
-            padding: 8px 14px;
-            background: var(--primary);
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
-        /* 공유 버튼 */
-        .btn-group {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-        .btn {
-            flex: 1;
-            padding: 14px;
-            border: none;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-weight: bold;
-            cursor: pointer;
-            text-align: center;
-        }
-        .btn-copy { background: #555; color: #fff; }
-        .btn-share { background: var(--primary); color: #fff; }
-        .btn-share:hover { opacity: 0.9; }
-
-        /* FAQ 섹션 */
-        .faq-section { margin-top: 30px; text-align: left; }
-        .faq-item {
-            background: #fff;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.04);
-            border-left: 3px solid var(--primary);
-        }
-        .faq-item h3 { font-size: 1rem; margin: 0 0 8px 0; color: var(--primary); }
-        .faq-item p { font-size: 0.9rem; color: #555; margin: 0; line-height: 1.5; }
-
-        /* 하단 고정 광고 */
-        
-
-        /* 수동 광고 박스 */
-        .manual-ad-box {
-            width: 100%;
-            
-            margin-top: 20px;
-            overflow: hidden;
-            background: #fff;
-            text-align: center;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            padding: 10px;
-        }
-    
-        /* U3 Accessibility: Global Keyboard Focus Ring Standard */
-        :focus-visible {
-            outline: 2px solid #3b82f6 !important;
-            outline-offset: 2px !important;
-        }
-        input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible {
-            outline: 2px solid #2563eb !important;
-            outline-offset: 1px !important;
-        }
-    
-    </style>
-<link href="https://aiapi.enjoy-onepage.com/rss.xml" rel="alternate" title="AI API 요금 계산기 | GPT·Claude 비교 RSS Feed" type="application/rss+xml"/>
-<link href="https://aiapi.enjoy-onepage.com/sitemap.xml" rel="sitemap" title="Sitemap" type="application/xml"/>
-<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106"></script><style id="layout-shield">
-  html, body {
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-  .manual-ad-box {
-    width: 100%;
-    max-width: 960px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    overflow: hidden;
-  }
-  .manual-ad-box ins {
-    max-width: 100% !important;
-    overflow: hidden !important;
-  }
-</style>
-<meta content="summary_large_image" name="twitter:card"/><meta content="AI API 요금 계산기 | GPT·Claude 비교" name="twitter:title"/><meta content="GPT-4o, Claude, Gemini API 토큰 비용을 계산하고 월간 예상 요금을 즉시 비교해 보세요." name="twitter:description"/><meta content="https://aiapi.enjoy-onepage.com/og-image.png" name="twitter:image"/><style id="mobile-hardening-shield">
-  /* 모바일 한글 단어 단위 줄바꿈 보존 & 버튼 텍스트 단일행 쉴드 */
-  body, h1, h2, h3, h4, p, span, label {
-    word-break: keep-all;
-    overflow-wrap: break-word;
-  }
-  button, [role="button"], a.btn {
-    white-space: nowrap;
-    word-break: keep-all;
-  }
-  @media (max-width: 640px) {
-    input, select, textarea {
-      font-size: 16px !important;
-    }
-    button, [role="button"], a.btn {
-      min-height: 42px;
-    }
-  }
+:root{--bg:#f4f7fd;--card:#fff;--ink:#0f1f3d;--muted:#56637d;--accent:#1d4ed8;--line:#dfe6f3;--g:#15803d;--r:#b91c1c}
+*{box-sizing:border-box}
+html,body{margin:0;max-width:100%;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;word-break:keep-all;overflow-wrap:anywhere}
+.header{background:linear-gradient(135deg,#1e3a8a,#3b82f6);color:#fff;text-align:center;padding:26px 16px 22px}
+.header h1{margin:0;font-size:1.7rem}
+.header-sub{opacity:.92;margin-top:6px;font-size:.95rem}
+.wrap{max-width:1080px;margin:0 auto;padding:12px 14px 8px}
+.grid2{display:grid;grid-template-columns:1fr;gap:14px}
+@media (min-width:1024px){.grid2{grid-template-columns:1fr 1fr;align-items:start}.result{position:sticky;top:12px}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 18px;margin:14px 0}
+.grid2 .card{margin:0}
+.card h2{font-size:1.15rem;margin:4px 0 10px}
+.card h3{font-size:1rem;margin:14px 0 6px}
+.lbl{display:block;font-weight:600;margin:10px 0 4px;font-size:.95rem}
+input[type=number],select,textarea{width:100%;font:inherit;padding:9px 11px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+textarea{min-height:80px;resize:vertical}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row>div{flex:1 1 150px;min-width:0}
+.chk{display:flex;align-items:center;gap:8px;margin:10px 0;font-size:.95rem}
+.hint{font-size:.86rem;color:var(--muted);margin:6px 0}
+.btn{font:inherit;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:10px;padding:9px 14px;cursor:pointer;min-height:44px}
+.btn.sm{padding:4px 9px;font-size:.85rem;border-radius:8px;min-height:36px}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.err{color:var(--r);font-weight:600;margin:8px 0 0}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:6px 0}
+.kpi{border:1px solid var(--line);border-radius:12px;padding:8px 10px;min-width:0}
+.kpi .v{font-size:1.3rem;font-weight:800;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.kpi .w{font-size:.88rem;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.kpi .k{font-size:.82rem;color:var(--muted)}
+.kpi.big{grid-column:1 / -1;background:#eff4ff;border-color:#c7d7fb}
+.kpi.big .v{font-size:1.9rem}
+.kpi.big .w{font-size:1.05rem}
+.note{font-size:.88rem;background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:6px 10px;margin:8px 0}
+.copy-box{margin-top:8px;font-size:.88rem;min-height:96px}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin-top:6px}
+th,td{border-bottom:1px solid var(--line);padding:5px 6px;text-align:left;vertical-align:top}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+td .krw{display:block;font-size:.8rem;color:var(--accent)}
+tr.sel td{background:#eff4ff;font-weight:700}
+.tscroll{overflow-x:auto}
+.notice{border-color:#fcd34d;background:#fffbeb}
+.faq-item h3{font-size:1rem;margin:12px 0 4px}
+.faq-item p{margin:0;color:#35425d}
+.src{font-size:.82rem;color:var(--muted)}
+.ad-box{max-width:1080px;margin:10px auto;padding:0 14px;background:transparent;overflow:hidden;text-align:center}
+.ad-top ins{max-height:90px}
+.footer{text-align:center;font-size:.85rem;color:var(--muted);padding:18px 14px 28px}
+.footer a{color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0f1f3d;color:#fff;padding:10px 18px;border-radius:999px;font-size:.9rem;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50;max-width:90vw}
+.toast.show{opacity:1}
+@media (prefers-reduced-motion: reduce){.toast{transition:none}}
 </style>
 </head>
 <body>
-<!-- 상단 슬림 띠배너 (헤더 직하단: 50~60px 슬림형) -->
-<div class="manual-ad-box ad-top-banner" style="width: 100%; max-width: 960px; margin: 8px auto 16px; text-align: center;">
-<ins class="adsbygoogle" data-ad-client="ca-pub-2228289204702106" data-ad-format="horizontal" data-ad-slot="3824727725" data-full-width-responsive="true" style="display:inline-block;width:100%;height:60px;"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
-<!-- 상단 슬림 띠배너 (헤더 직하단: 50~60px 슬림형) -->
-<div class="container">
-<h1>🤖 AI API 비용 계산기</h1>
-<p class="subtitle">GPT-4o · Claude · Gemini 토큰 요금을 즉시 계산하세요</p>
-<!-- PWA 설치 배너 -->
-<div class="install-banner" id="installBanner">
-<span>📲 홈 화면에 추가하면 앱처럼 바로 열 수 있어요!</span>
-<button class="btn-install whitespace-nowrap py-3 min-h-[44px]" id="installBtn">설치하기</button>
-</div>
-<div class="ai-grid grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-<!-- Left Column: Model Selection & Token Inputs -->
-<div class="ai-left lg:col-span-6 w-full">
-<!-- STEP 1: 모델 선택 -->
-<div class="model-selector">
-<label>① 사용할 AI 모델을 선택하세요</label>
-<div class="model-grid" id="modelGrid">
-<button class="model-btn selected whitespace-nowrap py-3 min-h-[44px]" data-model="gpt4o" onclick="selectModel(this, 'gpt4o')">
-<div class="model-name">GPT-4o</div>
-<div class="model-price">$2.50 / $10.00 per 1M</div>
-</button>
-<button class="model-btn whitespace-nowrap py-3 min-h-[44px]" data-model="gpt4o_mini" onclick="selectModel(this, 'gpt4o_mini')">
-<div class="model-name">GPT-4o mini</div>
-<div class="model-price">$0.15 / $0.60 per 1M</div>
-</button>
-<button class="model-btn whitespace-nowrap py-3 min-h-[44px]" data-model="claude_sonnet" onclick="selectModel(this, 'claude_sonnet')">
-<div class="model-name">Claude 3.5 Sonnet</div>
-<div class="model-price">$3.00 / $15.00 per 1M</div>
-</button>
-<button class="model-btn whitespace-nowrap py-3 min-h-[44px]" data-model="claude_haiku" onclick="selectModel(this, 'claude_haiku')">
-<div class="model-name">Claude 3.5 Haiku</div>
-<div class="model-price">$0.80 / $4.00 per 1M</div>
-</button>
-<button class="model-btn whitespace-nowrap py-3 min-h-[44px]" data-model="gemini_pro" onclick="selectModel(this, 'gemini_pro')">
-<div class="model-name">Gemini 2.5 Pro</div>
-<div class="model-price">$1.25 / $10.00 per 1M</div>
-</button>
-<button class="model-btn whitespace-nowrap py-3 min-h-[44px]" data-model="gemini_flash" onclick="selectModel(this, 'gemini_flash')">
-<div class="model-name">Gemini 2.5 Flash</div>
-<div class="model-price">$0.075 / $0.30 per 1M</div>
-</button>
-</div>
-</div>
-<!-- STEP 2: 토큰 수 입력 -->
-<div class="input-group">
-<label>② 요청당 토큰 수를 입력하세요</label>
-<span class="tooltip">💡 한국어: 약 1~2글자 = 1토큰, 영어: 약 4글자 = 1토큰</span>
-<div class="token-inputs">
-<div class="token-input-wrap">
-<span>📥 입력(Input) 토큰</span>
-<input id="inputTokens" min="0" oninput="calculateCost()" step="100" type="number" value="1000" aria-label="Inputtokens" />
-</div>
-<div class="token-input-wrap">
-<span>📤 출력(Output) 토큰</span>
-<input id="outputTokens" min="0" oninput="calculateCost()" step="100" type="number" value="500" aria-label="Outputtokens" />
-</div>
-</div>
-</div>
-<!-- STEP 3: 월간 호출 수 -->
-<div class="input-group">
-<label>③ 하루 평균 호출(요청) 횟수</label>
-<div class="token-inputs">
-<div class="token-input-wrap">
-<span>🔄 일 평균 호출 수</span>
-<input id="dailyCalls" min="1" oninput="calculateCost()" step="10" type="number" value="100" aria-label="Dailycalls" />
-</div>
-<div class="token-input-wrap">
-<span>💱 적용 환율 (원/USD)</span>
-<input id="exchangeRate" min="1000" oninput="calculateCost()" step="10" type="number" value="1380" aria-label="Exchangerate" />
-</div>
-</div>
-<p class="rate-note">※ 환율은 직접 수정 가능합니다</p>
-</div>
-</div>
-<!-- Right Column: Live Results & Monthly Highlight -->
-<div class="ai-right lg:col-span-6 lg:sticky lg:top-8 w-full">
-<!-- 계산 결과 -->
-<div class="result-box" id="resultBox" style="display:block;">
-<div class="result-header">
-<div class="result-icon">💰</div>
-<div class="result-title" id="resultModelName">GPT-4o 기준 계산 결과</div>
-<div class="result-model" id="resultTokenInfo">입력 1,000 + 출력 500 토큰 × 일 100회</div>
-</div>
-<div class="result-cards">
-<div class="result-card">
-<div class="rc-label">1회 비용</div>
-<div class="rc-usd" id="perCallUsd">$0.000</div>
-<div class="rc-krw" id="perCallKrw">₩0</div>
-</div>
-<div class="result-card">
-<div class="rc-label">일간 비용</div>
-<div class="rc-usd" id="dailyUsd">$0.00</div>
-<div class="rc-krw" id="dailyKrw">₩0</div>
-</div>
-<div class="result-card">
-<div class="rc-label">연간 비용</div>
-<div class="rc-usd" id="yearlyUsd">$0.00</div>
-<div class="rc-krw" id="yearlyKrw">₩0</div>
-</div>
-</div>
-</div>
-<!-- 월간 비용 강조 박스 -->
-<div class="monthly-highlight" id="monthlyHighlight" style="display:block;">
-<div class="mh-label">📅 월간 예상 AI API 비용</div>
-<div class="mh-usd" id="monthlyUsd">$0.00</div>
-<div class="mh-krw" id="monthlyKrw">₩0</div>
-<div class="mh-note" id="monthlyNote">이 비용은 추정치입니다. 캐싱, 배치 API, 경량 모델 교체를 통해 비용을 절감할 수 있습니다.</div>
-</div>
-</div>
-</div>
-<!-- 모델별 요금 비교표 -->
-<div class="compare-section">
-<h2>📊 주요 AI 모델 요금 비교표 (최신 기준)</h2>
-<table class="compare-table" id="compareTable">
-<thead>
-<tr>
-<th>모델</th>
-<th>입력 (1M 토큰)</th>
-<th>출력 (1M 토큰)</th>
-</tr>
-</thead>
-<tbody>
-<tr data-model="gpt4o">
-<td>GPT-4o <span class="model-tag tag-smart">스마트</span></td>
-<td>$2.50</td>
-<td>$10.00</td>
-</tr>
-<tr data-model="gpt4o_mini">
-<td>GPT-4o mini <span class="model-tag tag-cheap">가성비</span></td>
-<td>$0.15</td>
-<td>$0.60</td>
-</tr>
-<tr data-model="claude_sonnet">
-<td>Claude 3.5 Sonnet <span class="model-tag tag-smart">스마트</span></td>
-<td>$3.00</td>
-<td>$15.00</td>
-</tr>
-<tr data-model="claude_haiku">
-<td>Claude 3.5 Haiku <span class="model-tag tag-cheap">가성비</span></td>
-<td>$0.80</td>
-<td>$4.00</td>
-</tr>
-<tr data-model="gemini_pro">
-<td>Gemini 2.5 Pro <span class="model-tag tag-smart">스마트</span></td>
-<td>$1.25</td>
-<td>$10.00</td>
-</tr>
-<tr data-model="gemini_flash">
-<td>Gemini 2.5 Flash <span class="model-tag tag-fast">빠름</span></td>
-<td>$0.075</td>
-<td>$0.30</td>
-</tr>
-</tbody>
-</table>
-<p style="font-size: 0.75rem; color: var(--text-light); margin-top: 8px; line-height: 1.5;">
-                ※ 위 가격은 공식 API 요금 기준이며, 배치 API 사용 시 최대 50% 할인됩니다. 실제 요금은 공급사 공식 사이트에서 확인하세요.
-            </p>
-</div>
-<!-- AI API 가이드 섹션 (SEO 내부링크 강화 + 추가 콘텐츠 유입) -->
-<section id="guidesSection" style="margin-top:10px; margin-bottom:20px; display:none;">
-<h2 style="font-size:1.1rem; margin-bottom:12px; padding-top:16px; border-top:1px solid #E0E0F0;">📚 AI API 비용 완벽 가이드</h2>
-<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-<a href="guides/token-guide.html" style="display:block; background:#F4F5F9; border:1px solid #E0E0F0; border-radius:10px; padding:12px; text-decoration:none; color:#1A1A2E;">
-<div style="font-size:1.4rem; margin-bottom:4px;">🔤</div>
-<div style="font-size:0.82rem; font-weight:bold; margin-bottom:3px;">AI 토큰이란?</div>
-<div style="font-size:0.73rem; color:#555577; line-height:1.3;">한국어 포함 토큰 환산 완벽 정리</div>
-</a>
-<a href="guides/gpt4o-cost.html" style="display:block; background:#F4F5F9; border:1px solid #E0E0F0; border-radius:10px; padding:12px; text-decoration:none; color:#1A1A2E;">
-<div style="font-size:1.4rem; margin-bottom:4px;">💚</div>
-<div style="font-size:0.82rem; font-weight:bold; margin-bottom:3px;">GPT-4o 요금 정리</div>
-<div style="font-size:0.73rem; color:#555577; line-height:1.3;">최신 가격표 및 예시</div>
-</a>
-<a href="guides/claude-cost.html" style="display:block; background:#F4F5F9; border:1px solid #E0E0F0; border-radius:10px; padding:12px; text-decoration:none; color:#1A1A2E;">
-<div style="font-size:1.4rem; margin-bottom:4px;">🟣</div>
-<div style="font-size:0.82rem; font-weight:bold; margin-bottom:3px;">Claude 요금 정리</div>
-<div style="font-size:0.73rem; color:#555577; line-height:1.3;">Sonnet·Haiku·Opus 비교</div>
-</a>
-<a href="guides/gemini-cost.html" style="display:block; background:#F4F5F9; border:1px solid #E0E0F0; border-radius:10px; padding:12px; text-decoration:none; color:#1A1A2E;">
-<div style="font-size:1.4rem; margin-bottom:4px;">🔵</div>
-<div style="font-size:0.82rem; font-weight:bold; margin-bottom:3px;">Gemini 요금 정리</div>
-<div style="font-size:0.73rem; color:#555577; line-height:1.3;">무료 한도·Flash·Pro 가격</div>
-</a>
-<a href="guides/cost-saving.html" style="display:block; background:#FFF8E1; border:1px solid #FFE082; border-radius:10px; padding:12px; text-decoration:none; color:#1A1A2E;">
-<div style="font-size:1.4rem; margin-bottom:4px;">💡</div>
-<div style="font-size:0.82rem; font-weight:bold; margin-bottom:3px;">비용 90% 줄이는 법</div>
-<div style="font-size:0.73rem; color:#555577; line-height:1.3;">경량모델·캐싱·배치 실전 전략</div>
-</a>
-<a href="guides/batch-api.html" style="display:block; background:#FFF8E1; border:1px solid #FFE082; border-radius:10px; padding:12px; text-decoration:none; color:#1A1A2E;">
-<div style="font-size:1.4rem; margin-bottom:4px;">📦</div>
-<div style="font-size:0.82rem; font-weight:bold; margin-bottom:3px;">배치 API 50% 절약</div>
-<div style="font-size:0.73rem; color:#555577; line-height:1.3;">OpenAI·Anthropic 활용 가이드</div>
-</a>
-</div>
-<a href="guides/index.html" style="display:block; margin-top:12px; text-align:center; background:#6C63FF; color:#fff; padding:13px; border-radius:10px; text-decoration:none; font-weight:bold; font-size:0.95rem;">📖 전체 가이드 목록 보기</a>
-</section>
-<!-- FAQ 섹션 (SEO/GEO 텍스트) -->
-<section class="faq-section">
-<h2 style="font-size: 1.2rem; color: #333; margin-bottom: 15px;">💡 AI API 비용 자주 묻는 질문</h2>
-<div class="faq-item">
-<h3>Q. AI API 토큰이란 무엇인가요?</h3>
-<p>토큰(Token)은 AI 모델이 텍스트를 처리하는 기본 단위입니다. 영어는 약 4글자당 1토큰, <strong>한국어는 약 1~2글자당 1토큰</strong>으로 계산됩니다. 예를 들어 "안녕하세요"는 약 4~5토큰입니다. AI API 요금은 입력(Input)과 출력(Output) 토큰 수를 합산하여 책정됩니다.</p>
-</div>
-<div class="faq-item">
-<h3>Q. GPT-4o와 Claude 3.5 Sonnet 중 어느 것이 더 저렴한가요?</h3>
-<p>최신 기준, 입력 토큰은 GPT-4o($2.50/1M)가 Claude 3.5 Sonnet($3.00/1M)보다 약간 저렴합니다. 단, <strong>출력 토큰은 GPT-4o($10.00/1M) ≈ Claude Sonnet($15.00/1M)</strong>으로 Claude가 더 비쌉니다. 단순 비용만 볼 때 GPT-4o가 유리하지만, 작업 특성(코딩, 분석 등)에 따라 최적 모델이 달라집니다.</p>
-</div>
-<div class="faq-item">
-<h3>Q. AI API 비용을 줄이는 실전 방법은?</h3>
-<p>① <strong>경량 모델 우선 사용</strong>: GPT-4o mini, Claude Haiku, Gemini Flash는 고성능 모델 대비 10~20배 저렴합니다. ② <strong>배치 API 활용</strong>: 실시간 응답이 필요 없다면 배치 API를 사용하면 50% 할인됩니다. ③ <strong>캐싱 기능 적용</strong>: 동일한 시스템 프롬프트는 캐시를 적용하면 최대 90% 절감 가능합니다. ④ <strong>max_tokens 제한</strong>: 응답 길이를 제한해 출력 토큰을 줄이세요.</p>
-</div>
-<div class="faq-item">
-<h3>Q. 무료로 사용 가능한 AI API가 있나요?</h3>
-<p>Gemini 2.5 Flash는 Google AI Studio를 통해 <strong>분당 15회 요청까지 무료</strong>로 제공됩니다. OpenAI와 Anthropic은 공식 무료 티어는 없지만, 각각 $5~$18의 무료 크레딧으로 시작할 수 있습니다. 소규모 프로젝트라면 무료 티어 또는 저렴한 경량 모델을 조합하는 것이 효과적입니다.</p>
-</div>
-</section>
-<!-- 공유 버튼 -->
-<div class="btn-group py-3 min-h-[44px]">
-<button class="btn btn-copy whitespace-nowrap py-3 min-h-[44px]" onclick="copyResult()">링크 복사하기</button>
-<button class="btn btn-share whitespace-nowrap py-3 min-h-[44px]" onclick="shareResult()">결과 공유하기</button>
-</div>
+<header class="header">
+  <h1>AI API 요금 계산기</h1>
+  <div class="header-sub">요청 1회·하루·한 달·1년 요금 · 13개 모델 · 2026년 9월 30일 가격 확인</div>
+</header>
 
-<!-- 📖 E-E-A-T 전문성 강화: 공식 산출 근거 & 실전 가이드 (Q1~Q7 헌법 준수) -->
-<section class="max-w-4xl mx-auto my-8 px-4">
-  <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-slate-700 shadow-sm space-y-6">
-    <div class="border-b border-slate-200 dark:border-slate-700 pb-4">
-      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 mb-2">
-        <span>⚖️ 2026년 최신 공식 기준 검증</span>
+<!-- ADSENSE START: top -->
+<div class="ad-box ad-top">
+  <ins class="adsbygoogle" style="display:block;height:60px;max-height:90px" data-ad-client="ca-pub-2228289204702106" data-ad-slot="3824727725" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<!-- ADSENSE END: top -->
+
+<main class="wrap">
+  <div class="grid2">
+    <section class="card" id="calc" aria-labelledby="in-h">
+      <h2 id="in-h">1. 사용량 입력</h2>
+      <label class="lbl" for="model">모델</label>
+      <select id="model"></select>
+      <div class="row" id="custom" hidden>
+        <div><label class="lbl" for="c-in">입력 가격 (1M 토큰당 달러)</label><input id="c-in" type="number" min="0" max="10000" step="0.01" inputmode="decimal"></div>
+        <div><label class="lbl" for="c-out">출력 가격 (1M 토큰당 달러)</label><input id="c-out" type="number" min="0" max="10000" step="0.01" inputmode="decimal"></div>
       </div>
-      <h3 class="text-xl font-black text-slate-900 dark:text-white tracking-tight">
-        AI API 요금 및 토큰 비용 계산기 산출 공식 및 실무 활용 가이드
-      </h3>
-      <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
-        본 도구는 OpenAI, Anthropic, Google Cloud 등 공식 2026년 최신 가격표(Pricing Tier) 고시 기준을 바탕으로 설계된 전문 시뮬레이터입니다.
-      </p>
-    </div>
-
-    <!-- 핵심 산출 공식 박스 -->
-    <div class="p-4 bg-slate-50 dark:bg-slate-900/60 rounded-xl border border-slate-200 dark:border-slate-700">
-      <div class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">핵심 산출 공식 (Formula)</div>
-      <div class="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white font-mono leading-relaxed">
-        총 API 비용 = (입력 토큰 / 1,000,000 × 입력 단가) + (출력 토큰 / 1,000,000 × 출력 단가)
+      <p class="hint" id="price-line"></p>
+      <div class="row">
+        <div><label class="lbl" for="tin">요청당 입력 토큰</label><input id="tin" type="number" min="0" max="10000000" step="1" value="1000" inputmode="numeric"></div>
+        <div><label class="lbl" for="tout">요청당 출력 토큰</label><input id="tout" type="number" min="0" max="10000000" step="1" value="500" inputmode="numeric"></div>
       </div>
-    </div>
-
-    <!-- 실전 시뮬레이션 사례 -->
-    <div class="p-4 bg-blue-50/50 dark:bg-blue-950/30 rounded-xl border border-blue-100 dark:border-blue-900/50">
-      <div class="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-1">💡 실전 계산 사례 (Case Study)</div>
-      <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-        예를 들어, GPT-4o 모델로 매일 입력 50만 토큰, 출력 10만 토큰을 호출하는 스타트업 A사의 경우, 30일 환산 시 월 약 $45(한화 약 6만 원)의 비용이 발생합니다.
-      </p>
-    </div>
-
-    <!-- 독자 실천 행동 요령 (Actionable Checklist) -->
-    <div>
-      <h4 class="text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-        <span>📋</span> 반드시 챙겨야 할 실전 체크리스트
-      </h4>
-      <ul class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2">
-            <li class="flex items-start gap-2"><span class="text-blue-600 font-bold">✓</span><span>프롬프트 캐싱(Prompt Caching)을 적용하여 반복 시스템 메시지 비용을 최대 50% 절감하세요.</span></li>
-            <li class="flex items-start gap-2"><span class="text-blue-600 font-bold">✓</span><span>실시간 처리가 불필요한 대량 작업은 24시간 배치 API(Batch API)를 통해 50% 할인 혜택을 받으세요.</span></li>
-            <li class="flex items-start gap-2"><span class="text-blue-600 font-bold">✓</span><span>각 제공사 대시보드에서 월간 하드 리밋(Usage Limit)을 설정하여 예산 초과 과금을 원천 차단하세요.</span></li>
-      </ul>
-    </div>
-
-    <!-- 법적 면책 조항 (Legal Disclaimer) -->
-    <div class="pt-4 border-t border-slate-100 dark:border-slate-700/60 text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
-      <strong>⚠️ 면책 고지:</strong> 본 계산 결과는 OpenAI, Anthropic, Google Cloud 등 공식 2026년 최신 가격표(Pricing Tier) 고시 기준 및 공인 산식을 기반으로 한 시뮬레이션 결과이며, 관계 법령 개정 및 사용자의 개별 사안에 따라 실제 금액이나 판단 기준과 차이가 발생할 수 있습니다. 법적 분쟁이나 공식 행정 절차 진행 전 반드시 관할 기관 및 공인 전문가와 상담하시기 바랍니다.
-    </div>
-  </div>
-</section>
-
-<!-- 🔗 연관 유틸리티 도구 추천 카드 (사용자 체류시간 증가 & SEO 내부 링크) -->
-<section class="max-w-4xl mx-auto my-8 px-4">
-<div class="bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
-<h3 class="text-base font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-<span>💡</span> 함께 많이 활용하는 필수 계산기 &amp; 도구
-    </h3>
-<div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
-<a class="p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-500 hover:shadow-md transition flex items-center justify-between group" href="https://insta-margin-calc.enjoy-onepage.com/" target="_blank" rel="noopener noreferrer">
-<div>
-<div class="text-xs text-blue-600 dark:text-blue-400 font-bold mb-1">추천 유틸리티</div>
-<div class="text-sm font-black text-slate-800 dark:text-slate-100 group-hover:text-blue-600 transition">인스타 마켓 마진율 계산기</div>
-</div>
-<span class="text-slate-400 group-hover:translate-x-1 transition font-bold">→</span>
-</a>
-<a class="p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-500 hover:shadow-md transition flex items-center justify-between group" href="https://resume-text-counter.enjoy-onepage.com/" target="_blank" rel="noopener noreferrer">
-<div>
-<div class="text-xs text-blue-600 dark:text-blue-400 font-bold mb-1">추천 유틸리티</div>
-<div class="text-sm font-black text-slate-800 dark:text-slate-100 group-hover:text-blue-600 transition">자소서 글자수·바이트 계산기</div>
-</div>
-<span class="text-slate-400 group-hover:translate-x-1 transition font-bold">→</span>
-</a>
-<a class="p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-500 hover:shadow-md transition flex items-center justify-between group" href="https://shorts-script-timer.enjoy-onepage.com/" target="_blank" rel="noopener noreferrer">
-<div>
-<div class="text-xs text-blue-600 dark:text-blue-400 font-bold mb-1">추천 유틸리티</div>
-<div class="text-sm font-black text-slate-800 dark:text-slate-100 group-hover:text-blue-600 transition">쇼츠·릴스 대본 스피치 타이머</div>
-</div>
-<span class="text-slate-400 group-hover:translate-x-1 transition font-bold">→</span>
-</a>
-</div>
-</div>
-</section>
-
-      <!-- 2026 Legal Basis & Disclaimer -->
-      <div class="mt-8 mb-4 p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg text-xs text-slate-500 text-center border border-slate-200 dark:border-slate-700">
-        <p>※ 본 도구는 2026년 최신 공식 기준 및 웹 표준 알고리즘을 기반으로 제작되었으며, 산출 및 변환 결과는 참고용 모의 데이터로서 법적 효력을 갖지 않습니다.</p>
+      <div class="row">
+        <div><label class="lbl" for="rpd">하루 요청 수</label><input id="rpd" type="number" min="0" max="100000000" step="1" value="100" inputmode="numeric"></div>
+        <div><label class="lbl" for="dpm">한 달 사용일</label><input id="dpm" type="number" min="1" max="31" step="1" value="30" inputmode="numeric"></div>
       </div>
-
-<!-- 🔗 딥리서치 토픽 클러스터: 관련 전문 블로그 가이드 역링크 -->
-<section class="max-w-4xl mx-auto my-6 px-4">
-  <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-slate-800 dark:to-slate-800/80 rounded-2xl border border-blue-200/80 dark:border-slate-700 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3">
-    <div class="flex items-center gap-3">
-      <span class="text-2xl flex-shrink-0">💻</span>
-      <div class="text-left">
-        <div class="text-[11px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider">공식 심층 가이드 연계</div>
-        <div class="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 leading-snug">카카오톡 무료 PC 백업 및 컴퓨터·스마트폰 필수 IT 문제해결 완벽 가이드</div>
+      <label class="chk"><input type="checkbox" id="batch"> 배치 API 사용 (입력·출력 50% 할인, 바로 답이 필요 없는 작업용)</label>
+      <label class="lbl" for="fx">환율 (원/달러, 선택)</label>
+      <input id="fx" type="number" min="100" max="10000" step="0.01" inputmode="decimal" placeholder="비워 두면 달러로만 표시">
+      <p class="hint">넣은 환율로 원화 금액을 함께 보여 줍니다. 이 페이지는 환율을 자동으로 가져오지 않으며, 실제 청구 원화는 카드사 환율과 해외 결제 수수료에 따라 달라집니다.</p>
+      <p class="err" id="err" role="alert" hidden></p>
+      <h3>글로 토큰 어림하기</h3>
+      <label class="lbl" for="sample">프롬프트나 답변 예시를 붙여 넣기</label>
+      <textarea id="sample" autocomplete="off" placeholder="여기에 글을 붙여 넣으면 토큰 수를 어림합니다. 저장하거나 보내지 않습니다."></textarea>
+      <p class="hint" id="est" aria-live="polite"></p>
+      <div class="actions" style="margin-top:4px">
+        <button type="button" class="btn sm" id="btn-use-in" disabled>입력 토큰으로 쓰기</button>
+        <button type="button" class="btn sm" id="btn-use-out" disabled>출력 토큰으로 쓰기</button>
       </div>
-    </div>
-    <a href="https://tech-kr.enjoy-onepage.com/2026/09/18/kakaotalk-free-pc-backup-guide/" target="_blank" rel="noopener noreferrer" class="shrink-0 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition shadow-sm hover:shadow flex items-center gap-1.5">
-      <span>테크 가이드 읽기</span>
-      <span>→</span>
-    </a>
-  </div>
-</section>
-
-<footer style="margin-top: 40px; padding: 25px 0; border-top: 1px solid #E0E0E0; text-align: center; font-size: 0.82rem; color: #888; line-height: 1.6;">
-<p style="margin: 0 0 6px;">AI API 비용 계산기는 개발자와 기업의 효율적인 AI 서비스 구축을 지원합니다.</p>
-<p style="margin: 0;">
-<a href="privacy.html" style="color: #666; text-decoration: underline; font-weight: bold;">개인정보처리방침</a>  |  
-                <a href="guides/index.html" style="color: #666; text-decoration: underline;">AI API 가이드 전체보기</a>
-</p>
-</footer>
-<!-- 하단 대형 배너 (푸터 직전) -->
-<div class="manual-ad-box ad-bottom-banner" style="width: 100%; max-width: 960px; margin: 24px auto 16px; text-align: center;">
-<ins class="adsbygoogle" data-ad-client="ca-pub-2228289204702106" data-ad-format="auto" data-ad-slot="3416334507" data-full-width-responsive="true" style="display:block"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
-<!-- 하단 대형 배너 (푸터 직전) -->
-</div>
-<!-- 하단 고정 배너 광고 (수평 배너 강제, 최대 60px — 사각형 방지) -->
-<script>
-        // ── AI 모델 요금 데이터 (per 1M tokens, USD) ──
-        const models = {
-            gpt4o:          { name: 'GPT-4o',           inputPer1M: 2.50,  outputPer1M: 10.00 },
-            gpt4o_mini:     { name: 'GPT-4o mini',      inputPer1M: 0.15,  outputPer1M: 0.60 },
-            claude_sonnet:  { name: 'Claude 3.5 Sonnet', inputPer1M: 3.00, outputPer1M: 15.00 },
-            claude_haiku:   { name: 'Claude 3.5 Haiku', inputPer1M: 0.80,  outputPer1M: 4.00 },
-            gemini_pro:     { name: 'Gemini 2.5 Pro',   inputPer1M: 1.25,  outputPer1M: 10.00 },
-            gemini_flash:   { name: 'Gemini 2.5 Flash', inputPer1M: 0.075, outputPer1M: 0.30 }
-        };
-
-        let currentModel = 'gpt4o';
-
-        // ── 모델 선택 ──
-        function selectModel(btn, modelKey) {
-            document.querySelectorAll('.model-btn').forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
-            currentModel = modelKey;
-
-            // 비교표 하이라이트
-            document.querySelectorAll('.compare-table tbody tr').forEach(tr => {
-                tr.classList.remove('highlight-row');
-                if (tr.dataset.model === modelKey) tr.classList.add('highlight-row');
-            });
-
-            calculateCost();
-        }
-
-        // ── 비용 계산 메인 함수 ──
-        function calculateCost() {
-            const inputTokens  = parseInt(document.getElementById('inputTokens').value)  || 0;
-            const outputTokens = parseInt(document.getElementById('outputTokens').value) || 0;
-            const dailyCalls   = parseInt(document.getElementById('dailyCalls').value)   || 1;
-            const exchangeRate = parseInt(document.getElementById('exchangeRate').value) || 1380;
-
-            const model = models[currentModel];
-
-            // 1회 호출 비용 (USD)
-            const perCallUsd = (inputTokens / 1_000_000) * model.inputPer1M
-                             + (outputTokens / 1_000_000) * model.outputPer1M;
-            const dailyUsd   = perCallUsd * dailyCalls;
-            const monthlyUsd = dailyUsd * 30;
-            const yearlyUsd  = dailyUsd * 365;
-
-            const fmt = (n) => n < 0.001 ? n.toFixed(6) : n < 0.1 ? n.toFixed(4) : n.toFixed(2);
-            const krw = (usd) => Math.round(usd * exchangeRate).toLocaleString('ko-KR');
-
-            // 결과 표시
-            const resultBox = document.getElementById('resultBox');
-            const monthlyHL = document.getElementById('monthlyHighlight');
-
-            if (resultBox) resultBox.style.display = 'block';
-            if (monthlyHL) monthlyHL.style.display = 'block';
-
-            document.getElementById('resultModelName').textContent = `${model.name} 기준 계산 결과`;
-            document.getElementById('resultTokenInfo').textContent =
-                `입력 ${inputTokens.toLocaleString()} + 출력 ${outputTokens.toLocaleString()} 토큰 × 일 ${dailyCalls.toLocaleString()}회`;
-
-            document.getElementById('perCallUsd').textContent  = `$${fmt(perCallUsd)}`;
-            document.getElementById('perCallKrw').textContent  = `₩${krw(perCallUsd)}`;
-            document.getElementById('dailyUsd').textContent    = `$${fmt(dailyUsd)}`;
-            document.getElementById('dailyKrw').textContent    = `₩${krw(dailyUsd)}`;
-            document.getElementById('yearlyUsd').textContent   = `$${fmt(yearlyUsd)}`;
-            document.getElementById('yearlyKrw').textContent   = `₩${krw(yearlyUsd)}`;
-
-            document.getElementById('monthlyUsd').textContent = `$${fmt(monthlyUsd)}`;
-            document.getElementById('monthlyKrw').textContent = `₩${krw(monthlyUsd)}`;
-
-            // 비용 구간별 코멘트
-            let note = '';
-            if (monthlyUsd < 1) {
-                note = '💚 매우 저렴한 수준입니다. 소규모 프로젝트에 적합합니다.';
-            } else if (monthlyUsd < 10) {
-                note = '🔵 부담 없는 수준입니다. 개인 개발자나 소규모 팀에 적합합니다.';
-            } else if (monthlyUsd < 100) {
-                note = '🟡 중간 수준의 비용입니다. 경량 모델(mini/Haiku/Flash)로 교체 시 최대 90% 절감 가능합니다.';
-            } else if (monthlyUsd < 1000) {
-                note = '🟠 상당한 비용입니다. 배치 API와 캐싱 적용을 강력히 권장합니다. 예산 설정도 꼭 하세요.';
-            } else {
-                note = '🔴 매우 높은 비용입니다. 아키텍처 최적화와 모델 교체 전략을 검토해야 합니다.';
-            }
-            document.getElementById('monthlyNote').textContent = note;
-
-            // 가이드 섹션 표시
-            const guidesSection = document.getElementById('guidesSection');
-            if (guidesSection) guidesSection.style.display = 'block';
-
-            // localStorage 저장
-            localStorage.setItem('aiCalcModel', currentModel);
-            localStorage.setItem('aiCalcInput', inputTokens);
-            localStorage.setItem('aiCalcOutput', outputTokens);
-            localStorage.setItem('aiCalcCalls', dailyCalls);
-            localStorage.setItem('aiCalcRate', exchangeRate);
-        }
-
-        // ── 초기 로드 시 저장값 복원 ──
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedModel = localStorage.getItem('aiCalcModel');
-            if (savedModel && models[savedModel]) {
-                const btn = document.querySelector(`[data-model="${savedModel}"]`);
-                if (btn) selectModel(btn, savedModel);
-            }
-            const savedInput  = localStorage.getItem('aiCalcInput');
-            const savedOutput = localStorage.getItem('aiCalcOutput');
-            const savedCalls  = localStorage.getItem('aiCalcCalls');
-            const savedRate   = localStorage.getItem('aiCalcRate');
-            if (savedInput)  document.getElementById('inputTokens').value  = savedInput;
-            if (savedOutput) document.getElementById('outputTokens').value = savedOutput;
-            if (savedCalls)  document.getElementById('dailyCalls').value   = savedCalls;
-            if (savedRate)   document.getElementById('exchangeRate').value = savedRate;
-            calculateCost();
-
-            // 비교표 초기 하이라이트
-            const initModel = savedModel || 'gpt4o';
-            document.querySelectorAll('.compare-table tbody tr').forEach(tr => {
-                if (tr.dataset.model === initModel) tr.classList.add('highlight-row');
-            });
-        });
-
-        // ── PWA 설치 프롬프트 ──
-        let deferredPrompt = null;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            const banner = document.getElementById('installBanner');
-            if (banner) banner.classList.add('visible');
-        });
-        document.getElementById('installBtn')?.addEventListener('click', async () => {
-            if (!deferredPrompt) return;
-            deferredPrompt.prompt();
-            const { outcome } = await deferredPrompt.userChoice;
-            deferredPrompt = null;
-            if (outcome === 'accepted') {
-                document.getElementById('installBanner').classList.remove('visible');
-            }
-        });
-
-        function getShareUrl() {
-            const base = 'https://aiapi.enjoy-onepage.com/';
-            const inTok = document.getElementById('inputTokens') ? document.getElementById('inputTokens').value : '';
-            const outTok = document.getElementById('outputTokens') ? document.getElementById('outputTokens').value : '';
-            const calls = document.getElementById('dailyCalls') ? document.getElementById('dailyCalls').value : '';
-            return `${base}?m=${currentModel}&in=${inTok}&out=${outTok}&c=${calls}`;
-        }
-
-        // ── 결과 복사 ──
-        function copyResult() {
-            const model = models[currentModel];
-            const monthlyUsd = document.getElementById('monthlyUsd').textContent;
-            const monthlyKrw = document.getElementById('monthlyKrw').textContent;
-            const shareUrl = getShareUrl();
-            const text = `[AI API 비용 계산기]\n모델: ${model.name}\n월간 예상 비용: ${monthlyUsd} (${monthlyKrw})\n\n직접 확인하기:\n${shareUrl}`;
-            navigator.clipboard.writeText(text).then(() => {
-                alert('계산 결과 링크가 복사되었습니다! 팀원이나 동료에게 공유해보세요.');
-            }).catch(() => {
-                alert('복사에 실패했습니다. 브라우저 주소창의 링크를 복사해주세요.');
-            });
-        }
-
-        // ── 시스템 공유 ──
-        async function shareResult() {
-            const model = models[currentModel];
-            const monthlyUsd = document.getElementById('monthlyUsd').textContent;
-            const shareUrl = getShareUrl();
-            if (navigator.share) {
-                try {
-                    await navigator.share({
-                        title: 'AI API 비용 계산 결과',
-                        text: `[AI API 비용 계산기]\n${model.name} 월간 비용: ${monthlyUsd}\nGPT-4o, Claude, Gemini 요금을 즉시 비교하세요!`,
-                        url: shareUrl
-                    });
-                } catch (err) {
-                    if (err.name !== 'AbortError') copyResult();
-                }
-            } else {
-                copyResult();
-            }
-        }
-    </script>
-<!-- Preemptive UX Helper: Auto comma formatting & Result sharing -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Auto comma on number/text inputs with currency hints
-      const moneyInputs = document.querySelectorAll('input[type="text"], input[type="number"], input[inputmode="numeric"]');
-      moneyInputs.forEach(input => {
-        // Skip specific inputs like year, month, date, percent, id
-        const name = (input.name || input.id || '').toLowerCase();
-        if (name.includes('year') || name.includes('month') || name.includes('day') || name.includes('rate') || name.includes('percent') || name.includes('age') || name.includes('score')) {
-          return;
-        }
-        
-        // Listen to input
-        input.addEventListener('input', function(e) {
-          if (this.type === 'number') return; // native number handles own UI
-          let val = this.value.replace(/[^0-9]/g, '');
-          if (val) {
-            this.value = Number(val).toLocaleString('ko-KR');
-          }
-        });
-      });
-
-      // Inject Global Result Copy Function if not exists
-      window.copyResultToClipboard = function(textToCopy, customBtn) {
-        if (!textToCopy) {
-          const resEl = document.querySelector('#result, .result-box, [id*="result"], [class*="result"]');
-          textToCopy = resEl ? resEl.innerText.trim() : window.location.href;
-        }
-        navigator.clipboard.writeText(textToCopy + "\n\n👉 계산기 바로가기: " + window.location.href).then(() => {
-          showToastNotification('계산 결과가 클립보드에 복사되었습니다!');
-        }).catch(() => {
-          showToastNotification('복사되었습니다: ' + window.location.href);
-        });
-      };
-
-      function showToastNotification(msg) {
-        let toast = document.getElementById('global-ux-toast');
-        if (!toast) {
-          toast = document.createElement('div');
-          toast.id = 'global-ux-toast';
-          toast.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1e293b;color:#fff;padding:12px 24px;border-radius:9999px;font-size:14px;font-weight:600;box-shadow:0 10px 25px rgba(0,0,0,0.2);z-index:9999;transition:all 0.3s ease;opacity:0;pointer-events:none;';
-          document.body.appendChild(toast);
-        }
-        toast.textContent = msg;
-        toast.style.opacity = '1';
-        toast.style.transform = 'translateX(-50%) translateY(0)';
-        setTimeout(() => {
-          toast.style.opacity = '0';
-          toast.style.transform = 'translateX(-50%) translateY(10px)';
-        }, 2200);
-      }
-    });
-  </script>
-<!-- Global UX Helper: Universal Result Copy & Toast -->
-<script>
-    window.showToastNotification = function(msg) {
-      let toast = document.getElementById('global-ux-toast');
-      if (!toast) {
-        toast = document.createElement('div');
-        toast.id = 'global-ux-toast';
-        toast.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1e293b;color:#fff;padding:12px 24px;border-radius:9999px;font-size:14px;font-weight:600;box-shadow:0 10px 25px rgba(0,0,0,0.2);z-index:9999;transition:all 0.3s ease;opacity:0;pointer-events:none;';
-        document.body.appendChild(toast);
-      }
-      toast.textContent = msg;
-      toast.style.opacity = '1';
-      toast.style.transform = 'translateX(-50%) translateY(0)';
-      setTimeout(() => {
-        toast.style.opacity = '0';
-        toast.style.transform = 'translateX(-50%) translateY(10px)';
-      }, 2200);
-    };
-
-    window.copyResultToClipboard = function(customText) {
-      let textToCopy = customText;
-      if (!textToCopy) {
-        const resEl = document.querySelector('#resultBox, .result-card, #result, [id*="result"], [class*="result"], [id*="res"]');
-        textToCopy = resEl ? resEl.innerText.trim() : document.title;
-      }
-      const fullText = textToCopy + "\n\n👉 바로가기: " + window.location.href;
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(fullText).then(() => {
-          window.showToastNotification('결과가 클립보드에 복사되었습니다! 🎉');
-        }).catch(() => fallbackCopy(fullText));
-      } else {
-        fallbackCopy(fullText);
-      }
-    };
-
-    function fallbackCopy(text) {
-      const ta = document.createElement('textarea');
-      ta.value = text;
-      ta.style.position = 'fixed';
-      ta.style.left = '-9999px';
-      document.body.appendChild(ta);
-      ta.focus();
-      ta.select();
-      try {
-        document.execCommand('copy');
-        window.showToastNotification('결과가 클립보드에 복사되었습니다! 🎉');
-      } catch (e) {
-        window.showToastNotification('복사에 실패했습니다.');
-      }
-      document.body.removeChild(ta);
-    }
-  </script>
-
-    <!-- E-E-A-T FAQ Section (16-5 헌법 준수) -->
-    <section class="mt-8 mb-8 space-y-3">
-      <h2 class="text-xl font-bold text-gray-900 mb-4">자주 묻는 질문 (FAQ)</h2>
-      <details class="bg-gray-50 p-4 rounded-xl border border-gray-200 group">
-        <summary class="font-bold text-gray-800 cursor-pointer list-none flex justify-between items-center">
-          <span>입력한 데이터가 외부 서버에 저장되나요?</span>
-          <span class="text-blue-600 group-open:rotate-180 transition transform">▼</span>
-        </summary>
-        <p class="mt-3 text-gray-600 text-xs leading-relaxed">
-          아닙니다. 100% 사용자의 기기 브라우저 메모리 내에서만 연산되며, 어떠한 금융/개인 데이터도 외부로 전송되지 않습니다.
-        </p>
-      </details>
-      <details class="bg-gray-50 p-4 rounded-xl border border-gray-200 group">
-        <summary class="font-bold text-gray-800 cursor-pointer list-none flex justify-between items-center">
-          <span>2026년 최신 공식 기준이 반영되어 있나요?</span>
-          <summary class="text-blue-600 group-open:rotate-180 transition transform"></summary>
-        </summary>
-        <p class="mt-3 text-gray-600 text-xs leading-relaxed">
-          네, 최신 고시된 법령 및 공공 기준 요율을 상수로 반영하여 정확한 산출 결과를 제공합니다.
-        </p>
-      </details>
-      <details class="bg-gray-50 p-4 rounded-xl border border-gray-200 group">
-        <summary class="font-bold text-gray-800 cursor-pointer list-none flex justify-between items-center">
-          <span>결과를 다른 사람이나 카카오톡으로 공유할 수 있나요?</span>
-          <span class="text-blue-600 group-open:rotate-180 transition transform">▼</span>
-        </summary>
-        <p class="mt-3 text-gray-600 text-xs leading-relaxed">
-          '결과 복사하기' 버튼을 누르면 정돈된 요약 텍스트와 바로가기 주소가 클립보드에 자동 복사됩니다.
-        </p>
-      </details>
     </section>
 
+    <section class="card result" aria-labelledby="out-h">
+      <h2 id="out-h">2. 예상 요금</h2>
+      <p class="hint" id="r-model"></p>
+      <div class="kpis">
+        <div class="kpi big"><div class="v" id="r-month">$0.00</div><div class="w" id="w-month" hidden></div><div class="k">한 달</div></div>
+        <div class="kpi"><div class="v" id="r-req">$0.00</div><div class="w" id="w-req" hidden></div><div class="k">요청 1회</div></div>
+        <div class="kpi"><div class="v" id="r-day">$0.00</div><div class="w" id="w-day" hidden></div><div class="k">하루</div></div>
+        <div class="kpi"><div class="v" id="r-year">$0.00</div><div class="w" id="w-year" hidden></div><div class="k">1년 (12개월)</div></div>
+        <div class="kpi"><div class="v" id="r-split">$0 + $0</div><div class="k">요청 1회의 입력 + 출력</div></div>
+      </div>
+      <div id="notes"></div>
+      <div class="actions">
+        <button type="button" class="btn" id="btn-copy">📋 결과 복사</button>
+        <button type="button" class="btn" id="btn-share">📤 공유하기</button>
+      </div>
+      <textarea id="copy-box" class="copy-box" readonly hidden aria-label="복사할 결과"></textarea>
+      <h3>같은 사용량을 모든 모델로 (한 달)</h3>
+      <div class="tscroll"><table aria-describedby="out-h"><thead><tr><th scope="col">모델</th><th scope="col" class="n">입력 / 출력 (1M당)</th><th scope="col" class="n">한 달</th></tr></thead><tbody id="cmp"></tbody></table></div>
+    </section>
+  </div>
+
+<!-- ADSENSE START: mid (right after the result card) -->
+<div class="ad-box ad-mid">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="1186914926" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<!-- ADSENSE END: mid -->
+
+  <section class="card" aria-labelledby="how-h">
+    <h2 id="how-h">🧮 계산 방법</h2>
+    <ul>
+      <li><strong>요청 1회:</strong> 입력 토큰 ÷ 1,000,000 × 입력 가격 + 출력 토큰 ÷ 1,000,000 × 출력 가격. 예: 입력 1,000토큰과 출력 500토큰을 1M 토큰당 $2와 $10으로 계산하면 $0.002 + $0.005 = $0.007입니다.</li>
+      <li><strong>하루·한 달·1년:</strong> 요청 1회 요금 × 하루 요청 수, 다시 × 한 달 사용일, 다시 × 12. 하루 요청 수가 0이면 요금도 0입니다.</li>
+      <li><strong>원화:</strong> 달러 금액 × 넣은 환율을 원 단위로 반올림합니다. 환율 칸을 비워 두면 달러로만 보여 줍니다.</li>
+      <li><strong>배치:</strong> 세 공급사 모두 여기 나온 모델의 배치 API 가격을 입력·출력 모두 50% 할인으로 안내합니다.</li>
+      <li><strong>긴 프롬프트:</strong> 여기 나온 GPT-6 모델은 요청 1회의 입력이 272,000토큰을 넘으면, Gemini 3.1 Pro Preview는 프롬프트가 200,000토큰을 넘으면 긴 컨텍스트 가격을 받습니다. 여기 나온 Claude 모델은 컨텍스트 전체에서 같은 가격입니다.</li>
+      <li><strong>가격 변경:</strong> Google은 Gemini 3.8 Flash 가격이 2027년 1월 1일부터 오른다고 안내합니다. 계산기는 오늘 날짜의 가격을 쓰고, 바뀐 뒤의 요금도 함께 보여 줍니다.</li>
+    </ul>
+    <h3>기본 가격 (표준, 1M 토큰당 달러)</h3>
+    <div class="tscroll"><table><thead><tr><th scope="col">모델</th><th scope="col" class="n">입력</th><th scope="col" class="n">출력</th><th scope="col">참고</th></tr></thead><tbody id="ptable"></tbody></table></div>
+    <p class="src">출처 (2026년 9월 30일 확인): OpenAI API pricing (platform.openai.com/docs/pricing), Anthropic Claude API 가격 안내 (docs.claude.com, About Claude › Pricing), Google Gemini Developer API 가격 안내 유료 등급 (ai.google.dev/gemini-api/docs/pricing, 2026년 9월 24일 갱신). 영어 토큰 어림 규칙: Anthropic 가격 안내 FAQ. 각 제품명은 해당 회사의 상표이며, 이 페이지는 어느 공급사와도 관련이 없습니다.</p>
+  </section>
+
+  <section class="card" id="faq" aria-labelledby="faq-h">
+    <h2 id="faq-h">❓ 자주 묻는 질문</h2>
+    <div class="faq-item"><h3>요금은 어떻게 계산하나요?</h3><p>요청 1회 요금은 입력 토큰 ÷ 1,000,000 × 입력 가격에 출력 토큰 ÷ 1,000,000 × 출력 가격을 더한 값입니다. 하루 요금은 여기에 하루 요청 수를, 한 달 요금은 하루 요금에 한 달 사용일을 곱하고, 1년은 12개월로 계산합니다. 배치 API를 고르면 입력과 출력 가격이 모두 절반이 됩니다.</p></div>
+    <div class="faq-item"><h3>가격은 언제 기준인가요?</h3><p>기본 가격은 2026년 9월 30일에 각 공급사의 공식 가격 페이지에서 확인한 표준 종량제 달러 가격입니다. 가격은 자주 바뀌므로 예산을 정하기 전에 다시 확인하거나, 모델 목록의 직접 입력한 가격으로 계산하세요.</p></div>
+    <div class="faq-item"><h3>원화로는 얼마인가요?</h3><p>환율 칸에 원/달러 환율을 넣으면 달러 금액에 그 환율을 곱해 원화 금액도 함께 보여 줍니다. 이 페이지는 환율을 자동으로 가져오지 않습니다. 실제로 청구되는 원화는 결제 카드사의 환율과 해외 결제 수수료에 따라 달라집니다.</p></div>
+    <div class="faq-item"><h3>한국어 글은 몇 토큰인가요?</h3><p>영어는 대략 4글자 또는 0.75단어가 1토큰이라는 어림 규칙이 있지만(Anthropic 안내), 한국어는 모델의 토크나이저마다 차이가 커서 이 계산기는 한국어 글자 수로 토큰을 어림하지 않습니다. 공급사가 제공하는 토큰 세기 기능으로 잰 값을 넣어 주세요. Anthropic은 Claude 4.7 이후 모델이 같은 글에서 약 30% 더 많은 토큰을 만든다고 안내합니다.</p></div>
+    <div class="faq-item"><h3>포함되지 않는 비용은 무엇인가요?</h3><p>세금, 프롬프트 캐싱 할인, 웹 검색 같은 도구 요금, 이미지·오디오 토큰, 지역·데이터 보관 위치에 따른 추가 요금, 별도 계약 할인은 포함하지 않습니다. 일부 공급사는 생각(thinking) 토큰을 출력으로 청구하므로 출력 토큰에 함께 넣어 계산하세요.</p></div>
+  </section>
+
+  <section class="card notice" aria-labelledby="note-h">
+    <h2 id="note-h">⚠️ 알아 두세요</h2>
+    <p>이 결과는 어림값이며 견적이나 청구서가 아닙니다. 실제 요금은 공급사가 센 토큰 수, 계정, 지역, 사용한 기능에 따라 달라지고 가격은 언제든 바뀔 수 있습니다. 예산을 정하기 전에 공급사의 현재 가격 페이지를 확인하세요.</p>
+  </section>
+</main>
+
+<!-- ADSENSE START: bottom -->
+<div class="ad-box ad-bottom">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="3416334507" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<!-- ADSENSE END: bottom -->
+
+<footer class="footer">
+  <p>무료 AI API 요금 계산기입니다. 입력한 내용은 저장하거나 보내지 않습니다.</p>
+  <p><a href="/privacy.html">개인정보처리방침</a> | <a href="/terms.html">이용약관</a></p>
+</footer>
+
+<div id="global-ux-toast" class="toast" role="status" aria-live="polite"></div>
+
+<!-- LOGIC START -->
+<script>
+(function () {
+  'use strict';
+  var SITE = 'https://aiapi.enjoy-onepage.com';
+  var TOOL_NAME = 'AI API 요금 계산기';
+  var CHECKED = '2026년 9월 30일';
+  /* Official standard prices, USD per 1M tokens, checked 2026-09-30 (see the sources under the price table) */
+  var MODELS = [
+    { id: 'gpt-6-astra', v: 'OpenAI', n: 'GPT-6 Astra', i: 10.00, o: 50.00, lo: 272000, li: 20.00, lx: 75.00 },
+    { id: 'gpt-6.1-sol', v: 'OpenAI', n: 'GPT-6.1 Sol', i: 2.00, o: 10.00, lo: 272000, li: 4.00, lx: 15.00 },
+    { id: 'gpt-6-luna', v: 'OpenAI', n: 'GPT-6 Luna', i: 0.10, o: 0.50, lo: 272000, li: 0.20, lx: 0.75 },
+    { id: 'gpt-5.4-mini', v: 'OpenAI', n: 'GPT-5.4 mini', i: 0.75, o: 4.50 },
+    { id: 'claude-fable-5.1', v: 'Anthropic', n: 'Claude Fable 5.1', i: 10.00, o: 50.00 },
+    { id: 'claude-opus-5.5', v: 'Anthropic', n: 'Claude Opus 5.5', i: 4.00, o: 20.00 },
+    { id: 'claude-sonnet-5.5', v: 'Anthropic', n: 'Claude Sonnet 5.5', i: 2.00, o: 10.00 },
+    { id: 'claude-haiku-4.5', v: 'Anthropic', n: 'Claude Haiku 4.5', i: 1.00, o: 5.00 },
+    { id: 'gemini-3.1-pro-preview', v: 'Google', n: 'Gemini 3.1 Pro Preview', i: 2.00, o: 12.00, lo: 200000, li: 4.00, lx: 18.00 },
+    { id: 'gemini-3.8-flash', v: 'Google', n: 'Gemini 3.8 Flash', i: 0.75, o: 3.75, ch: { from: '2027-01-01', label: '2027년 1월 1일', i: 1.50, o: 7.50 } },
+    { id: 'gemini-3.5-flash-lite', v: 'Google', n: 'Gemini 3.5 Flash-Lite', i: 0.30, o: 2.50 },
+    { id: 'gemini-2.5-flash', v: 'Google', n: 'Gemini 2.5 Flash', i: 0.30, o: 2.50 },
+    { id: 'gemini-2.5-flash-lite', v: 'Google', n: 'Gemini 2.5 Flash-Lite', i: 0.10, o: 0.40 }
+  ];
+  var LIM = { tin: [0, 10000000], tout: [0, 10000000], rpd: [0, 100000000], dpm: [1, 31], price: [0, 10000], fx: [100, 10000] };
+  var OLD_KEYS = ['aiCalcModel', 'aiCalcInput', 'aiCalcOutput', 'aiCalcCalls', 'aiCalcRate'];
+  var HANGUL = /[\u1100-\u11FF\u3130-\u318F\uA960-\uA97F\uAC00-\uD7A3\uD7B0-\uD7FF]/g;
+
+  function $(id) { return document.getElementById(id); }
+  function on(id, ev, fn) { var el = $(id); if (el) el.addEventListener(ev, fn); }
+  function setText(id, t) { var el = $(id); if (el) el.textContent = t; }
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function fmtInt(n) { return n.toLocaleString('ko-KR'); }
+  function price(p) { return '$' + (Math.round(p * 1000) / 1000).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 3 }); }
+  function money(x) {
+    if (!x) return '$0.00';
+    /* Intl, not toPrecision: toPrecision switches to exponent form ("5.00e-7") below one millionth of a dollar */
+    if (x < 0.01) return '$' + x.toLocaleString('en-US', { minimumSignificantDigits: 3, maximumSignificantDigits: 3 });
+    return '$' + x.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+  function fmtFx(v) { return v.toLocaleString('ko-KR', { maximumFractionDigits: 2 }); }
+  /* won amount for a USD amount at the rate the user entered; '' when no rate was entered */
+  function won(x) {
+    if (U.fx == null) return '';
+    var w = x * U.fx;
+    if (!w) return '0원';
+    if (w < 1) return '1원 미만';
+    return '약 ' + w.toLocaleString('ko-KR', { maximumFractionDigits: 0 }) + '원';
+  }
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+  function todayKey() { var d = new Date(); return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate()); }
+  function byId(id) { for (var k = 0; k < MODELS.length; k++) if (MODELS[k].id === id) return MODELS[k]; return null; }
+
+  /* ---------- price rules: today's price (scheduled changes), long-context tier, batch ---------- */
+  function ratesFor(m, tin, batch, day) {
+    var i = m.i, o = m.o, long = false, changed = false;
+    if (m.ch && day >= m.ch.from) { i = m.ch.i; o = m.ch.o; changed = true; }
+    if (m.lo && tin > m.lo) { i = m.li; o = m.lx; long = true; }
+    if (batch) { i /= 2; o /= 2; }
+    return { i: i, o: o, long: long, changed: changed };
+  }
+  function costs(r, u) {
+    var inC = u.tin / 1e6 * r.i, outC = u.tout / 1e6 * r.o, req = inC + outC, day = req * u.rpd, month = day * u.dpm;
+    return { inC: inC, outC: outC, req: req, day: day, month: month, year: month * 12 };
+  }
+
+  /* ---------- inputs (validated; the last valid value is kept while a field is being edited) ---------- */
+  var U = { m: 'claude-sonnet-5.5', tin: 1000, tout: 500, rpd: 100, dpm: 30, batch: false, ci: 2, co: 10, fx: null };
+  function num(id, lim, isInt) {
+    var raw = ($(id) ? $(id).value : '').trim();
+    if (raw === '') return { ok: false, empty: true };
+    var v = Number(raw);
+    if (!isFinite(v) || v < lim[0] || v > lim[1] || (isInt && !Number.isInteger(v))) return { ok: false };
+    return { ok: true, v: v };
+  }
+  var LABEL = { tin: '요청당 입력 토큰은', tout: '요청당 출력 토큰은', rpd: '하루 요청 수는', dpm: '한 달 사용일은', 'c-in': '입력 가격은', 'c-out': '출력 가격은' };
+  function read() {
+    var errs = [];
+    [['tin', LIM.tin, true], ['tout', LIM.tout, true], ['rpd', LIM.rpd, true], ['dpm', LIM.dpm, true]].forEach(function (f) {
+      var r = num(f[0], f[1], f[2]);
+      if (r.ok) U[f[0]] = r.v; else errs.push(LABEL[f[0]] + ' ' + fmtInt(f[1][0]) + '부터 ' + fmtInt(f[1][1]) + '까지의 정수로 넣어 주세요.');
+    });
+    if (U.m === 'custom') {
+      [['c-in', 'ci'], ['c-out', 'co']].forEach(function (f) {
+        var r = num(f[0], LIM.price, false);
+        if (r.ok) U[f[1]] = r.v; else errs.push(LABEL[f[0]] + ' 1M 토큰당 $0부터 $10,000까지로 넣어 주세요.');
+      });
+    }
+    var fx = num('fx', LIM.fx, false);
+    if (fx.ok) U.fx = fx.v; else if (fx.empty) U.fx = null; else errs.push('환율은 100부터 10,000까지의 숫자로 넣어 주세요 (원/달러).');
+    U.batch = !!($('batch') && $('batch').checked);
+    var e = $('err'); if (e) { e.textContent = errs.join(' '); e.hidden = !errs.length; }
+  }
+  function current() { return U.m === 'custom' ? { id: 'custom', v: '', n: '직접 입력한 가격', i: U.ci, o: U.co } : byId(U.m); }
+
+  /* ---------- rendering ---------- */
+  function buildSelects() {
+    var s = $('model'); if (!s) return;
+    ['OpenAI', 'Anthropic', 'Google'].forEach(function (v) {
+      var g = document.createElement('optgroup'); g.label = v;
+      MODELS.filter(function (m) { return m.v === v; }).forEach(function (m) { var o = el('option', '', m.n); o.value = m.id; g.appendChild(o); });
+      s.appendChild(g);
+    });
+    var c = el('option', '', '직접 입력한 가격…'); c.value = 'custom'; s.appendChild(c);
+    var pt = $('ptable');
+    if (pt) MODELS.forEach(function (m) {
+      var tr = el('tr'), note = [];
+      if (m.lo) note.push('요청당 입력 ' + fmtInt(m.lo) + '토큰 초과: ' + price(m.li) + ' / ' + price(m.lx) + '.');
+      if (m.ch) note.push(m.ch.label + '부터: ' + price(m.ch.i) + ' / ' + price(m.ch.o) + '.');
+      tr.appendChild(el('td', '', m.v + ' ' + m.n)); tr.appendChild(el('td', 'n', price(m.i))); tr.appendChild(el('td', 'n', price(m.o))); tr.appendChild(el('td', '', note.join(' ')));
+      pt.appendChild(tr);
+    });
+  }
+  function setWon(id, x) { var e = $(id); if (!e) return; var t = won(x); e.textContent = t; e.hidden = !t; }
+  var LAST = null;
+  function render() {
+    read();
+    var day = todayKey(), m = current(), r = ratesFor(m, U.tin, U.batch, day), c = costs(r, U);
+    var cu = $('custom'); if (cu) cu.hidden = U.m !== 'custom';
+    var cb = $('copy-box'); if (cb) cb.hidden = true;
+    setText('price-line', (m.id === 'custom' ? '직접 입력한 가격: ' : m.v + ' ' + m.n + ': ') + '1M 토큰당 입력 ' + price(r.i) + ' · 출력 ' + price(r.o) +
+      (U.batch ? ' (배치 50% 할인 적용)' : '') + (m.id === 'custom' ? '' : ' · ' + CHECKED + ' 확인'));
+    setText('r-model', (m.id === 'custom' ? '직접 입력한 가격' : m.v + ' ' + m.n) + ' · 입력 ' + fmtInt(U.tin) + ' + 출력 ' + fmtInt(U.tout) + '토큰 × 하루 ' + fmtInt(U.rpd) + '회 × 한 달 ' + U.dpm + '일' +
+      (U.fx != null ? ' · 환율 ' + fmtFx(U.fx) + '원' : ''));
+    setText('r-req', money(c.req)); setText('r-day', money(c.day)); setText('r-month', money(c.month)); setText('r-year', money(c.year));
+    setWon('w-req', c.req); setWon('w-day', c.day); setWon('w-month', c.month); setWon('w-year', c.year);
+    setText('r-split', money(c.inC) + ' + ' + money(c.outC));
+    var notes = $('notes');
+    if (notes) {
+      notes.innerHTML = '';
+      if (r.long) notes.appendChild(el('p', 'note', '긴 프롬프트 가격 적용: 요청 1회의 입력이 ' + fmtInt(m.lo) + '토큰을 넘습니다.'));
+      if (m.ch && !r.changed) {
+        var r2 = ratesFor(m, U.tin, U.batch, m.ch.from), c2 = costs(r2, U), w2 = won(c2.month);
+        notes.appendChild(el('p', 'note', 'Google 안내: ' + m.n + ' 가격은 ' + m.ch.label + '부터 1M 토큰당 입력 ' + price(m.ch.i) + ' · 출력 ' + price(m.ch.o) + '입니다. 그 가격이면 이 사용량은 한 달 ' + money(c2.month) + (w2 ? ' (' + w2 + ')' : '') + '입니다.'));
+      }
+      if (m.ch && r.changed) notes.appendChild(el('p', 'note', m.ch.label + '부터 적용된 가격입니다.'));
+    }
+    var rows = MODELS.map(function (x) { var rx = ratesFor(x, U.tin, U.batch, day); return { m: x, r: rx, c: costs(rx, U) }; });
+    if (U.m === 'custom') rows.push({ m: m, r: r, c: c });
+    rows.sort(function (a, b) { return a.c.month - b.c.month || a.m.n.localeCompare(b.m.n); });
+    var tb = $('cmp');
+    if (tb) {
+      tb.innerHTML = '';
+      rows.forEach(function (x) {
+        var tr = el('tr', x.m.id === m.id ? 'sel' : '');
+        tr.setAttribute('data-id', x.m.id);
+        tr.appendChild(el('td', '', (x.m.v ? x.m.v + ' ' : '') + x.m.n + (x.r.long ? ' (긴 프롬프트)' : '')));
+        tr.appendChild(el('td', 'n', price(x.r.i) + ' / ' + price(x.r.o)));
+        var td = el('td', 'n', money(x.c.month)), w = won(x.c.month);
+        if (w) td.appendChild(el('span', 'krw', w));
+        tr.appendChild(td);
+        tb.appendChild(tr);
+      });
+    }
+    LAST = { m: m, c: c };
+  }
+
+  /* ---------- token estimate: characters ÷ 4 for text without Hangul (a rule of thumb for English only) ---------- */
+  var estTokens = 0;
+  function renderEst() {
+    var t = ($('sample') ? $('sample').value : '').normalize('NFC'), chars = Array.from(t).length, ko = (t.match(HANGUL) || []).length;
+    estTokens = chars && !ko ? Math.max(1, Math.round(chars / 4)) : 0;
+    if (!chars) setText('est', '글을 붙여 넣으면 토큰 수를 어림합니다.');
+    else if (ko) setText('est', fmtInt(chars) + '자 중 한글 ' + fmtInt(ko) + '자. 한국어는 모델의 토크나이저마다 토큰 수 차이가 커서 글자 수로 어림하지 않습니다. 공급사의 토큰 세기 기능으로 잰 값을 위 칸에 넣어 주세요.');
+    else setText('est', fmtInt(chars) + '자 ≈ ' + fmtInt(estTokens) + '토큰 (글자 ÷ 4, 영어 기준 어림 규칙이며 모델마다 다를 수 있습니다).');
+    ['btn-use-in', 'btn-use-out'].forEach(function (id) { var b = $(id); if (b) b.disabled = !estTokens || estTokens > LIM.tin[1]; });
+  }
+
+  /* ---------- toast · copy · share (Web Share -> clipboard -> visible text to copy by hand) ---------- */
+  var toastTimer = null;
+  function showToastNotification(msg) {
+    var t = $('global-ux-toast'); if (!t) return;
+    t.textContent = msg; t.classList.add('show');
+    clearTimeout(toastTimer); toastTimer = setTimeout(function () { t.classList.remove('show'); }, 2200);
+  }
+  var COPIED = '복사했습니다. 원하는 곳에 붙여 넣으세요.';
+  function copyFailed(text) {
+    var b = $('copy-box');
+    if (b) { b.value = text; b.hidden = false; b.focus(); b.select(); }
+    showToastNotification('복사하지 못했습니다. 아래 글을 직접 선택해 복사해 주세요.');
+  }
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select();
+    var ok = false; try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    if (ok) showToastNotification(COPIED); else copyFailed(text);
+  }
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(function () { showToastNotification(COPIED); }, function () { fallbackCopy(text); });
+    } else { fallbackCopy(text); }
+  }
+  function link() {
+    var q = new URLSearchParams();
+    q.set('m', U.m); q.set('in', String(U.tin)); q.set('out', String(U.tout)); q.set('rpd', String(U.rpd)); q.set('dpm', String(U.dpm));
+    if (U.batch) q.set('batch', '1');
+    if (U.m === 'custom') { q.set('cin', String(U.ci)); q.set('cout', String(U.co)); }
+    if (U.fx != null) q.set('fx', String(U.fx));
+    return SITE + '/?' + q.toString();
+  }
+  function summary() {
+    if (!LAST) return '';
+    var custom = LAST.m.id === 'custom';
+    var name = custom ? '직접 입력한 가격(1M 토큰당 ' + price(U.ci) + ' / ' + price(U.co) + ')' : LAST.m.n;
+    var w = won(LAST.c.month);
+    return '🧮 AI API 요금: ' + name + (U.batch ? ' (배치)' : '') + ' · 입력 ' + fmtInt(U.tin) + ' + 출력 ' + fmtInt(U.tout) + '토큰 × 하루 ' + fmtInt(U.rpd) + '회 ≈ 한 달 ' + money(LAST.c.month) +
+      (w ? ' (' + w + ', 환율 ' + fmtFx(U.fx) + '원)' : '') + (custom ? '' : ' · ' + CHECKED + ' 가격') + '.\n👉 ' + TOOL_NAME + ': ' + link();
+  }
+
+  /* ---------- events ---------- */
+  on('calc', 'input', function (e) { if (e.target && e.target.id === 'sample') { renderEst(); return; } render(); });
+  on('calc', 'change', function (e) {
+    if (e.target && e.target.id === 'model') {
+      U.m = e.target.value;
+      if (U.m === 'custom') { if ($('c-in') && !$('c-in').value) $('c-in').value = String(U.ci); if ($('c-out') && !$('c-out').value) $('c-out').value = String(U.co); }
+    }
+    if (e.target && e.target.id === 'sample') return;
+    render();
+  });
+  on('btn-use-in', 'click', function () { if (estTokens) { $('tin').value = String(estTokens); render(); showToastNotification('글에서 어림한 ' + fmtInt(estTokens) + '토큰을 요청당 입력 토큰에 넣었습니다.'); } });
+  on('btn-use-out', 'click', function () { if (estTokens) { $('tout').value = String(estTokens); render(); showToastNotification('글에서 어림한 ' + fmtInt(estTokens) + '토큰을 요청당 출력 토큰에 넣었습니다.'); } });
+  on('btn-copy', 'click', function () { var t = summary(); if (t) copyText(t); });
+  on('btn-share', 'click', function () {
+    var text = summary(); if (!text) return;
+    if (navigator.share) { navigator.share({ title: TOOL_NAME, text: text, url: link() }).catch(function (e) { if (!e || e.name !== 'AbortError') copyText(text); }); }
+    else { copyText(text); }
+  });
+
+  /* ---------- start: link values (?m=…&in=…&out=…&rpd=…&dpm=…&batch=1&cin=…&cout=…&fx=…) ---------- */
+  (function init() {
+    /* the previous version of this page kept its inputs in localStorage; this one saves nothing, so clear them */
+    try { OLD_KEYS.forEach(function (k) { localStorage.removeItem(k); }); } catch (e) { /* storage blocked: nothing to clear */ }
+    buildSelects();
+    var q; try { q = new URLSearchParams(location.search); } catch (e) { q = null; }
+    var ok = function (v, lim, isInt) { if (v === null || v.trim() === '') return null; var n = Number(v); return isFinite(n) && n >= lim[0] && n <= lim[1] && (!isInt || Number.isInteger(n)) ? n : null; };
+    if (q) {
+      var m = q.get('m');
+      if (m === 'custom' || byId(m)) U.m = m;
+      var v;
+      if ((v = ok(q.get('in'), LIM.tin, true)) !== null) U.tin = v;
+      if ((v = ok(q.get('out'), LIM.tout, true)) !== null) U.tout = v;
+      if ((v = ok(q.get('rpd'), LIM.rpd, true)) !== null) U.rpd = v;
+      if ((v = ok(q.get('dpm'), LIM.dpm, true)) !== null) U.dpm = v;
+      if ((v = ok(q.get('cin'), LIM.price, false)) !== null) U.ci = v;
+      if ((v = ok(q.get('cout'), LIM.price, false)) !== null) U.co = v;
+      if ((v = ok(q.get('fx'), LIM.fx, false)) !== null) U.fx = v;
+      U.batch = q.get('batch') === '1';
+    }
+    $('model').value = U.m; $('tin').value = String(U.tin); $('tout').value = String(U.tout); $('rpd').value = String(U.rpd); $('dpm').value = String(U.dpm);
+    $('c-in').value = String(U.ci); $('c-out').value = String(U.co); $('batch').checked = U.batch; $('fx').value = U.fx != null ? String(U.fx) : '';
+    render(); renderEst();
+  })();
+})();
+</script>
+<!-- LOGIC END -->
 </body>
 </html>

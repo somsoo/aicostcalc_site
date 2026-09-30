@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="ko">
 <head>
+<meta name="robots" content="noindex, follow">
   <link rel="canonical" href="https://aiapi.enjoy-onepage.com/guides/claude-cost.html">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +10,6 @@
   <meta name="keywords" content="Claude API 프롬프트 캐싱, Prompt Caching, Anthropic 캐시 할인, 토큰 비용" />
   <meta name="theme-color" content="#8b5cf6" />
   <link rel="icon" href="../favicon.ico">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
   <style>
     :root {
       --primary: #8b5cf6;
@@ -143,6 +143,7 @@
 
 </head>
 <body>
+<div role="note" data-stale-notice style="max-width:760px;margin:12px auto;padding:12px 16px;border:1px solid #fcd34d;background:#fffbeb;border-radius:12px;color:#7c2d12;font:600 15px/1.6 -apple-system,BlinkMacSystemFont,'Malgun Gothic',sans-serif;word-break:keep-all">⚠️ 이 글의 가격과 모델 정보는 작성 당시 기준이라 지금과 다릅니다. 여기 나온 모델 중 일부는 더 이상 제공되지 않을 수 있습니다. 2026년 9월 30일에 공식 가격 페이지에서 확인한 가격으로 계산하려면 <a href="/" style="color:#1d4ed8">AI API 요금 계산기</a>를 이용하세요.</div>
   <div class="nav-bar">
     <a href="../index.html">← AI API 비용 계산기 바로가기</a>
     <span style="font-size:0.85rem; color:#94a3b8;">실무 가이드</span>
@@ -150,22 +151,9 @@
   
   <div class="container">
     <img src="../images/guide3.webp" alt="Anthropic Claude API 프롬프트 캐싱 작동 원리 및 비용 절감 그래프" class="guide-hero-img" loading="lazy" />
-    <span class="meta-tag">검증된 실무 정보 · 2026 최신 개정판</span>
     <h1>Claude 프롬프트 캐싱: 입력 토큰 비용을 90% 줄이는 실전 테크닉</h1>
     
-    <!-- Ad Slot Middle -->
-    <div class="ad-wrap">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-2228289204702106"
-           data-ad-slot="3824727725"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-
-    
-        <section class="guide-section">
+    <section class="guide-section">
             <h2>프롬프트 캐싱(Prompt Caching)의 파격적인 경제성</h2>
             <p>Anthropic의 프롬프트 캐싱은 1,024토큰 이상의 정적 데이터(매뉴얼, 법률 문서, 코드베이스 등)를 GPU 캐시에 5분간 유지하는 기술입니다. 캐시가 히트(Hit)되면 기본 입력 토큰 단가의 단 10%(90% 할인) 가격으로 요청을 처리합니다.</p>
             <div class='callout'><strong>비용 비교:</strong> Claude 3.5 Sonnet 기본 입력 $3.00/1M -> 캐시 읽기 $0.30/1M (90% 세일 효과).</div>
@@ -191,17 +179,6 @@
             <p>A. 5분 이내에 캐시된 요청이 한 번이라도 들어오면 TTL 타이머가 다시 5분으로 자동 리셋되어 장시간 대화 세션 동안 계속 유지됩니다.</p>
         </div>
         
-    </div>
-
-    <!-- Ad Slot Bottom -->
-    <div class="ad-wrap">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-2228289204702106"
-           data-ad-slot="3416334507"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
     <a href="../index.html" class="home-btn">AI API 비용 계산기 계산기 이용하기</a>

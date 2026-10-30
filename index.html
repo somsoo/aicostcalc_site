@@ -35,7 +35,7 @@
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "All",
       "inLanguage": "ko",
-      "description": "AI API 토큰 요금을 계산하는 무료 계산기입니다. 요청당 입력·출력 토큰과 하루 요청 수를 넣으면 요청 1회·하루·한 달·1년 요금을 보여 주고, 각 공급사 공식 가격 페이지에서 확인한 가격으로 13개 모델을 비교합니다. 환율을 넣으면 원화 금액도 함께 보여 줍니다.",
+      "description": "AI API 토큰 요금을 계산하는 무료 계산기입니다. 요청당 입력·출력 토큰과 하루 요청 수를 넣으면 요청 1회·하루·한 달·1년 요금을 보여 주고, 각 공급사 공식 가격 페이지에서 확인한 가격으로 14개 모델을 비교합니다. 환율을 넣으면 원화 금액도 함께 보여 줍니다.",
       "image": "https://aiapi.enjoy-onepage.com/og-image.png",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
     },
@@ -155,7 +155,7 @@ tr.sel td{background:#eff4ff;font-weight:700}
 <body>
 <header class="header">
   <h1>AI API 요금 계산기</h1>
-  <div class="header-sub">요청 1회·하루·한 달·1년 요금 · 13개 모델 · 2026년 9월 30일 가격 확인</div>
+  <div class="header-sub">요청 1회·하루·한 달·1년 요금 · 14개 모델 · 2026년 9월 30일 가격 확인</div>
 </header>
 
 <!-- ADSENSE START: top -->
@@ -234,7 +234,7 @@ tr.sel td{background:#eff4ff;font-weight:700}
       <li><strong>하루·한 달·1년:</strong> 요청 1회 요금 × 하루 요청 수, 다시 × 한 달 사용일, 다시 × 12. 하루 요청 수가 0이면 요금도 0입니다.</li>
       <li><strong>원화:</strong> 달러 금액 × 넣은 환율을 원 단위로 반올림합니다. 환율 칸을 비워 두면 달러로만 보여 줍니다.</li>
       <li><strong>배치:</strong> 세 공급사 모두 여기 나온 모델의 배치 API 가격을 입력·출력 모두 50% 할인으로 안내합니다.</li>
-      <li><strong>긴 프롬프트:</strong> 여기 나온 GPT-6 모델은 요청 1회의 입력이 272,000토큰을 넘으면, Gemini 3.1 Pro Preview는 프롬프트가 200,000토큰을 넘으면 긴 컨텍스트 가격을 받습니다. 여기 나온 Claude 모델은 컨텍스트 전체에서 같은 가격입니다.</li>
+      <li><strong>긴 프롬프트:</strong> 여기 나온 GPT-6 모델은 요청 1회의 입력이 272,000토큰을 넘으면, Gemini 3.1 Pro Preview는 프롬프트가 200,000토큰을 넘으면 긴 컨텍스트 가격을 받습니다. Claude Haiku 5.5는 요청 1회의 입력이 100,000토큰을 넘으면 긴 프롬프트 가격을 받고, 나머지 Claude 모델은 컨텍스트 전체에서 같은 가격입니다(2026년 10월 30일 Anthropic 가격 페이지 재확인).</li>
       <li><strong>가격 변경:</strong> Google은 Gemini 3.8 Flash 가격이 2027년 1월 1일부터 오른다고 안내합니다. 계산기는 오늘 날짜의 가격을 쓰고, 바뀐 뒤의 요금도 함께 보여 줍니다.</li>
     </ul>
     <h3>기본 가격 (표준, 1M 토큰당 달러)</h3>
@@ -264,6 +264,9 @@ tr.sel td{background:#eff4ff;font-weight:700}
 </div>
 <!-- ADSENSE END: bottom -->
 
+<!-- KIRO:TOPIC-LINKS START -->
+<section style="max-width:760px;margin:24px auto;padding:0 16px"><h2 style="font-size:1.1rem;font-weight:800;margin:0 0 8px">📌 자세한 안내</h2><a href="/claude-api-pricing.html" style="display:block;padding:10px 12px;margin:6px 0;border:1px solid #e2e8f0;border-radius:10px;background:#fff;color:#1e293b;font-weight:600;text-decoration:none">클로드(Claude) API 비용: 모델별 토큰 요금과 한 달 계산 예 →</a><a href="/gemini-api-pricing.html" style="display:block;padding:10px 12px;margin:6px 0;border:1px solid #e2e8f0;border-radius:10px;background:#fff;color:#1e293b;font-weight:600;text-decoration:none">제미나이(Gemini) API 요금: 모델별 가격과 2027년 인상 →</a></section>
+<!-- KIRO:TOPIC-LINKS END -->
 <footer class="footer">
   <p>무료 AI API 요금 계산기입니다. 입력한 내용은 저장하거나 보내지 않습니다.</p>
   <p><a href="/privacy.html">개인정보처리방침</a> | <a href="/terms.html">이용약관</a></p>
@@ -287,6 +290,7 @@ tr.sel td{background:#eff4ff;font-weight:700}
     { id: 'claude-fable-5.1', v: 'Anthropic', n: 'Claude Fable 5.1', i: 10.00, o: 50.00 },
     { id: 'claude-opus-5.5', v: 'Anthropic', n: 'Claude Opus 5.5', i: 4.00, o: 20.00 },
     { id: 'claude-sonnet-5.5', v: 'Anthropic', n: 'Claude Sonnet 5.5', i: 2.00, o: 10.00 },
+    { id: 'claude-haiku-5.5', v: 'Anthropic', n: 'Claude Haiku 5.5', i: 0.10, o: 0.50, lo: 100000, li: 0.50, lx: 2.50 },
     { id: 'claude-haiku-4.5', v: 'Anthropic', n: 'Claude Haiku 4.5', i: 1.00, o: 5.00 },
     { id: 'gemini-3.1-pro-preview', v: 'Google', n: 'Gemini 3.1 Pro Preview', i: 2.00, o: 12.00, lo: 200000, li: 4.00, lx: 18.00 },
     { id: 'gemini-3.8-flash', v: 'Google', n: 'Gemini 3.8 Flash', i: 0.75, o: 3.75, ch: { from: '2027-01-01', label: '2027년 1월 1일', i: 1.50, o: 7.50 } },

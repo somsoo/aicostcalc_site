@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>클로드 API 비용 2026 | Opus·Sonnet·Haiku 토큰 요금과 계산 예</title>
+<meta name="description" content="Anthropic Claude API의 모델별 입력·출력 토큰 가격(1M 토큰당 달러), 배치 50% 할인, 프롬프트 캐시 할인, Haiku 5.5의 긴 프롬프트 가격과 사용량별 월 요금 계산 예를 정리했습니다. 2026년 10월 30일 공식 가격 페이지 확인."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://aiapi.enjoy-onepage.com/claude-api-pricing.html"/>
+<meta property="og:type" content="article"/>
+<meta property="og:locale" content="ko_KR"/>
+<meta property="og:url" content="https://aiapi.enjoy-onepage.com/claude-api-pricing.html"/>
+<meta property="og:site_name" content="AI API 요금 계산기"/>
+<meta property="og:title" content="클로드 API 비용 2026 | Opus·Sonnet·Haiku 토큰 요금과 계산 예"/>
+<meta property="og:description" content="Anthropic Claude API의 모델별 입력·출력 토큰 가격(1M 토큰당 달러), 배치 50% 할인, 프롬프트 캐시 할인, Haiku 5.5의 긴 프롬프트 가격과 사용량별 월 요금 계산 예를 정리했습니다. 2026년 10월 30일 공식 가격 페이지 확인."/>
+<meta property="og:image" content="https://aiapi.enjoy-onepage.com/og-image.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="icon" href="/favicon.ico"/>
+<script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106"></script>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "Article", "headline": "클로드(Claude) API 비용: 모델별 토큰 요금과 한 달 계산 예", "description": "Anthropic Claude API의 모델별 입력·출력 토큰 가격(1M 토큰당 달러), 배치 50% 할인, 프롬프트 캐시 할인, Haiku 5.5의 긴 프롬프트 가격과 사용량별 월 요금 계산 예를 정리했습니다. 2026년 10월 30일 공식 가격 페이지 확인.", "inLanguage": "ko-KR", "dateModified": "2026-10-30", "datePublished": "2026-10-30", "mainEntityOfPage": "https://aiapi.enjoy-onepage.com/claude-api-pricing.html", "author": {"@type": "Organization", "name": "Enjoy OnePage", "url": "https://enjoy-onepage.com/"}, "publisher": {"@type": "Organization", "name": "Enjoy OnePage", "url": "https://enjoy-onepage.com/"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "한국어는 토큰이 더 많이 나오나요?", "acceptedAnswer": {"@type": "Answer", "text": "영어보다 같은 내용에 토큰이 더 많이 나오는 편입니다. 계산기의 '글로 토큰 어림하기'로 대략 확인하고, 정확한 값은 API의 토큰 세기 기능으로 확인하세요."}}, {"@type": "Question", "name": "Claude Pro 구독과 API 요금은 같나요?", "acceptedAnswer": {"@type": "Answer", "text": "다릅니다. 구독은 claude.ai 사용료이고, API는 쓴 토큰만큼 따로 청구됩니다."}}, {"@type": "Question", "name": "원화로는 얼마인가요?", "acceptedAnswer": {"@type": "Answer", "text": "달러로 청구되므로 카드사 환율과 해외 결제 수수료에 따라 달라집니다. 계산기에 환율을 넣으면 원화로 볼 수 있습니다."}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "AI API 요금 계산기", "item": "https://aiapi.enjoy-onepage.com/"}, {"@type": "ListItem", "position": 2, "name": "클로드(Claude) API 비용: 모델별 토큰 요금과 한 달 계산 예", "item": "https://aiapi.enjoy-onepage.com/claude-api-pricing.html"}]}]</script>
+<style>:root{--a:#111827}*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:#1e293b;background:#f8fafc;line-height:1.75;word-break:keep-all;overflow-wrap:break-word}
+header{background:#fff;border-bottom:1px solid #e2e8f0}header .in{max-width:760px;margin:0 auto;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+header a{color:var(--a);font-weight:800;text-decoration:none}main{max-width:760px;margin:0 auto;padding:16px}
+.crumb{font-size:13px;color:#64748b;margin:4px 0 8px}.crumb a{color:#64748b}h1{font-size:1.55rem;line-height:1.4;margin:.3em 0 .6em}
+h2{font-size:1.2rem;margin:1.8em 0 .5em;padding-left:10px;border-left:4px solid var(--a)}p,li{font-size:16px}
+.sum{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px 18px}.sum ul{margin:0;padding-left:1.1em}.sum li{margin:.3em 0}
+table{width:100%;border-collapse:collapse;background:#fff;margin:.8em 0;font-size:15px}th,td{border:1px solid #e2e8f0;padding:8px 10px;text-align:left}th{background:#f1f5f9}
+.tw{overflow-x:auto}.note{font-size:14px;color:#64748b}.cta{display:block;text-align:center;background:var(--a);color:#fff;font-weight:800;padding:14px;border-radius:12px;text-decoration:none;margin:24px 0}
+.faq details{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:10px 14px;margin:8px 0}.faq summary{font-weight:700;cursor:pointer}
+.src{font-size:14px;color:#475569}.rel a{display:block;padding:10px 12px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;margin:6px 0;color:#1e293b;text-decoration:none;font-weight:600}
+.ad{margin:16px auto;text-align:center;overflow:hidden;max-width:100%}footer{text-align:center;font-size:13px;color:#64748b;padding:24px 16px;border-top:1px solid #e2e8f0;background:#fff;margin-top:32px}footer a{color:#64748b;margin:0 6px}</style>
+</head>
+<body>
+<header><div class="in"><a href="/">AI API 요금 계산기</a><a href="/" style="font-size:14px">계산기 열기 →</a></div></header>
+<div class="ad"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="3824727725" data-ad-format="horizontal" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+<main>
+<div class="crumb"><a href="/">AI API 요금 계산기</a> › 안내</div>
+<h1>클로드(Claude) API 비용: 모델별 토큰 요금과 한 달 계산 예</h1>
+<p class="note">확인일: 2026년 10월 30일 · 아래 출처의 법령과 공식 발표를 기준으로 작성했습니다.</p>
+<div class="sum"><ul><li>요금 = <b>입력 토큰 × 입력 가격 + 출력 토큰 × 출력 가격</b> (1M 토큰당 달러)</li><li>Opus 5.5 <b>$4 / $20</b>, Sonnet 5.5 <b>$2 / $10</b>, Haiku 5.5 <b>$0.10 / $0.50</b> (입력 10만 토큰 이하)</li><li>배치 API는 입력·출력 모두 <b>50% 할인</b>, 캐시에서 읽은 입력은 기본 가격의 10% 이하입니다.</li><li>Claude 4.7 이후 모델은 같은 글도 이전 모델보다 <b>토큰이 약 30% 더</b> 나옵니다.</li></ul></div>
+
+<h2>모델별 표준 가격 (1M 토큰당 달러)</h2>
+<div class="tw"><table><thead><tr><th>모델</th><th>입력 / 출력</th><th>예: 월 1만 회</th><th>배치 사용 시</th></tr></thead><tbody><tr><td>Claude Fable 5.1</td><td>$10 / $50</td><td>$450.00</td><td>$225.00</td></tr><tr><td>Claude Opus 5.5</td><td>$4 / $20</td><td>$180.00</td><td>$90.00</td></tr><tr><td>Claude Sonnet 5.5</td><td>$2 / $10</td><td>$90.00</td><td>$45.00</td></tr><tr><td>Claude Haiku 5.5 (입력 10만 토큰 이하)</td><td>$0.1 / $0.5</td><td>$4.50</td><td>$2.25</td></tr><tr><td>Claude Haiku 4.5 (이전 모델)</td><td>$1 / $5</td><td>$45.00</td><td>$22.50</td></tr></tbody></table></div>
+<p class="note">'월 1만 회'는 요청 1회에 입력 2,000토큰, 출력 500토큰을 쓴다고 가정한 계산입니다. Haiku 5.5는 요청 입력이 10만 토큰을 넘으면 $0.50 / $2.50입니다. 가격은 공급사가 자주 바꿉니다. 실제로 쓰기 전에 아래 공식 가격 페이지를 다시 확인하세요.</p>
+<h2>할인 받는 방법</h2>
+<ul><li><b>배치 API:</b> 바로 답이 필요 없는 대량 작업을 묶어 보내면 입력·출력 모두 절반입니다.</li>
+<li><b>프롬프트 캐시:</b> 같은 시스템 프롬프트나 문서를 반복해서 보낼 때 씁니다. 캐시에 쓰는 비용은 기본 입력의 1.25배(5분) 또는 2배(1시간)이고, 캐시에서 읽으면 기본 입력의 10%입니다(Opus 5.5·Sonnet 5.5는 5%, Fable 5.1은 2.5%).</li>
+<li><b>모델 나누기:</b> 분류·추출 같은 단순 작업은 Haiku, 어려운 작업만 Opus로 보내면 비용이 크게 줄어듭니다.</li></ul>
+<h2>비용이 예상보다 커지는 이유</h2>
+<ul><li>대화형 앱은 이전 대화를 매번 다시 입력으로 보내므로 대화가 길어질수록 입력 토큰이 늘어납니다.</li>
+<li>도구(tool)를 쓰면 요청마다 수백 토큰의 시스템 프롬프트가 추가됩니다.</li>
+<li>웹 검색 같은 서버 도구는 토큰과 별도로 사용량 요금이 붙습니다.</li></ul>
+
+<a class="cta" href="/">내 사용량으로 API 요금 계산하기 →</a>
+<h2>자주 묻는 질문</h2>
+<div class="faq"><details><summary>한국어는 토큰이 더 많이 나오나요?</summary><p>영어보다 같은 내용에 토큰이 더 많이 나오는 편입니다. 계산기의 &#x27;글로 토큰 어림하기&#x27;로 대략 확인하고, 정확한 값은 API의 토큰 세기 기능으로 확인하세요.</p></details><details><summary>Claude Pro 구독과 API 요금은 같나요?</summary><p>다릅니다. 구독은 claude.ai 사용료이고, API는 쓴 토큰만큼 따로 청구됩니다.</p></details><details><summary>원화로는 얼마인가요?</summary><p>달러로 청구되므로 카드사 환율과 해외 결제 수수료에 따라 달라집니다. 계산기에 환율을 넣으면 원화로 볼 수 있습니다.</p></details></div>
+<h2>출처</h2>
+<ul class="src"><li><a href="https://docs.claude.com/en/docs/about-claude/pricing" rel="nofollow noopener" target="_blank">Anthropic: Claude API Pricing (2026-10-30 확인)</a></li></ul>
+<p class="note">이 페이지는 일반적인 안내이며 법률·세무 자문이 아닙니다. 개인 사정에 따라 결과가 다를 수 있으니 중요한 결정 전에는 담당 기관에 확인하세요.</p>
+<h2>함께 보면 좋은 안내</h2>
+<div class="rel"><a href="/gemini-api-pricing.html">제미나이(Gemini) API 요금: 모델별 가격과 2027년 인상 →</a><a href="/">AI API 요금 계산기 →</a></div>
+</main>
+<div class="ad" style="min-height:280px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="3416334507" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+<footer><a href="/">AI API 요금 계산기</a><a href="/privacy.html">개인정보처리방침</a><a href="https://enjoy-onepage.com/">Enjoy OnePage 전체 도구</a></footer>
+</body>
+</html>

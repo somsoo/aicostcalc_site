@@ -1,11 +1,12 @@
 {
  "app": "aicostcalc_site",
+ "name": "AI API 요금 계산기",
  "host": "aiapi.enjoy-onepage.com",
- "watch": false,
- "status": "unverified",
- "checked": "",
- "soft_days": 60,
- "hard_days": 120,
+ "watch": true,
+ "status": "ok",
+ "checked": "2026-11-01",
+ "soft_days": 30,
+ "hard_days": 60,
  "grace_days": 31,
  "hide": [],
  "pages": [
@@ -13,6 +14,582 @@
   "gemini-api-pricing.html",
   "index.html"
  ],
- "values": {},
- "sources": {}
+ "sources": {
+  "openai": {
+   "type": "http",
+   "url": "https://platform.openai.com/docs/pricing",
+   "label": "OpenAI API 가격 페이지",
+   "cadence": "weekly",
+   "lang": "en"
+  },
+  "openai_long": {
+   "type": "browser",
+   "url": "https://platform.openai.com/docs/pricing",
+   "click": "button:has-text('Long')",
+   "label": "OpenAI API 가격 페이지(긴 컨텍스트 탭)",
+   "cadence": "weekly",
+   "lang": "en"
+  },
+  "oai_astra": {
+   "type": "browser",
+   "url": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+   "label": "OpenAI GPT-6 Astra 모델 안내",
+   "cadence": "weekly",
+   "lang": "en"
+  },
+  "oai_sol": {
+   "type": "browser",
+   "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+   "label": "OpenAI GPT-6.1 Sol 모델 안내",
+   "cadence": "weekly",
+   "lang": "en"
+  },
+  "oai_luna": {
+   "type": "browser",
+   "url": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+   "label": "OpenAI GPT-6 Luna 모델 안내",
+   "cadence": "weekly",
+   "lang": "en"
+  },
+  "anthropic": {
+   "type": "http",
+   "url": "https://docs.claude.com/en/docs/about-claude/pricing",
+   "label": "Anthropic Claude API 가격 페이지",
+   "cadence": "weekly",
+   "lang": "en"
+  },
+  "google": {
+   "type": "http",
+   "url": "https://ai.google.dev/gemini-api/docs/pricing",
+   "label": "Google Gemini API 가격 페이지",
+   "cadence": "weekly",
+   "lang": "en"
+  }
+ },
+ "values": {
+  "astra_i": {
+   "v": 10,
+   "label": "OpenAI gpt-6-astra 입력",
+   "unit": "USD/1M",
+   "src": "openai",
+   "find": "gpt-6-astra \\| \\$(\\d+(?:\\.\\d+)?) \\|",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "astra_o": {
+   "v": 50,
+   "label": "OpenAI gpt-6-astra 출력",
+   "unit": "USD/1M",
+   "src": "openai",
+   "find": "gpt-6-astra \\| \\$\\d+(?:\\.\\d+)? \\| \\$(\\d+(?:\\.\\d+)?) \\|",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "astra_li": {
+   "v": 20,
+   "label": "OpenAI gpt-6-astra 입력(긴 컨텍스트)",
+   "unit": "USD/1M",
+   "src": "openai_long",
+   "find": "gpt-6-astra \\$(\\d+(?:\\.\\d+)?) \\$",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "astra_lx": {
+   "v": 75,
+   "label": "OpenAI gpt-6-astra 출력(긴 컨텍스트)",
+   "unit": "USD/1M",
+   "src": "openai_long",
+   "find": "gpt-6-astra \\$\\d+(?:\\.\\d+)? \\$(\\d+(?:\\.\\d+)?)",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "astra_lo": {
+   "v": 272000,
+   "label": "OpenAI gpt-6-astra 긴 컨텍스트 기준(입력 토큰)",
+   "unit": "tokens",
+   "src": "oai_astra",
+   "find": "(?i)prompts with more than (\\d+)K input tokens",
+   "min": 10000,
+   "max": 5000000,
+   "max_ratio": 4,
+   "show": "int",
+   "map": "x*1000"
+  },
+  "sol_i": {
+   "v": 2,
+   "label": "OpenAI gpt-6.1-sol 입력",
+   "unit": "USD/1M",
+   "src": "openai",
+   "find": "gpt-6\\.1-sol \\| \\$(\\d+(?:\\.\\d+)?) \\|",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "sol_o": {
+   "v": 10,
+   "label": "OpenAI gpt-6.1-sol 출력",
+   "unit": "USD/1M",
+   "src": "openai",
+   "find": "gpt-6\\.1-sol \\| \\$\\d+(?:\\.\\d+)? \\| \\$(\\d+(?:\\.\\d+)?) \\|",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "sol_li": {
+   "v": 4,
+   "label": "OpenAI gpt-6.1-sol 입력(긴 컨텍스트)",
+   "unit": "USD/1M",
+   "src": "openai_long",
+   "find": "gpt-6\\.1-sol \\$(\\d+(?:\\.\\d+)?) \\$",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "sol_lx": {
+   "v": 15,
+   "label": "OpenAI gpt-6.1-sol 출력(긴 컨텍스트)",
+   "unit": "USD/1M",
+   "src": "openai_long",
+   "find": "gpt-6\\.1-sol \\$\\d+(?:\\.\\d+)? \\$(\\d+(?:\\.\\d+)?)",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "sol_lo": {
+   "v": 272000,
+   "label": "OpenAI gpt-6.1-sol 긴 컨텍스트 기준(입력 토큰)",
+   "unit": "tokens",
+   "src": "oai_sol",
+   "find": "(?i)prompts with more than (\\d+)K input tokens",
+   "min": 10000,
+   "max": 5000000,
+   "max_ratio": 4,
+   "show": "int",
+   "map": "x*1000"
+  },
+  "luna_i": {
+   "v": 0.1,
+   "label": "OpenAI gpt-6-luna 입력",
+   "unit": "USD/1M",
+   "src": "openai",
+   "find": "gpt-6-luna \\| \\$(\\d+(?:\\.\\d+)?) \\|",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "luna_o": {
+   "v": 0.5,
+   "label": "OpenAI gpt-6-luna 출력",
+   "unit": "USD/1M",
+   "src": "openai",
+   "find": "gpt-6-luna \\| \\$\\d+(?:\\.\\d+)? \\| \\$(\\d+(?:\\.\\d+)?) \\|",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "luna_li": {
+   "v": 0.2,
+   "label": "OpenAI gpt-6-luna 입력(긴 컨텍스트)",
+   "unit": "USD/1M",
+   "src": "openai_long",
+   "find": "gpt-6-luna \\$(\\d+(?:\\.\\d+)?) \\$",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "luna_lx": {
+   "v": 0.75,
+   "label": "OpenAI gpt-6-luna 출력(긴 컨텍스트)",
+   "unit": "USD/1M",
+   "src": "openai_long",
+   "find": "gpt-6-luna \\$\\d+(?:\\.\\d+)? \\$(\\d+(?:\\.\\d+)?)",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "luna_lo": {
+   "v": 272000,
+   "label": "OpenAI gpt-6-luna 긴 컨텍스트 기준(입력 토큰)",
+   "unit": "tokens",
+   "src": "oai_luna",
+   "find": "(?i)prompts with more than (\\d+)K input tokens",
+   "min": 10000,
+   "max": 5000000,
+   "max_ratio": 4,
+   "show": "int",
+   "map": "x*1000"
+  },
+  "fable51_i": {
+   "v": 10,
+   "label": "Anthropic Claude Fable 5.1 입력",
+   "unit": "USD/1M",
+   "src": "anthropic",
+   "find": "Claude Fable 5\\.1 \\| [^|$]{3,200} \\| \\$(\\d+(?:\\.\\d+)?) \\| /(?: \\|)? MTok",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "fable51_o": {
+   "v": 50,
+   "label": "Anthropic Claude Fable 5.1 출력",
+   "unit": "USD/1M",
+   "src": "anthropic",
+   "find": "Claude Fable 5\\.1 \\| [^|$]{3,200} \\| \\$\\d+(?:\\.\\d+)? \\| /(?: \\|)? MTok \\| \\$(\\d+(?:\\.\\d+)?) \\| /(?: \\|)? MTok",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "opus55_i": {
+   "v": 4,
+   "label": "Anthropic Claude Opus 5.5 입력",
+   "unit": "USD/1M",
+   "src": "anthropic",
+   "find": "Claude Opus 5\\.5 \\| [^|$]{3,200} \\| \\$(\\d+(?:\\.\\d+)?) \\| /(?: \\|)? MTok",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "opus55_o": {
+   "v": 20,
+   "label": "Anthropic Claude Opus 5.5 출력",
+   "unit": "USD/1M",
+   "src": "anthropic",
+   "find": "Claude Opus 5\\.5 \\| [^|$]{3,200} \\| \\$\\d+(?:\\.\\d+)? \\| /(?: \\|)? MTok \\| \\$(\\d+(?:\\.\\d+)?) \\| /(?: \\|)? MTok",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "sonnet55_i": {
+   "v": 2,
+   "label": "Anthropic Claude Sonnet 5.5 입력",
+   "unit": "USD/1M",
+   "src": "anthropic",
+   "find": "Claude Sonnet 5\\.5 \\| [^|$]{3,200} \\| \\$(\\d+(?:\\.\\d+)?) \\| /(?: \\|)? MTok",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "sonnet55_o": {
+   "v": 10,
+   "label": "Anthropic Claude Sonnet 5.5 출력",
+   "unit": "USD/1M",
+   "src": "anthropic",
+   "find": "Claude Sonnet 5\\.5 \\| [^|$]{3,200} \\| \\$\\d+(?:\\.\\d+)? \\| /(?: \\|)? MTok \\| \\$(\\d+(?:\\.\\d+)?) \\| /(?: \\|)? MTok",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "haiku55_i": {
+   "v": 0.1,
+   "label": "Anthropic Claude Haiku 5.5 입력",
+   "unit": "USD/1M",
+   "src": "anthropic",
+   "find": "Claude Haiku 5\\.5 \\| [^|$]{3,200} \\| \\$(\\d+(?:\\.\\d+)?) \\| /(?: \\|)? MTok \\| for prompts up to",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "haiku55_o": {
+   "v": 0.5,
+   "label": "Anthropic Claude Haiku 5.5 출력",
+   "unit": "USD/1M",
+   "src": "anthropic",
+   "find": "for prompts up to [\\d,]+ tokens \\| \\$(\\d+(?:\\.\\d+)?) \\| /(?: \\|)? MTok",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "haiku55_lo": {
+   "v": 100000,
+   "label": "Anthropic Claude Haiku 5.5 긴 프롬프트 기준(입력 토큰)",
+   "unit": "tokens",
+   "src": "anthropic",
+   "find": "Claude Haiku 5\\.5 \\| [^|$]{3,200} \\| \\$\\d+(?:\\.\\d+)? \\| /(?: \\|)? MTok \\| for prompts up to ([\\d,]+) tokens",
+   "min": 10000,
+   "max": 5000000,
+   "max_ratio": 4,
+   "show": "int"
+  },
+  "haiku55_li": {
+   "v": 0.5,
+   "label": "Anthropic Claude Haiku 5.5 입력(긴 프롬프트)",
+   "unit": "USD/1M",
+   "src": "anthropic",
+   "find": "\\$(\\d+(?:\\.\\d+)?) \\| /(?: \\|)? MTok \\| for prompts over [\\d,]+ tokens",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "haiku55_lx": {
+   "v": 2.5,
+   "label": "Anthropic Claude Haiku 5.5 출력(긴 프롬프트)",
+   "unit": "USD/1M",
+   "src": "anthropic",
+   "find": "for prompts over [\\d,]+ tokens \\| \\$(\\d+(?:\\.\\d+)?)",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "haiku45_i": {
+   "v": 1,
+   "label": "Anthropic Claude Haiku 4.5 입력",
+   "unit": "USD/1M",
+   "src": "anthropic",
+   "find": "Claude Haiku 4\\.5 \\| \\$(\\d+(?:\\.\\d+)?) \\| /(?: \\|)? MTok",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "haiku45_o": {
+   "v": 5,
+   "label": "Anthropic Claude Haiku 4.5 출력",
+   "unit": "USD/1M",
+   "src": "anthropic",
+   "find": "Claude Haiku 4\\.5 \\| \\$\\d+(?:\\.\\d+)? \\| /(?: \\|)? MTok \\| \\$(\\d+(?:\\.\\d+)?) \\| /(?: \\|)? MTok",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "g31pro_i": {
+   "v": 2,
+   "label": "Google Gemini 3.1 Pro Preview 입력",
+   "unit": "USD/1M",
+   "src": "google",
+   "find": "Gemini 3\\.1 Pro Preview \\| gemini-3\\.1-pro-preview.{0,400}?Input price[^|]*\\| [^$|]*\\| \\$(\\d+(?:\\.\\d+)?), prompts",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "g31pro_o": {
+   "v": 12,
+   "label": "Google Gemini 3.1 Pro Preview 출력",
+   "unit": "USD/1M",
+   "src": "google",
+   "find": "Gemini 3\\.1 Pro Preview \\| gemini-3\\.1-pro-preview.{0,800}?Output price[^|]*\\| [^$|]*\\| \\$(\\d+(?:\\.\\d+)?), prompts",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "g31pro_li": {
+   "v": 4,
+   "label": "Google Gemini 3.1 Pro Preview 입력(긴 프롬프트)",
+   "unit": "USD/1M",
+   "src": "google",
+   "find": "Gemini 3\\.1 Pro Preview \\| gemini-3\\.1-pro-preview.{0,400}?Input price[^|]*\\| [^$|]*\\| \\$\\d+(?:\\.\\d+)?, prompts[^|]*\\| \\$(\\d+(?:\\.\\d+)?), prompts >",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "g31pro_lx": {
+   "v": 18,
+   "label": "Google Gemini 3.1 Pro Preview 출력(긴 프롬프트)",
+   "unit": "USD/1M",
+   "src": "google",
+   "find": "Gemini 3\\.1 Pro Preview \\| gemini-3\\.1-pro-preview.{0,800}?Output price[^|]*\\| [^$|]*\\| \\$\\d+(?:\\.\\d+)?, prompts[^|]*\\| \\$(\\d+(?:\\.\\d+)?), prompts >",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "g31pro_lo": {
+   "v": 200000,
+   "label": "Google Gemini 3.1 Pro Preview 긴 프롬프트 기준(토큰)",
+   "unit": "tokens",
+   "src": "google",
+   "find": "Gemini 3\\.1 Pro Preview \\| gemini-3\\.1-pro-preview.{0,500}?prompts > (\\d+)k tokens",
+   "min": 10000,
+   "max": 5000000,
+   "max_ratio": 4,
+   "show": "int",
+   "map": "x*1000"
+  },
+  "g38f_i": {
+   "v": 0.75,
+   "label": "Google Gemini 3.8 Flash 입력",
+   "unit": "USD/1M",
+   "src": "google",
+   "find": "Gemini 3\\.8 Flash \\| gemini-3\\.8-flash \\|.{0,400}?Input price[^|]*\\| [^$|]*\\| \\$(\\d+(?:\\.\\d+)?)",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "g38f_o": {
+   "v": 3.75,
+   "label": "Google Gemini 3.8 Flash 출력",
+   "unit": "USD/1M",
+   "src": "google",
+   "find": "Gemini 3\\.8 Flash \\| gemini-3\\.8-flash \\|.{0,900}?Output price[^|]*\\| [^$|]*\\| \\$(\\d+(?:\\.\\d+)?)",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "g35fl_i": {
+   "v": 0.3,
+   "label": "Google Gemini 3.5 Flash-Lite 입력",
+   "unit": "USD/1M",
+   "src": "google",
+   "find": "Gemini 3\\.5 Flash-Lite \\| gemini-3\\.5-flash-lite \\|.{0,400}?Input price[^|]*\\| [^$|]*\\| \\$(\\d+(?:\\.\\d+)?)",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "g35fl_o": {
+   "v": 2.5,
+   "label": "Google Gemini 3.5 Flash-Lite 출력",
+   "unit": "USD/1M",
+   "src": "google",
+   "find": "Gemini 3\\.5 Flash-Lite \\| gemini-3\\.5-flash-lite \\|.{0,900}?Output price[^|]*\\| [^$|]*\\| \\$(\\d+(?:\\.\\d+)?)",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "g25f_i": {
+   "v": 0.3,
+   "label": "Google Gemini 2.5 Flash 입력",
+   "unit": "USD/1M",
+   "src": "google",
+   "find": "Gemini 2\\.5 Flash \\| gemini-2\\.5-flash \\|.{0,400}?Input price[^|]*\\| [^$|]*\\| \\$(\\d+(?:\\.\\d+)?)",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "g25f_o": {
+   "v": 2.5,
+   "label": "Google Gemini 2.5 Flash 출력",
+   "unit": "USD/1M",
+   "src": "google",
+   "find": "Gemini 2\\.5 Flash \\| gemini-2\\.5-flash \\|.{0,900}?Output price[^|]*\\| [^$|]*\\| \\$(\\d+(?:\\.\\d+)?)",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "g25fl_i": {
+   "v": 0.1,
+   "label": "Google Gemini 2.5 Flash-Lite 입력",
+   "unit": "USD/1M",
+   "src": "google",
+   "find": "Gemini 2\\.5 Flash-Lite \\| gemini-2\\.5-flash-lite \\|.{0,400}?Input price[^|]*\\| [^$|]*\\| \\$(\\d+(?:\\.\\d+)?)",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "g25fl_o": {
+   "v": 0.4,
+   "label": "Google Gemini 2.5 Flash-Lite 출력",
+   "unit": "USD/1M",
+   "src": "google",
+   "find": "Gemini 2\\.5 Flash-Lite \\| gemini-2\\.5-flash-lite \\|.{0,900}?Output price[^|]*\\| [^$|]*\\| \\$(\\d+(?:\\.\\d+)?)",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd"
+  },
+  "g38f_2026_i": {
+   "v": 0.75,
+   "label": "Google Gemini 3.8 Flash 입력(2026년 12월 31일까지)",
+   "unit": "USD/1M",
+   "src": "google",
+   "find": "Gemini 3\\.8 Flash \\| gemini-3\\.8-flash \\|.{0,400}?Input price[^|]*\\| [^$|]*\\| \\$(\\d+(?:\\.\\d+)?) through December 31, 2026",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd",
+   "until": "2026-12-31"
+  },
+  "g38f_2026_o": {
+   "v": 3.75,
+   "label": "Google Gemini 3.8 Flash 출력(2026년 12월 31일까지)",
+   "unit": "USD/1M",
+   "src": "google",
+   "find": "Gemini 3\\.8 Flash \\| gemini-3\\.8-flash \\|.{0,900}?Output price[^|]*\\| [^$|]*\\| \\$(\\d+(?:\\.\\d+)?) through December 31, 2026",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd",
+   "until": "2026-12-31"
+  },
+  "g38f_ch_i": {
+   "v": 1.5,
+   "label": "Google Gemini 3.8 Flash 입력(2027년 1월 1일부터)",
+   "unit": "USD/1M",
+   "src": "google",
+   "find": "Gemini 3\\.8 Flash \\| gemini-3\\.8-flash \\|.{0,500}?Input price.{0,140}?\\$(\\d+(?:\\.\\d+)?) starting January 1, 2027",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd",
+   "until": "2026-12-31"
+  },
+  "g38f_ch_o": {
+   "v": 7.5,
+   "label": "Google Gemini 3.8 Flash 출력(2027년 1월 1일부터)",
+   "unit": "USD/1M",
+   "src": "google",
+   "find": "Gemini 3\\.8 Flash \\| gemini-3\\.8-flash \\|.{0,900}?Output price.{0,160}?\\$(\\d+(?:\\.\\d+)?) starting January 1, 2027",
+   "min": 0.001,
+   "max": 500,
+   "max_ratio": 4,
+   "show": "usd",
+   "until": "2026-12-31"
+  }
+ },
+ "next": {
+  "from": "2027-01-01",
+  "from_keys": {
+   "g38f_i": "g38f_ch_i",
+   "g38f_o": "g38f_ch_o"
+  }
+ },
+ "templates": {
+  "claude-api-pricing.html": {
+   "title": "클로드 API 비용 {{_checked|y}} | Opus·Sonnet·Haiku 토큰 요금과 계산 예",
+   "description": "Anthropic Claude API의 모델별 입력·출력 토큰 가격(1M 토큰당 달러), 배치 50% 할인, 프롬프트 캐시 할인, Haiku 5.5의 긴 프롬프트 가격과 사용량별 월 요금 계산 예를 정리했습니다. {{_checked|date}} 공식 가격 페이지 확인.",
+   "ld_description": "Anthropic Claude API의 모델별 입력·출력 토큰 가격(1M 토큰당 달러), 배치 50% 할인, 프롬프트 캐시 할인, Haiku 5.5의 긴 프롬프트 가격과 사용량별 월 요금 계산 예를 정리했습니다. {{_checked|date}} 공식 가격 페이지 확인.",
+   "ld_dateModified": "{{_checked|raw}}"
+  },
+  "gemini-api-pricing.html": {
+   "title": "제미나이 API 요금 {{_checked|y}} | Gemini 3.8 Flash·3.1 Pro 토큰 가격과 계산 예",
+   "description": "Google Gemini API 유료 등급의 모델별 입력·출력 토큰 가격, Gemini 3.8 Flash의 2027년 1월 가격 인상, 3.1 Pro의 긴 프롬프트 가격, 무료 등급과 월 요금 계산 예를 정리했습니다. {{_checked|date}} 공식 가격 페이지 확인.",
+   "ld_description": "Google Gemini API 유료 등급의 모델별 입력·출력 토큰 가격, Gemini 3.8 Flash의 2027년 1월 가격 인상, 3.1 Pro의 긴 프롬프트 가격, 무료 등급과 월 요금 계산 예를 정리했습니다. {{_checked|date}} 공식 가격 페이지 확인.",
+   "ld_dateModified": "{{_checked|raw}}"
+  }
+ }
 }

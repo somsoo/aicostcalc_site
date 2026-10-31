@@ -35,24 +35,58 @@
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "All",
       "inLanguage": "ko",
-      "description": "AI API 토큰 요금을 계산하는 무료 계산기입니다. 요청당 입력·출력 토큰과 하루 요청 수를 넣으면 요청 1회·하루·한 달·1년 요금을 보여 주고, 각 공급사 공식 가격 페이지에서 확인한 가격으로 14개 모델을 비교합니다. 환율을 넣으면 원화 금액도 함께 보여 줍니다.",
+      "description": "AI API 토큰 요금을 계산하는 무료 계산기입니다. 요청당 입력·출력 토큰과 하루 요청 수를 넣으면 요청 1회·하루·한 달·1년 요금을 보여 주고, 각 공급사 공식 가격 페이지에서 확인한 가격으로 OpenAI·Anthropic·Google 모델을 비교합니다. 환율을 넣으면 원화 금액도 함께 보여 줍니다.",
       "image": "https://aiapi.enjoy-onepage.com/og-image.png",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "KRW"
+      }
     },
     {
       "@type": "FAQPage",
       "@id": "https://aiapi.enjoy-onepage.com/#faq",
       "mainEntity": [
-        { "@type": "Question", "name": "요금은 어떻게 계산하나요?",
-          "acceptedAnswer": { "@type": "Answer", "text": "요청 1회 요금은 입력 토큰 ÷ 1,000,000 × 입력 가격에 출력 토큰 ÷ 1,000,000 × 출력 가격을 더한 값입니다. 하루 요금은 여기에 하루 요청 수를, 한 달 요금은 하루 요금에 한 달 사용일을 곱하고, 1년은 12개월로 계산합니다. 배치 API를 고르면 입력과 출력 가격이 모두 절반이 됩니다." } },
-        { "@type": "Question", "name": "가격은 언제 기준인가요?",
-          "acceptedAnswer": { "@type": "Answer", "text": "기본 가격은 2026년 9월 30일에 각 공급사의 공식 가격 페이지에서 확인한 표준 종량제 달러 가격입니다. 가격은 자주 바뀌므로 예산을 정하기 전에 다시 확인하거나, 모델 목록의 직접 입력한 가격으로 계산하세요." } },
-        { "@type": "Question", "name": "원화로는 얼마인가요?",
-          "acceptedAnswer": { "@type": "Answer", "text": "환율 칸에 원/달러 환율을 넣으면 달러 금액에 그 환율을 곱해 원화 금액도 함께 보여 줍니다. 이 페이지는 환율을 자동으로 가져오지 않습니다. 실제로 청구되는 원화는 결제 카드사의 환율과 해외 결제 수수료에 따라 달라집니다." } },
-        { "@type": "Question", "name": "한국어 글은 몇 토큰인가요?",
-          "acceptedAnswer": { "@type": "Answer", "text": "영어는 대략 4글자 또는 0.75단어가 1토큰이라는 어림 규칙이 있지만(Anthropic 안내), 한국어는 모델의 토크나이저마다 차이가 커서 이 계산기는 한국어 글자 수로 토큰을 어림하지 않습니다. 공급사가 제공하는 토큰 세기 기능으로 잰 값을 넣어 주세요. Anthropic은 Claude 4.7 이후 모델이 같은 글에서 약 30% 더 많은 토큰을 만든다고 안내합니다." } },
-        { "@type": "Question", "name": "포함되지 않는 비용은 무엇인가요?",
-          "acceptedAnswer": { "@type": "Answer", "text": "세금, 프롬프트 캐싱 할인, 웹 검색 같은 도구 요금, 이미지·오디오 토큰, 지역·데이터 보관 위치에 따른 추가 요금, 별도 계약 할인은 포함하지 않습니다. 일부 공급사는 생각(thinking) 토큰을 출력으로 청구하므로 출력 토큰에 함께 넣어 계산하세요." } }
+        {
+          "@type": "Question",
+          "name": "요금은 어떻게 계산하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "요청 1회 요금은 입력 토큰 ÷ 1,000,000 × 입력 가격에 출력 토큰 ÷ 1,000,000 × 출력 가격을 더한 값입니다. 하루 요금은 여기에 하루 요청 수를, 한 달 요금은 하루 요금에 한 달 사용일을 곱하고, 1년은 12개월로 계산합니다. 배치 API를 고르면 입력과 출력 가격이 모두 절반이 됩니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "가격은 언제 기준인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "기본 가격은 각 공급사의 공식 가격 페이지에 나온 표준 종량제 달러 가격이고, 마지막 확인일은 2026년 11월 1일 입니다. 홈서버가 매주 공식 가격 페이지를 다시 읽고, 바뀐 가격이 이틀에 걸쳐 같게 확인되면 계산기와 안내 페이지에 자동으로 반영합니다. 예산을 정하기 전에는 공급사 페이지를 다시 확인하거나, 모델 목록의 직접 입력한 가격으로 계산하세요."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "원화로는 얼마인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "환율 칸에 원/달러 환율을 넣으면 달러 금액에 그 환율을 곱해 원화 금액도 함께 보여 줍니다. 이 페이지는 환율을 자동으로 가져오지 않습니다. 실제로 청구되는 원화는 결제 카드사의 환율과 해외 결제 수수료에 따라 달라집니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "한국어 글은 몇 토큰인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "영어는 대략 4글자 또는 0.75단어가 1토큰이라는 어림 규칙이 있지만(Anthropic 안내), 한국어는 모델의 토크나이저마다 차이가 커서 이 계산기는 한국어 글자 수로 토큰을 어림하지 않습니다. 공급사가 제공하는 토큰 세기 기능으로 잰 값을 넣어 주세요. Anthropic은 Claude 4.7 이후 모델이 같은 글에서 약 30% 더 많은 토큰을 만든다고 안내합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "포함되지 않는 비용은 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "세금, 프롬프트 캐싱 할인, 웹 검색 같은 도구 요금, 이미지·오디오 토큰, 지역·데이터 보관 위치에 따른 추가 요금, 별도 계약 할인은 포함하지 않습니다. 일부 공급사는 생각(thinking) 토큰을 출력으로 청구하므로 출력 토큰에 함께 넣어 계산하세요."
+          }
+        }
       ]
     }
   ]
@@ -152,7 +186,7 @@ tr.sel td{background:#eff4ff;font-weight:700}
   }
 </style>
 <!-- KIRO:VALUES START -->
-<script type="application/json" id="kiro-values">{"app":"aicostcalc_site","soft_days":60,"hard_days":120,"grace_days":31,"status":"unverified","values":{}}</script>
+<script type="application/json" id="kiro-values">{"app":"aicostcalc_site","checked":"2026-11-01","soft_days":30,"hard_days":60,"grace_days":31,"status":"ok","values":{"astra_i":10,"astra_o":50,"astra_li":20,"astra_lx":75,"astra_lo":272000,"sol_i":2,"sol_o":10,"sol_li":4,"sol_lx":15,"sol_lo":272000,"luna_i":0.1,"luna_o":0.5,"luna_li":0.2,"luna_lx":0.75,"luna_lo":272000,"fable51_i":10,"fable51_o":50,"opus55_i":4,"opus55_o":20,"sonnet55_i":2,"sonnet55_o":10,"haiku55_i":0.1,"haiku55_o":0.5,"haiku55_lo":100000,"haiku55_li":0.5,"haiku55_lx":2.5,"haiku45_i":1,"haiku45_o":5,"g31pro_i":2,"g31pro_o":12,"g31pro_li":4,"g31pro_lx":18,"g31pro_lo":200000,"g38f_i":0.75,"g38f_o":3.75,"g35fl_i":0.3,"g35fl_o":2.5,"g25f_i":0.3,"g25f_o":2.5,"g25fl_i":0.1,"g25fl_o":0.4,"g38f_2026_i":0.75,"g38f_2026_o":3.75,"g38f_ch_i":1.5,"g38f_ch_o":7.5},"next":{"from":"2027-01-01","values":{"g38f_i":1.5,"g38f_o":7.5}}}</script>
 <script>/* Kiro value guard v1 (2026-11-01). Values come from #kiro-values, written by the home server's value watcher.
    window.KIRO_V = values in force today (a scheduled "next" set applies from its date).
    Elements carrying data-v (value or =expression) and data-f (format) are re-rendered from those values;
@@ -282,7 +316,7 @@ tr.sel td{background:#eff4ff;font-weight:700}
 <body>
 <header class="header">
   <h1>AI API 요금 계산기</h1>
-  <div class="header-sub">요청 1회·하루·한 달·1년 요금 · 14개 모델 · 2026년 9월 30일 가격 확인</div>
+  <div class="header-sub">요청 1회·하루·한 달·1년 요금 · OpenAI·Anthropic·Google 모델 비교 · <span data-v="_checked" data-f="date">2026년 11월 1일</span> 가격 확인</div>
 </header>
 
 <!-- ADSENSE START: top -->
@@ -361,18 +395,18 @@ tr.sel td{background:#eff4ff;font-weight:700}
       <li><strong>하루·한 달·1년:</strong> 요청 1회 요금 × 하루 요청 수, 다시 × 한 달 사용일, 다시 × 12. 하루 요청 수가 0이면 요금도 0입니다.</li>
       <li><strong>원화:</strong> 달러 금액 × 넣은 환율을 원 단위로 반올림합니다. 환율 칸을 비워 두면 달러로만 보여 줍니다.</li>
       <li><strong>배치:</strong> 세 공급사 모두 여기 나온 모델의 배치 API 가격을 입력·출력 모두 50% 할인으로 안내합니다.</li>
-      <li><strong>긴 프롬프트:</strong> 여기 나온 GPT-6 모델은 요청 1회의 입력이 272,000토큰을 넘으면, Gemini 3.1 Pro Preview는 프롬프트가 200,000토큰을 넘으면 긴 컨텍스트 가격을 받습니다. Claude Haiku 5.5는 요청 1회의 입력이 100,000토큰을 넘으면 긴 프롬프트 가격을 받고, 나머지 Claude 모델은 컨텍스트 전체에서 같은 가격입니다(2026년 10월 30일 Anthropic 가격 페이지 재확인).</li>
+      <li><strong>긴 프롬프트:</strong> 여기 나온 GPT-6 모델은 요청 1회의 입력이 <span data-v="astra_lo" data-f="int">272,000</span>토큰을 넘으면, Gemini 3.1 Pro Preview는 프롬프트가 <span data-v="g31pro_lo" data-f="int">200,000</span>토큰을 넘으면 긴 컨텍스트 가격을 받습니다. Claude Haiku 5.5는 요청 1회의 입력이 <span data-v="haiku55_lo" data-f="int">100,000</span>토큰을 넘으면 긴 프롬프트 가격을 받고, 나머지 Claude 모델은 컨텍스트 전체에서 같은 가격입니다(각 공급사 가격·모델 안내).</li>
       <li><strong>가격 변경:</strong> Google은 Gemini 3.8 Flash 가격이 2027년 1월 1일부터 오른다고 안내합니다. 계산기는 오늘 날짜의 가격을 쓰고, 바뀐 뒤의 요금도 함께 보여 줍니다.</li>
     </ul>
     <h3>기본 가격 (표준, 1M 토큰당 달러)</h3>
     <div class="tscroll"><table><thead><tr><th scope="col">모델</th><th scope="col" class="n">입력</th><th scope="col" class="n">출력</th><th scope="col">참고</th></tr></thead><tbody id="ptable"></tbody></table></div>
-    <p class="src">출처 (2026년 9월 30일 확인): OpenAI API pricing (platform.openai.com/docs/pricing), Anthropic Claude API 가격 안내 (docs.claude.com, About Claude › Pricing), Google Gemini Developer API 가격 안내 유료 등급 (ai.google.dev/gemini-api/docs/pricing, 2026년 9월 24일 갱신). 영어 토큰 어림 규칙: Anthropic 가격 안내 FAQ. 각 제품명은 해당 회사의 상표이며, 이 페이지는 어느 공급사와도 관련이 없습니다.</p>
+    <p class="src">출처 (<span data-v="_checked" data-f="date">2026년 11월 1일</span> 확인): OpenAI API pricing (platform.openai.com/docs/pricing)와 모델 안내(developers.openai.com, 긴 컨텍스트 기준), Anthropic Claude API 가격 안내 (docs.claude.com, About Claude › Pricing), Google Gemini Developer API 가격 안내 유료 등급 (ai.google.dev/gemini-api/docs/pricing). 영어 토큰 어림 규칙: Anthropic 가격 안내 FAQ. 각 제품명은 해당 회사의 상표이며, 이 페이지는 어느 공급사와도 관련이 없습니다.</p>
   </section>
 
   <section class="card" id="faq" aria-labelledby="faq-h">
     <h2 id="faq-h">❓ 자주 묻는 질문</h2>
     <div class="faq-item"><h3>요금은 어떻게 계산하나요?</h3><p>요청 1회 요금은 입력 토큰 ÷ 1,000,000 × 입력 가격에 출력 토큰 ÷ 1,000,000 × 출력 가격을 더한 값입니다. 하루 요금은 여기에 하루 요청 수를, 한 달 요금은 하루 요금에 한 달 사용일을 곱하고, 1년은 12개월로 계산합니다. 배치 API를 고르면 입력과 출력 가격이 모두 절반이 됩니다.</p></div>
-    <div class="faq-item"><h3>가격은 언제 기준인가요?</h3><p>기본 가격은 2026년 9월 30일에 각 공급사의 공식 가격 페이지에서 확인한 표준 종량제 달러 가격입니다. 가격은 자주 바뀌므로 예산을 정하기 전에 다시 확인하거나, 모델 목록의 직접 입력한 가격으로 계산하세요.</p></div>
+    <div class="faq-item"><h3>가격은 언제 기준인가요?</h3><p>기본 가격은 각 공급사의 공식 가격 페이지에 나온 표준 종량제 달러 가격이고, 마지막 확인일은 <span data-v="_checked" data-f="date">2026년 11월 1일</span>입니다. 홈서버가 매주 공식 가격 페이지를 다시 읽고, 바뀐 가격이 이틀에 걸쳐 같게 확인되면 계산기와 안내 페이지에 자동으로 반영합니다. 예산을 정하기 전에는 공급사 페이지를 다시 확인하거나, 모델 목록의 직접 입력한 가격으로 계산하세요.</p></div>
     <div class="faq-item"><h3>원화로는 얼마인가요?</h3><p>환율 칸에 원/달러 환율을 넣으면 달러 금액에 그 환율을 곱해 원화 금액도 함께 보여 줍니다. 이 페이지는 환율을 자동으로 가져오지 않습니다. 실제로 청구되는 원화는 결제 카드사의 환율과 해외 결제 수수료에 따라 달라집니다.</p></div>
     <div class="faq-item"><h3>한국어 글은 몇 토큰인가요?</h3><p>영어는 대략 4글자 또는 0.75단어가 1토큰이라는 어림 규칙이 있지만(Anthropic 안내), 한국어는 모델의 토크나이저마다 차이가 커서 이 계산기는 한국어 글자 수로 토큰을 어림하지 않습니다. 공급사가 제공하는 토큰 세기 기능으로 잰 값을 넣어 주세요. Anthropic은 Claude 4.7 이후 모델이 같은 글에서 약 30% 더 많은 토큰을 만든다고 안내합니다.</p></div>
     <div class="faq-item"><h3>포함되지 않는 비용은 무엇인가요?</h3><p>세금, 프롬프트 캐싱 할인, 웹 검색 같은 도구 요금, 이미지·오디오 토큰, 지역·데이터 보관 위치에 따른 추가 요금, 별도 계약 할인은 포함하지 않습니다. 일부 공급사는 생각(thinking) 토큰을 출력으로 청구하므로 출력 토큰에 함께 넣어 계산하세요.</p></div>
@@ -407,24 +441,36 @@ tr.sel td{background:#eff4ff;font-weight:700}
   'use strict';
   var SITE = 'https://aiapi.enjoy-onepage.com';
   var TOOL_NAME = 'AI API 요금 계산기';
-  var CHECKED = '2026년 9월 30일';
-  /* Official standard prices, USD per 1M tokens, checked 2026-09-30 (see the sources under the price table) */
+  var CHECKED = (window.KIRO_FMT && window.KIRO_V && window.KIRO_V._checked) ? window.KIRO_FMT(window.KIRO_V._checked, 'date') : '';
+  /* 1M 토큰당 달러, 표준 가격. 값은 홈서버가 각 공급사 공식 가격 페이지에서 매주 확인해 kiro-values 블록에 넣는다 */
+  var KV = window.KIRO_V || {}, KN = (window.KIRO_VALUES && window.KIRO_VALUES.next) || null;
+  function chg(p) {
+    if (!KN || window.KIRO_NEXT || !KN.values || typeof KN.values[p + '_i'] !== 'number') return null;
+    var a = KN.from.split('-');
+    return { from: KN.from, label: (+a[0]) + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일', i: KN.values[p + '_i'], o: KN.values[p + '_o'] };
+  }
+  function M(id, v, n, p, lo) {
+    var m = { id: id, v: v, n: n, i: KV[p + '_i'], o: KV[p + '_o'] };
+    if (lo) { m.lo = KV[lo]; m.li = KV[p + '_li']; m.lx = KV[p + '_lx']; }
+    var c = chg(p);
+    if (c) m.ch = c;
+    return m;
+  }
   var MODELS = [
-    { id: 'gpt-6-astra', v: 'OpenAI', n: 'GPT-6 Astra', i: 10.00, o: 50.00, lo: 272000, li: 20.00, lx: 75.00 },
-    { id: 'gpt-6.1-sol', v: 'OpenAI', n: 'GPT-6.1 Sol', i: 2.00, o: 10.00, lo: 272000, li: 4.00, lx: 15.00 },
-    { id: 'gpt-6-luna', v: 'OpenAI', n: 'GPT-6 Luna', i: 0.10, o: 0.50, lo: 272000, li: 0.20, lx: 0.75 },
-    { id: 'gpt-5.4-mini', v: 'OpenAI', n: 'GPT-5.4 mini', i: 0.75, o: 4.50 },
-    { id: 'claude-fable-5.1', v: 'Anthropic', n: 'Claude Fable 5.1', i: 10.00, o: 50.00 },
-    { id: 'claude-opus-5.5', v: 'Anthropic', n: 'Claude Opus 5.5', i: 4.00, o: 20.00 },
-    { id: 'claude-sonnet-5.5', v: 'Anthropic', n: 'Claude Sonnet 5.5', i: 2.00, o: 10.00 },
-    { id: 'claude-haiku-5.5', v: 'Anthropic', n: 'Claude Haiku 5.5', i: 0.10, o: 0.50, lo: 100000, li: 0.50, lx: 2.50 },
-    { id: 'claude-haiku-4.5', v: 'Anthropic', n: 'Claude Haiku 4.5', i: 1.00, o: 5.00 },
-    { id: 'gemini-3.1-pro-preview', v: 'Google', n: 'Gemini 3.1 Pro Preview', i: 2.00, o: 12.00, lo: 200000, li: 4.00, lx: 18.00 },
-    { id: 'gemini-3.8-flash', v: 'Google', n: 'Gemini 3.8 Flash', i: 0.75, o: 3.75, ch: { from: '2027-01-01', label: '2027년 1월 1일', i: 1.50, o: 7.50 } },
-    { id: 'gemini-3.5-flash-lite', v: 'Google', n: 'Gemini 3.5 Flash-Lite', i: 0.30, o: 2.50 },
-    { id: 'gemini-2.5-flash', v: 'Google', n: 'Gemini 2.5 Flash', i: 0.30, o: 2.50 },
-    { id: 'gemini-2.5-flash-lite', v: 'Google', n: 'Gemini 2.5 Flash-Lite', i: 0.10, o: 0.40 }
-  ];
+    M('gpt-6-astra', 'OpenAI', 'GPT-6 Astra', 'astra', 'astra_lo'),
+    M('gpt-6.1-sol', 'OpenAI', 'GPT-6.1 Sol', 'sol', 'sol_lo'),
+    M('gpt-6-luna', 'OpenAI', 'GPT-6 Luna', 'luna', 'luna_lo'),
+    M('claude-fable-5.1', 'Anthropic', 'Claude Fable 5.1', 'fable51'),
+    M('claude-opus-5.5', 'Anthropic', 'Claude Opus 5.5', 'opus55'),
+    M('claude-sonnet-5.5', 'Anthropic', 'Claude Sonnet 5.5', 'sonnet55'),
+    M('claude-haiku-5.5', 'Anthropic', 'Claude Haiku 5.5', 'haiku55', 'haiku55_lo'),
+    M('claude-haiku-4.5', 'Anthropic', 'Claude Haiku 4.5', 'haiku45'),
+    M('gemini-3.1-pro-preview', 'Google', 'Gemini 3.1 Pro Preview', 'g31pro', 'g31pro_lo'),
+    M('gemini-3.8-flash', 'Google', 'Gemini 3.8 Flash', 'g38f'),
+    M('gemini-3.5-flash-lite', 'Google', 'Gemini 3.5 Flash-Lite', 'g35fl'),
+    M('gemini-2.5-flash', 'Google', 'Gemini 2.5 Flash', 'g25f'),
+    M('gemini-2.5-flash-lite', 'Google', 'Gemini 2.5 Flash-Lite', 'g25fl')
+  ].filter(function (m) { return typeof m.i === 'number' && typeof m.o === 'number'; });
   var LIM = { tin: [0, 10000000], tout: [0, 10000000], rpd: [0, 100000000], dpm: [1, 31], price: [0, 10000], fx: [100, 10000] };
   var OLD_KEYS = ['aiCalcModel', 'aiCalcInput', 'aiCalcOutput', 'aiCalcCalls', 'aiCalcRate'];
   var HANGUL = /[\u1100-\u11FF\u3130-\u318F\uA960-\uA97F\uAC00-\uD7A3\uD7B0-\uD7FF]/g;

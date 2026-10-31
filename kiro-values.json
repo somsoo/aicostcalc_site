@@ -1,0 +1,18 @@
+{
+ "app": "aicostcalc_site",
+ "host": "aiapi.enjoy-onepage.com",
+ "watch": false,
+ "status": "unverified",
+ "checked": "",
+ "soft_days": 60,
+ "hard_days": 120,
+ "grace_days": 31,
+ "hide": [],
+ "pages": [
+  "claude-api-pricing.html",
+  "gemini-api-pricing.html",
+  "index.html"
+ ],
+ "values": {},
+ "sources": {}
+}
